@@ -1,0 +1,6 @@
+{
+  "name": "LUMI - AI Skincare Concierge",
+  "description": "Интерактивный мобильный прототип персонального AI-консьержа по уходу за кожей LUMI: диагностика, персональные рекомендации и трекер рутины ухода.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
