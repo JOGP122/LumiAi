@@ -4,7 +4,6 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { createServer as createViteServer } from 'vite';
-import { GoogleGenAI, Type } from '@google/genai';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -60,14 +59,90 @@ async function callTelegramApi(token: string, method: string, payload: Record<st
   return response.json();
 }
 
-const ai = new GoogleGenAI({
-  apiKey: process.env.GEMINI_API_KEY,
-  httpOptions: {
-    headers: {
-      'User-Agent': 'aistudio-build'
+// --- LUMI AI: OpenAI-совместимый клиент (Moonshot Kimi, бесплатный стартовый кредит) ---
+const MOONSHOT_BASE_URL = process.env.MOONSHOT_BASE_URL || 'https://api.moonshot.ai/v1';
+
+interface LumiAIRequest {
+  system: string;
+  prompt: string;
+  imageBase64?: string;
+  mimeType?: string;
+  schemaTemplate: Record<string, any>;
+}
+
+function extractJson(text: string): any {
+  const cleaned = (text || '').replace(/```(?:json)?/gi, '').trim();
+  try {
+    return JSON.parse(cleaned);
+  } catch {
+    const start = cleaned.indexOf('{');
+    const end = cleaned.lastIndexOf('}');
+    if (start !== -1 && end > start) {
+      return JSON.parse(cleaned.slice(start, end + 1));
     }
+    throw new Error('Модель вернула невалидный JSON');
   }
-});
+}
+
+async function callLumiAI(req: LumiAIRequest): Promise<any> {
+  const apiKey = process.env.MOONSHOT_API_KEY || process.env.KIMI_API_KEY || '';
+  if (!apiKey) {
+    throw new Error('MOONSHOT_API_KEY не задан в .env');
+  }
+  const model = process.env.LUMI_AI_MODEL || 'kimi-k2.6';
+
+  const content: any[] = [];
+  if (req.imageBase64 && typeof req.imageBase64 === 'string') {
+    const cleanBase64 = req.imageBase64.replace(/^data:image\/\w+;base64,/, '');
+    content.push({
+      type: 'image_url',
+      image_url: { url: `data:${req.mimeType || 'image/jpeg'};base64,${cleanBase64}` }
+    });
+  }
+  content.push({
+    type: 'text',
+    text: `${req.prompt}\n\nОтветь ОДНИМ валидным JSON-объектом (без markdown-обёртки и пояснений) строго по этой структуре:\n${JSON.stringify(req.schemaTemplate, null, 2)}`
+  });
+
+  const body = {
+    model,
+    messages: [
+      { role: 'system', content: req.system },
+      { role: 'user', content }
+    ],
+    temperature: 0.4,
+    max_tokens: 4096,
+    response_format: { type: 'json_object' }
+  };
+
+  const doFetch = () =>
+    fetch(`${MOONSHOT_BASE_URL}/chat/completions`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${apiKey}`
+      },
+      body: JSON.stringify(body)
+    });
+
+  let resp = await doFetch();
+  if (!resp.ok) {
+    const errText = await resp.text();
+    throw new Error(`Moonshot API ${resp.status}: ${errText.slice(0, 300)}`);
+  }
+  let data: any = await resp.json();
+  const text: string = data.choices?.[0]?.message?.content || '';
+  try {
+    return extractJson(text);
+  } catch (firstError) {
+    console.warn('LumiAI: JSON не распарсился, повторяем запрос:', firstError);
+    resp = await doFetch();
+    if (!resp.ok) throw new Error(`Moonshot API ${resp.status} (retry)`);
+    data = await resp.json();
+    const retryText: string = data.choices?.[0]?.message?.content || '';
+    return extractJson(retryText);
+  }
+}
 
 async function startServer() {
   const app = express();
@@ -120,92 +195,42 @@ ${
 - Исключи конфликты активов: не ставь ретиноиды и AHA/BHA кислоты в один прием, не совмещай кислую форму витамина С с пептидами меди или кислотами в один прием, обязательно включай SPF утром.
 - Для каждого продукта укажи магазин-партнер: "Золотое Яблоко" или "Лэтуаль" и реальную примерную цену в рублях.`;
 
-      const parts: any[] = [];
-      if (imageBase64 && typeof imageBase64 === 'string') {
-        const cleanBase64 = imageBase64.replace(/^data:image\/\w+;base64,/, '');
-        parts.push({
-          inlineData: {
-            mimeType: mimeType || 'image/jpeg',
-            data: cleanBase64
-          }
-        });
-      }
-      parts.push({ text: promptText });
-
-      const response = await ai.models.generateContent({
-        model: 'gemini-3.8-flash',
-        contents: { parts },
-        config: {
-          systemInstruction:
-            'Ты — доказательный врач-дерматолог и косметический химик сервиса LUMI. Отвечай строго на русском языке в формате JSON по заданной схеме.',
-          responseMimeType: 'application/json',
-          responseSchema: {
-            type: Type.OBJECT,
-            properties: {
-              skinScore: {
-                type: Type.INTEGER,
-                description: 'Индекс здоровья кожи от 40 до 95'
-              },
-              skinTypeSummary: {
-                type: Type.STRING,
-                description: 'Краткий вердикт о типе и состоянии кожи'
-              },
-              visualFindings: {
-                type: Type.ARRAY,
-                items: { type: Type.STRING },
-                description: '2-3 наблюдения по фото и анкете'
-              },
-              disclaimer: {
-                type: Type.STRING,
-                description: 'Вежливый дисклеймер, что результат не является медицинским диагнозом'
-              },
-              morningRoutine: {
-                type: Type.ARRAY,
-                items: {
-                  type: Type.OBJECT,
-                  properties: {
-                    time: { type: Type.STRING },
-                    stepCategory: { type: Type.STRING },
-                    name: { type: Type.STRING },
-                    brand: { type: Type.STRING },
-                    whyItFits: { type: Type.STRING },
-                    price: { type: Type.INTEGER },
-                    partnerStore: { type: Type.STRING }
-                  },
-                  required: ['time', 'stepCategory', 'name', 'brand', 'whyItFits', 'price', 'partnerStore']
-                }
-              },
-              eveningRoutine: {
-                type: Type.ARRAY,
-                items: {
-                  type: Type.OBJECT,
-                  properties: {
-                    time: { type: Type.STRING },
-                    stepCategory: { type: Type.STRING },
-                    name: { type: Type.STRING },
-                    brand: { type: Type.STRING },
-                    whyItFits: { type: Type.STRING },
-                    price: { type: Type.INTEGER },
-                    partnerStore: { type: Type.STRING }
-                  },
-                  required: ['time', 'stepCategory', 'name', 'brand', 'whyItFits', 'price', 'partnerStore']
-                }
-              }
-            },
-            required: [
-              'skinScore',
-              'skinTypeSummary',
-              'visualFindings',
-              'disclaimer',
-              'morningRoutine',
-              'eveningRoutine'
-            ]
-          }
+      const parsed = await callLumiAI({
+        system:
+          'Ты — доказательный врач-дерматолог и косметический химик сервиса LUMI. Отвечай строго на русском языке в формате JSON по заданной схеме.',
+        prompt: promptText,
+        imageBase64,
+        mimeType,
+        schemaTemplate: {
+          skinScore: 0,
+          skinTypeSummary: '',
+          visualFindings: [''],
+          disclaimer: '',
+          morningRoutine: [
+            {
+              time: '',
+              stepCategory: '',
+              name: '',
+              brand: '',
+              whyItFits: '',
+              price: 0,
+              partnerStore: ''
+            }
+          ],
+          eveningRoutine: [
+            {
+              time: '',
+              stepCategory: '',
+              name: '',
+              brand: '',
+              whyItFits: '',
+              price: 0,
+              partnerStore: ''
+            }
+          ]
         }
       });
 
-      const rawText = response.text || '{}';
-      const parsed = JSON.parse(rawText);
       res.json(parsed);
     } catch (error: any) {
       console.error('Error in /api/analyze-face:', error);
@@ -256,108 +281,27 @@ ${skinContext}
 6. Предложи безопасный реальный аналог (safeAlternative) под бюджет пользователя (CeraVe, Гельтек, La Roche-Posay, Bioderma, Aravia, Dr.Jart+, Tatcha).`;
 
 
-      const parts: any[] = [];
-      if (imageBase64 && typeof imageBase64 === 'string') {
-        const cleanBase64 = imageBase64.replace(/^data:image\/\w+;base64,/, '');
-        parts.push({
-          inlineData: {
-            mimeType: mimeType || 'image/jpeg',
-            data: cleanBase64
-          }
-        });
-      }
-      parts.push({ text: promptText });
-
-      const response = await ai.models.generateContent({
-        model: 'gemini-3.8-flash',
-        contents: { parts },
-        config: {
-          systemInstruction:
-            'Ты — доказательный косметический химик и врач-дерматолог LUMI. Анализируй составы INCI и совместимость банок строго на русском языке в формате JSON.',
-          responseMimeType: 'application/json',
-          responseSchema: {
-            type: Type.OBJECT,
-            properties: {
-              productName: { type: Type.STRING },
-              brand: { type: Type.STRING },
-              compatibilityScore: {
-                type: Type.INTEGER,
-                description: 'Оценка совместимости с кожей пользователя от 0 до 100'
-              },
-              verdictSummary: {
-                type: Type.STRING,
-                description: 'Краткое резюме дерматолога по средству'
-              },
-              recommendedSection: {
-                type: Type.STRING,
-                description: 'morning или evening'
-              },
-              recommendedStepCategory: {
-                type: Type.STRING,
-                description: 'Этап ухода, например: Очищение, Сыворотка, Увлажнение, Кислотный уход, SPF'
-              },
-              estimatedPrice: { type: Type.INTEGER },
-              goodIngredients: {
-                type: Type.ARRAY,
-                items: {
-                  type: Type.OBJECT,
-                  properties: {
-                    name: { type: Type.STRING },
-                    effect: { type: Type.STRING }
-                  },
-                  required: ['name', 'effect']
-                }
-              },
-              badIngredients: {
-                type: Type.ARRAY,
-                items: {
-                  type: Type.OBJECT,
-                  properties: {
-                    name: { type: Type.STRING },
-                    effect: { type: Type.STRING },
-                    severity: { type: Type.STRING, description: 'danger или warning' }
-                  },
-                  required: ['name', 'effect', 'severity']
-                }
-              },
-              routineConflict: {
-                type: Type.OBJECT,
-                properties: {
-                  hasConflict: { type: Type.BOOLEAN },
-                  conflictWarning: { type: Type.STRING }
-                },
-                required: ['hasConflict', 'conflictWarning']
-              },
-              safeAlternative: {
-                type: Type.OBJECT,
-                properties: {
-                  name: { type: Type.STRING },
-                  brand: { type: Type.STRING },
-                  reason: { type: Type.STRING },
-                  price: { type: Type.INTEGER }
-                },
-                required: ['name', 'brand', 'reason', 'price']
-              }
-            },
-            required: [
-              'productName',
-              'brand',
-              'compatibilityScore',
-              'verdictSummary',
-              'recommendedSection',
-              'recommendedStepCategory',
-              'estimatedPrice',
-              'goodIngredients',
-              'badIngredients',
-              'routineConflict',
-              'safeAlternative'
-            ]
-          }
+      const parsed = await callLumiAI({
+        system:
+          'Ты — доказательный косметический химик и врач-дерматолог LUMI. Анализируй составы INCI и совместимость банок строго на русском языке в формате JSON.',
+        prompt: promptText,
+        imageBase64,
+        mimeType,
+        schemaTemplate: {
+          productName: '',
+          brand: '',
+          compatibilityScore: 0,
+          verdictSummary: '',
+          recommendedSection: 'morning',
+          recommendedStepCategory: '',
+          estimatedPrice: 0,
+          goodIngredients: [{ name: '', effect: '' }],
+          badIngredients: [{ name: '', effect: '', severity: 'warning' }],
+          routineConflict: { hasConflict: false, conflictWarning: '' },
+          safeAlternative: { name: '', brand: '', reason: '', price: 0 }
         }
       });
 
-      const rawText = response.text || '{}';
-      const parsed = JSON.parse(rawText);
       res.json(parsed);
     } catch (error: any) {
       console.error('Error in /api/analyze-product:', error);
