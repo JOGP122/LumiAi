@@ -248,7 +248,7 @@ export const ProductScannerModal: React.FC<ProductScannerModalProps> = ({
             type="button"
             disabled={isLoading}
             onClick={() => handleAnalyze()}
-            className="flex-1 py-3 px-4 rounded-full bg-[#A87C44] text-white text-[13px] font-bold flex items-center justify-center gap-2 shadow-[0_8px_20px_rgba(168,124,68,0.3)] hover:bg-[#e5604d] active:scale-95 transition-all disabled:opacity-60"
+            className="flex-1 py-3 px-4 rounded-full bg-[#A87C44] text-white text-[13px] font-bold flex items-center justify-center gap-2 shadow-[0_8px_20px_rgba(168,124,68,0.3)] hover:bg-[#84622F] active:scale-95 transition-all disabled:opacity-60"
           >
             <Sparkles size={15} className={isLoading ? 'animate-spin' : ''} />
             <span>{isLoading ? 'Разбираем состав...' : 'Проверить банку'}</span>
@@ -405,7 +405,7 @@ export const ProductScannerModal: React.FC<ProductScannerModalProps> = ({
             <button
               type="button"
               onClick={() => onAddScannedToRoutine(scanResult, false)}
-              className="w-full py-3.5 px-4 rounded-full bg-[#A87C44] text-white text-[13px] font-bold flex items-center justify-center gap-2 shadow-[0_6px_18px_rgba(168,124,68,0.3)] hover:bg-[#e5604d] active:scale-95 transition-all"
+              className="w-full py-3.5 px-4 rounded-full bg-[#A87C44] text-white text-[13px] font-bold flex items-center justify-center gap-2 shadow-[0_6px_18px_rgba(168,124,68,0.3)] hover:bg-[#84622F] active:scale-95 transition-all"
             >
               <Plus size={16} strokeWidth={2.5} />
               <span>Добавить в мою рутину</span>

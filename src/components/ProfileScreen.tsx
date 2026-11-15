@@ -385,7 +385,7 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({
       </div>
 
       {/* Routine Streak Banner */}
-      <div className="bg-gradient-to-r from-[#F0E6D1]/80 to-[#FCEBE6] rounded-[24px] p-4 border border-[#F6DBD2] flex items-center justify-between mb-5">
+      <div className="bg-gradient-to-r from-[#F0E6D1]/80 to-[#FCEBE6] rounded-[24px] p-4 border border-[#F0E6D1] flex items-center justify-between mb-5">
         <div className="flex items-center gap-3">
           <div className="w-11 h-11 rounded-2xl bg-white shadow-xs flex items-center justify-center text-[#A87C44]">
             <Flame size={22} className="fill-[#A87C44]" />
@@ -457,7 +457,7 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({
           type="button"
           onClick={onStartScan}
           aria-label="Запустить AI-диагностику лица"
-          className="w-full py-3.5 px-4 rounded-full bg-[#A87C44] text-white text-[13.5px] font-bold flex items-center justify-center gap-2 shadow-[0_8px_20px_rgba(168,124,68,0.3)] hover:bg-[#e5604d] active:scale-[0.98] transition-all"
+          className="w-full py-3.5 px-4 rounded-full bg-[#A87C44] text-white text-[13.5px] font-bold flex items-center justify-center gap-2 shadow-[0_8px_20px_rgba(168,124,68,0.3)] hover:bg-[#84622F] active:scale-[0.98] transition-all"
         >
           <ScanFace size={17} strokeWidth={2.2} />
           <span>Запустить AI-скан кожи</span>

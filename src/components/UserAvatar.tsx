@@ -55,7 +55,7 @@ export const UserAvatar: React.FC<UserAvatarProps> = ({
       ) : (
         <div
           aria-label={`Инициалы ${name}`}
-          className={`${sizeClasses} rounded-full bg-gradient-to-br from-[#A87C44] via-[#F28472] to-[#E65C48] text-white font-extrabold tracking-wide flex items-center justify-center ring-2 ring-[#F0E6D1] shadow-[0_4px_14px_rgba(168,124,68,0.28)]`}
+          className={`${sizeClasses} rounded-full bg-gradient-to-br from-[#A87C44] via-[#A87C44] to-[#84622F] text-white font-extrabold tracking-wide flex items-center justify-center ring-2 ring-[#F0E6D1] shadow-[0_4px_14px_rgba(168,124,68,0.28)]`}
         >
           {initials}
         </div>
@@ -63,7 +63,7 @@ export const UserAvatar: React.FC<UserAvatarProps> = ({
 
       {showOnlineBadge && (
         <span
-          className={`absolute bottom-0 right-0 rounded-full bg-[#10B981] border-[#FBF8F5] ${badgeSizeClasses}`}
+          className={`absolute bottom-0 right-0 rounded-full bg-[#5F7A60] border-2 border-[#F4F0E8] ${badgeSizeClasses}`}
         />
       )}
     </div>

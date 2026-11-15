@@ -45,7 +45,7 @@ export const FavoritesScreen: React.FC<FavoritesScreenProps> = ({
           </p>
         </div>
 
-        <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FEF3F2] border border-[#FEE4E2] text-[#A87C44] text-[12px] font-bold">
+        <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F0E6D1] border border-[#E6DFCF] text-[#A87C44] text-[12px] font-bold">
           <Heart size={14} className="fill-[#A87C44]" />
           <span>{favoriteProducts.length}</span>
         </div>
@@ -56,7 +56,7 @@ export const FavoritesScreen: React.FC<FavoritesScreenProps> = ({
         type="button"
         onClick={onOpenJarScanner}
         aria-label="Проверить банку / Разбор состава по фото"
-        className="group w-full mb-4 flex items-center justify-between bg-gradient-to-r from-[#F0E6D1]/75 via-[#FBF1EE] to-white rounded-[24px] p-3.5 shadow-[0_8px_22px_rgba(168,124,68,0.08)] border border-[#F6DBD2] hover:border-[#A87C44] active:scale-[0.98] transition-all text-left"
+        className="group w-full mb-4 flex items-center justify-between bg-gradient-to-r from-[#F0E6D1]/75 via-[#F0E6D1] to-white rounded-[24px] p-3.5 shadow-[0_8px_22px_rgba(168,124,68,0.08)] border border-[#F0E6D1] hover:border-[#A87C44] active:scale-[0.98] transition-all text-left"
       >
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-2xl bg-[#A87C44] flex items-center justify-center text-white shrink-0 shadow-xs">
@@ -87,7 +87,7 @@ export const FavoritesScreen: React.FC<FavoritesScreenProps> = ({
       {/* Empty State vs Products List */}
       {favoriteProducts.length === 0 ? (
         <div className="bg-white rounded-[26px] p-7 text-center border border-[#ECE5D7] shadow-xs my-2 flex flex-col items-center gap-3">
-          <div className="w-12 h-12 rounded-2xl bg-[#FEF3F2] text-[#A87C44] flex items-center justify-center">
+          <div className="w-12 h-12 rounded-2xl bg-[#F0E6D1] text-[#A87C44] flex items-center justify-center">
             <Heart size={22} />
           </div>
           <div>
@@ -131,7 +131,7 @@ export const FavoritesScreen: React.FC<FavoritesScreenProps> = ({
               >
                 <div className="flex items-start gap-3">
                   {/* Product Thumbnail */}
-                  <div className="w-16 h-16 rounded-[18px] bg-[#FBF1EE] p-2 flex items-center justify-center shrink-0">
+                  <div className="w-16 h-16 rounded-[18px] bg-[#F0E6D1] p-2 flex items-center justify-center shrink-0">
                     <img
                       src={product.imageUrl}
                       alt={product.name}

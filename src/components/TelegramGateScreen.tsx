@@ -130,7 +130,7 @@ export const TelegramGateScreen: React.FC<TelegramGateScreenProps> = ({
           href={botDeepLink}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full py-4 px-6 rounded-full bg-[#A87C44] text-white text-[14.5px] font-bold flex items-center justify-center gap-2 shadow-[0_10px_25px_rgba(168,124,68,0.35)] hover:bg-[#e5604d] active:scale-[0.98] transition-all text-center"
+          className="w-full py-4 px-6 rounded-full bg-[#A87C44] text-white text-[14.5px] font-bold flex items-center justify-center gap-2 shadow-[0_10px_25px_rgba(168,124,68,0.35)] hover:bg-[#84622F] active:scale-[0.98] transition-all text-center"
         >
           <span>Открыть в Telegram ↗</span>
         </a>

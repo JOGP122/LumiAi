@@ -84,7 +84,7 @@ export const CartScreen: React.FC<CartScreenProps> = ({
                 className="bg-white rounded-[22px] p-3.5 border border-[#ECE5D7] shadow-[0_4px_16px_rgba(30,27,24,0.02)] flex items-center justify-between gap-3"
               >
                 {/* Image */}
-                <div className="w-13 h-13 rounded-[16px] bg-[#FBF1EE] p-1.5 flex items-center justify-center shrink-0">
+                <div className="w-13 h-13 rounded-[16px] bg-[#F0E6D1] p-1.5 flex items-center justify-center shrink-0">
                   <img
                     src={item.imageUrl}
                     alt={item.name}

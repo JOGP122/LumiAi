@@ -218,7 +218,7 @@ export const FaceScanScreen: React.FC<FaceScanScreenProps> = ({
 
           {/* Profile Context Summary */}
           {onboarding && (
-            <div className="mb-4 px-3 py-2 rounded-2xl bg-[#F0E6D1]/40 border border-[#F6DBD2] text-[11px] text-[#786F67] flex flex-wrap gap-x-3 gap-y-1">
+            <div className="mb-4 px-3 py-2 rounded-2xl bg-[#F0E6D1]/40 border border-[#F0E6D1] text-[11px] text-[#786F67] flex flex-wrap gap-x-3 gap-y-1">
               <span>
                 • Пол: <b>{onboarding.gender === 'male' ? 'Мужской' : 'Женский'}</b>
               </span>
@@ -237,7 +237,7 @@ export const FaceScanScreen: React.FC<FaceScanScreenProps> = ({
               type="button"
               disabled={isAnalyzing}
               onClick={() => fileInputRef.current?.click()}
-              className="w-full py-3.5 px-4 rounded-full bg-[#A87C44] text-white text-[13.5px] font-bold flex items-center justify-center gap-2 shadow-[0_8px_20px_rgba(168,124,68,0.35)] hover:bg-[#e5604d] active:scale-[0.98] transition-all disabled:opacity-60"
+              className="w-full py-3.5 px-4 rounded-full bg-[#A87C44] text-white text-[13.5px] font-bold flex items-center justify-center gap-2 shadow-[0_8px_20px_rgba(168,124,68,0.35)] hover:bg-[#84622F] active:scale-[0.98] transition-all disabled:opacity-60"
             >
               <Camera size={17} />
               <span>
@@ -387,7 +387,7 @@ export const FaceScanScreen: React.FC<FaceScanScreenProps> = ({
           <button
             type="button"
             onClick={() => onAnalysisSuccess(analysisResult)}
-            className="w-full py-4 px-5 rounded-full bg-[#A87C44] text-white text-[14px] font-bold flex items-center justify-center gap-2 shadow-[0_10px_25px_rgba(168,124,68,0.35)] hover:bg-[#e5604d] active:scale-[0.98] transition-all"
+            className="w-full py-4 px-5 rounded-full bg-[#A87C44] text-white text-[14px] font-bold flex items-center justify-center gap-2 shadow-[0_10px_25px_rgba(168,124,68,0.35)] hover:bg-[#84622F] active:scale-[0.98] transition-all"
           >
             <span>Применить уход и обновить рутину</span>
             <ArrowRight size={17} strokeWidth={2.5} />
