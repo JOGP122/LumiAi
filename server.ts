@@ -80,6 +80,7 @@ function extractJson(text: string): any {
     if (start !== -1 && end > start) {
       return JSON.parse(cleaned.slice(start, end + 1));
     }
+    console.error('extractJson: len=' + (text || '').length, 'tail:', JSON.stringify((text || '').slice(-200)));
     throw new Error('Модель вернула невалидный JSON');
   }
 }
@@ -125,20 +126,32 @@ async function callLumiAI(req: LumiAIRequest): Promise<any> {
       body: JSON.stringify(body)
     });
 
-  let resp = await doFetch();
-  if (!resp.ok) {
-    const errText = await resp.text();
-    throw new Error(`Moonshot API ${resp.status}: ${errText.slice(0, 300)}`);
+  const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
+  const MAX_ATTEMPTS = 4;
+
+  let resp: Response | null = null;
+  let lastErrText = '';
+  for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+    resp = await doFetch();
+    if (resp.ok) break;
+    lastErrText = await resp.text();
+    const isRateLimit = resp.status === 429 || /rate.?limit|temporarily/i.test(lastErrText);
+    console.warn(`LumiAI: попытка ${attempt}/${MAX_ATTEMPTS} → HTTP ${resp.status}${isRateLimit ? ' (rate limit)' : ''}`);
+    if (!isRateLimit || attempt === MAX_ATTEMPTS) {
+      throw new Error(`Moonshot API ${resp.status}: ${lastErrText.slice(0, 300)}`);
+    }
+    await sleep(2500 * attempt);
   }
-  let data: any = await resp.json();
+
+  let data: any = await resp!.json();
   const text: string = data.choices?.[0]?.message?.content || '';
   try {
     return extractJson(text);
   } catch (firstError) {
     console.warn('LumiAI: JSON не распарсился, повторяем запрос:', firstError);
-    resp = await doFetch();
-    if (!resp.ok) throw new Error(`Moonshot API ${resp.status} (retry)`);
-    data = await resp.json();
+    const retryResp = await doFetch();
+    if (!retryResp.ok) throw new Error(`Moonshot API ${retryResp.status} (retry)`);
+    data = await retryResp.json();
     const retryText: string = data.choices?.[0]?.message?.content || '';
     return extractJson(retryText);
   }
