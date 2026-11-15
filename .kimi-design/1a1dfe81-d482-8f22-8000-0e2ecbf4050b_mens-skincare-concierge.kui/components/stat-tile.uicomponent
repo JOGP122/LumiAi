@@ -1,0 +1,24 @@
+id: stat-tile
+name: Stat Tile
+
+expose:
+  value: {node: stat-tile.value, field: content}
+  label: {node: stat-tile.label, field: content}
+  icon: {node: stat-tile.icon, field: children}
+
+root:
+  id: stat-tile.root
+  type: frame
+  size: [fill, hug]
+  layout: {type: flex, direction: column, gap: 6, padding: 16}
+  fill: $color.surface
+  cornerRadius: 16
+  effects: $shadow.card
+  children:
+    - id: stat-tile.icon
+      type: frame
+      size: [hug, hug]
+      children:
+        - {id: stat-tile.icon.default, type: svg, size: [14, 14], icon: "fas:face-smile", fill: $color.brassDeep}
+    - {id: stat-tile.value, type: text, size: [hug, hug], fontFamily: Cormorant, fontSize: 30, fontWeight: 600, lineHeight: 32, color: $color.ink, content: "0"}
+    - {id: stat-tile.label, type: text, size: [fill, hug], fontFamily: Manrope, fontSize: 11.5, lineHeight: 15, color: $color.inkSecondary, content: "Подпись метрики"}

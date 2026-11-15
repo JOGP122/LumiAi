@@ -50,12 +50,12 @@ export const UserAvatar: React.FC<UserAvatarProps> = ({
           src={activePhotoUrl}
           alt={`Аватар ${name}`}
           onError={() => setImgError(true)}
-          className={`${sizeClasses} rounded-full object-cover ring-2 ring-[#F8DDD4] shadow-xs bg-[#F5F2EB]`}
+          className={`${sizeClasses} rounded-full object-cover ring-2 ring-[#F0E6D1] shadow-xs bg-[#F4F0E8]`}
         />
       ) : (
         <div
           aria-label={`Инициалы ${name}`}
-          className={`${sizeClasses} rounded-full bg-gradient-to-br from-[#F8715E] via-[#F28472] to-[#E65C48] text-white font-extrabold tracking-wide flex items-center justify-center ring-2 ring-[#F8DDD4] shadow-[0_4px_14px_rgba(248,113,94,0.28)]`}
+          className={`${sizeClasses} rounded-full bg-gradient-to-br from-[#A87C44] via-[#F28472] to-[#E65C48] text-white font-extrabold tracking-wide flex items-center justify-center ring-2 ring-[#F0E6D1] shadow-[0_4px_14px_rgba(168,124,68,0.28)]`}
         >
           {initials}
         </div>

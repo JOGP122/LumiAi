@@ -1,0 +1,40 @@
+id: action-row
+name: Action Row
+
+expose:
+  title: {node: action-row.title, field: content}
+  caption: {node: action-row.caption, field: content}
+  icon: {node: action-row.tile, field: children}
+
+root:
+  id: action-row.root
+  type: frame
+  size: [fill, hug]
+  layout: {type: flex, gap: 14, padding: [16, 18], alignItems: center}
+  children:
+    - id: action-row.tile
+      type: frame
+      size: [42, 42]
+      layout: {type: flex, alignItems: center, justifyContent: center}
+      fill: $color.brassSoft
+      cornerRadius: 12
+      children:
+        - {id: action-row.tile.icon, type: svg, size: [16, 16], icon: "fas:flask", fill: $color.brassDeep}
+    - id: action-row.texts
+      type: frame
+      size: [fill, hug]
+      layout: {type: flex, direction: column, gap: 3}
+      children:
+        - {id: action-row.title, type: text, size: [fill, hug], fontFamily: Manrope, fontSize: 15, fontWeight: 600, color: $color.ink, content: "Действие"}
+        - {id: action-row.caption, type: text, size: [235, hug], fontFamily: Manrope, fontSize: 12.5, lineHeight: 17, color: $color.inkSecondary, content: "Описание действия"}
+    - {id: action-row.chevron, type: svg, size: [13, 13], icon: "fas:chevron-right", fill: $color.brass}
+
+variants:
+  kind:
+    dark:
+      action-row.root: {fill: $color.dark}
+      action-row.tile: {fill: $color.darkSoft}
+      action-row.tile.icon: {fill: $color.brassLight}
+      action-row.title: {color: $color.ivory}
+      action-row.caption: {color: $color.ivoryDim}
+      action-row.chevron: {fill: $color.brassLight}

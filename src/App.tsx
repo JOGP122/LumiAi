@@ -660,7 +660,7 @@ export default function App() {
         <div
           role="status"
           aria-live="polite"
-          className="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-[#1E1B18]/90 text-white text-[12px] font-semibold px-4 py-2 rounded-full shadow-lg backdrop-blur-md transition-all animate-bounce"
+          className="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-[#1C1813]/90 text-white text-[12px] font-semibold px-4 py-2 rounded-full shadow-lg backdrop-blur-md transition-all animate-bounce"
         >
           {toastMessage}
         </div>

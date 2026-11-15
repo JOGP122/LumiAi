@@ -11,7 +11,7 @@ export const LumiLogo: React.FC<LumiLogoProps> = ({
   className = '',
   showText = true,
   size = 'md',
-  color = '#1E1B18'
+  color = '#1C1813'
 }) => {
   const iconSizes = {
     sm: 'w-5 h-5',
@@ -43,7 +43,7 @@ export const LumiLogo: React.FC<LumiLogoProps> = ({
 
       {showText && (
         <span
-          className={`font-sans font-bold text-[#1E1B18] uppercase ${textSizes[size]}`}
+          className={`font-sans font-bold text-[#1C1813] uppercase ${textSizes[size]}`}
           style={{ letterSpacing: '0.22em' }}
         >
           LUMI

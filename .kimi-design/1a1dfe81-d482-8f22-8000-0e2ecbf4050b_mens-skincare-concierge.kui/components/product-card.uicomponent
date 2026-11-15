@@ -1,0 +1,50 @@
+id: product-card
+name: Product Card
+
+expose:
+  name: {node: product-card.name, field: content}
+  brand: {node: product-card.brand, field: content}
+  price: {node: product-card.price, field: content}
+  image: {node: product-card.image, field: fill}
+  meta: {node: product-card.meta, field: children}
+  trailing: {node: product-card.trailing, field: children}
+
+root:
+  id: product-card.root
+  type: frame
+  size: [fill, hug]
+  layout: {type: flex, gap: 14, padding: 14, alignItems: center}
+  fill: $color.surface
+  cornerRadius: 20
+  effects: $shadow.card
+  children:
+    - id: product-card.media
+      type: frame
+      size: [76, 76]
+      layout: {type: flex, alignItems: center, justifyContent: center}
+      fill: $color.sunken
+      cornerRadius: 14
+      children:
+        - {id: product-card.image, type: rect, size: [60, 60], fill: {type: image, src: assets/product-tube.png, fit: contain}}
+    - id: product-card.texts
+      type: frame
+      size: [fill, hug]
+      layout: {type: flex, direction: column, gap: 3}
+      children:
+        - {id: product-card.name, type: text, size: [fill, hug], fontFamily: Manrope, fontSize: 15, fontWeight: 600, color: $color.ink, content: "Название средства"}
+        - {id: product-card.brand, type: text, size: [fill, hug], fontFamily: Manrope, fontSize: 12.5, color: $color.inkSecondary, content: "Бренд"}
+        - {id: product-card.price, type: text, size: [fill, hug], fontFamily: Manrope, fontSize: 14, fontWeight: 700, color: $color.ink, content: "0 ₽"}
+        - id: product-card.meta
+          type: frame
+          size: [hug, hug]
+          layout: {type: flex, gap: 6, alignItems: center, padding: [3, 0, 0, 0]}
+          children:
+            - {id: product-card.fit.dot, type: ellipse, size: [5, 5], fill: $color.sage}
+            - {id: product-card.fit.text, type: text, size: [hug, hug], fontFamily: Manrope, fontSize: 11.5, fontWeight: 600, color: $color.sage, content: "Подходит твоей коже"}
+    - id: product-card.trailing
+      type: frame
+      size: [hug, hug]
+      alignSelf: start
+      margin: [4, 2, 0, 0]
+      children:
+        - {id: product-card.heart, type: svg, size: [18, 18], icon: "fas:heart", fill: $color.brass}

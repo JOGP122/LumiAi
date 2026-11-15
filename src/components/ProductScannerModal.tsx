@@ -141,50 +141,50 @@ export const ProductScannerModal: React.FC<ProductScannerModalProps> = ({
           type="button"
           onClick={onClose}
           aria-label="Закрыть сканер состава"
-          className="w-9 h-9 rounded-full bg-white flex items-center justify-center text-[#1E1B18] shadow-xs border border-[#F2ECE5] active:scale-90 transition-transform"
+          className="w-9 h-9 rounded-full bg-white flex items-center justify-center text-[#1C1813] shadow-xs border border-[#ECE5D7] active:scale-90 transition-transform"
         >
           <ChevronLeft size={20} strokeWidth={2.2} />
         </button>
 
         <div className="text-center">
-          <h1 className="text-[17px] font-bold text-[#1E1B18] tracking-tight">
+          <h1 className="text-[17px] font-bold text-[#1C1813] tracking-tight">
             Сканер состава и банок
           </h1>
-          <p className="text-[11px] text-[#9B9188]">
+          <p className="text-[11px] text-[#756C5D]">
             INCI-анализ комедогенности и конфликтов
           </p>
         </div>
 
-        <div className="w-9 h-9 rounded-full bg-[#F8DDD4]/60 flex items-center justify-center text-[#F8715E]">
+        <div className="w-9 h-9 rounded-full bg-[#F0E6D1]/60 flex items-center justify-center text-[#A87C44]">
           <FlaskConical size={18} />
         </div>
       </header>
 
       {/* Input Card: Photo OR Text */}
-      <div className="bg-white rounded-[26px] p-4 border border-[#F2ECE5] shadow-[0_6px_22px_rgba(30,27,24,0.03)] mb-4">
+      <div className="bg-white rounded-[26px] p-4 border border-[#ECE5D7] shadow-[0_6px_22px_rgba(30,27,24,0.03)] mb-4">
         <label
           htmlFor="inci-product-input"
-          className="block text-[11.5px] font-bold text-[#1E1B18] mb-2"
+          className="block text-[11.5px] font-bold text-[#1C1813] mb-2"
         >
           Введи название банки / состав INCI или загрузи фото:
         </label>
 
         <div className="flex items-center gap-2 bg-[#FBF8F5] rounded-2xl px-3.5 py-2.5 border border-[#EBE4DD] mb-3">
-          <Search size={16} className="text-[#9B9188] shrink-0" />
+          <Search size={16} className="text-[#756C5D] shrink-0" />
           <input
             id="inci-product-input"
             type="text"
             value={productQuery}
             onChange={(e) => setProductQuery(e.target.value)}
             placeholder="Например: CeraVe крем или состав с упаковки..."
-            className="w-full bg-transparent text-[13px] font-medium text-[#1E1B18] placeholder:text-[#9B9188] focus:outline-none"
+            className="w-full bg-transparent text-[13px] font-medium text-[#1C1813] placeholder:text-[#756C5D] focus:outline-none"
           />
           {productQuery && (
             <button
               type="button"
               onClick={() => setProductQuery('')}
               aria-label="Очистить поле"
-              className="text-[#9B9188] hover:text-[#1E1B18]"
+              className="text-[#756C5D] hover:text-[#1C1813]"
             >
               <X size={15} />
             </button>
@@ -193,7 +193,7 @@ export const ProductScannerModal: React.FC<ProductScannerModalProps> = ({
 
         {/* Image Preview if uploaded */}
         {imagePreview && (
-          <div className="relative w-24 h-24 rounded-2xl overflow-hidden border border-[#F2ECE5] mb-3">
+          <div className="relative w-24 h-24 rounded-2xl overflow-hidden border border-[#ECE5D7] mb-3">
             <img
               src={imagePreview}
               alt="Фото банки"
@@ -212,7 +212,7 @@ export const ProductScannerModal: React.FC<ProductScannerModalProps> = ({
 
         {/* Quick Sample Chips */}
         <div className="mb-3.5">
-          <span className="text-[10.5px] font-semibold text-[#9B9188] block mb-1.5">
+          <span className="text-[10.5px] font-semibold text-[#756C5D] block mb-1.5">
             Быстрая проверка популярных средств:
           </span>
           <div className="flex flex-wrap gap-1.5">
@@ -224,7 +224,7 @@ export const ProductScannerModal: React.FC<ProductScannerModalProps> = ({
                   setProductQuery(sample);
                   handleAnalyze(sample);
                 }}
-                className="text-[11px] font-medium px-2.5 py-1 rounded-full bg-[#FBF8F5] hover:bg-[#F8DDD4]/50 text-[#786F67] hover:text-[#1E1B18] border border-[#EBE4DD] transition-colors"
+                className="text-[11px] font-medium px-2.5 py-1 rounded-full bg-[#FBF8F5] hover:bg-[#F0E6D1]/50 text-[#786F67] hover:text-[#1C1813] border border-[#EBE4DD] transition-colors"
               >
                 {sample}
               </button>
@@ -238,9 +238,9 @@ export const ProductScannerModal: React.FC<ProductScannerModalProps> = ({
             type="button"
             disabled={isLoading}
             onClick={() => fileInputRef.current?.click()}
-            className="py-3 px-4 rounded-full bg-[#FBF8F5] border border-[#EBE4DD] text-[#1E1B18] text-[12px] font-bold flex items-center justify-center gap-1.5 hover:bg-[#F3ECE4] active:scale-95 transition-all shrink-0"
+            className="py-3 px-4 rounded-full bg-[#FBF8F5] border border-[#EBE4DD] text-[#1C1813] text-[12px] font-bold flex items-center justify-center gap-1.5 hover:bg-[#F3ECE4] active:scale-95 transition-all shrink-0"
           >
-            <Camera size={15} className="text-[#F8715E]" />
+            <Camera size={15} className="text-[#A87C44]" />
             <span>Фото / INCI</span>
           </button>
 
@@ -248,7 +248,7 @@ export const ProductScannerModal: React.FC<ProductScannerModalProps> = ({
             type="button"
             disabled={isLoading}
             onClick={() => handleAnalyze()}
-            className="flex-1 py-3 px-4 rounded-full bg-[#F8715E] text-white text-[13px] font-bold flex items-center justify-center gap-2 shadow-[0_8px_20px_rgba(248,113,94,0.3)] hover:bg-[#e5604d] active:scale-95 transition-all disabled:opacity-60"
+            className="flex-1 py-3 px-4 rounded-full bg-[#A87C44] text-white text-[13px] font-bold flex items-center justify-center gap-2 shadow-[0_8px_20px_rgba(168,124,68,0.3)] hover:bg-[#e5604d] active:scale-95 transition-all disabled:opacity-60"
           >
             <Sparkles size={15} className={isLoading ? 'animate-spin' : ''} />
             <span>{isLoading ? 'Разбираем состав...' : 'Проверить банку'}</span>
@@ -264,14 +264,14 @@ export const ProductScannerModal: React.FC<ProductScannerModalProps> = ({
 
       {/* Analysis Result Card */}
       {scanResult && (
-        <div className="bg-white rounded-[28px] p-4 border border-[#F2ECE5] shadow-[0_10px_28px_rgba(30,27,24,0.05)] mb-5 flex flex-col gap-4 animate-fade-in">
+        <div className="bg-white rounded-[28px] p-4 border border-[#ECE5D7] shadow-[0_10px_28px_rgba(30,27,24,0.05)] mb-5 flex flex-col gap-4 animate-fade-in">
           {/* Product Header & Compatibility Score */}
           <div className="flex items-start justify-between gap-3 border-b border-[#F8F4EE] pb-3.5">
             <div>
-              <span className="text-[10.5px] font-bold uppercase tracking-wider text-[#9B9188]">
+              <span className="text-[10.5px] font-bold uppercase tracking-wider text-[#756C5D]">
                 {scanResult.brand} • {scanResult.recommendedStepCategory}
               </span>
-              <h2 className="text-[16px] font-bold text-[#1E1B18] mt-0.5 leading-snug">
+              <h2 className="text-[16px] font-bold text-[#1C1813] mt-0.5 leading-snug">
                 {scanResult.productName}
               </h2>
               <p className="text-[12px] text-[#786F67] mt-1 leading-relaxed">
@@ -376,14 +376,14 @@ export const ProductScannerModal: React.FC<ProductScannerModalProps> = ({
             scanResult.safeAlternative && (
               <div className="p-3.5 rounded-2xl bg-[#FBF8F5] border border-[#EBE4DD] flex flex-col gap-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10.5px] font-bold uppercase tracking-wider text-[#F8715E]">
+                  <span className="text-[10.5px] font-bold uppercase tracking-wider text-[#A87C44]">
                     Безопасный аналог от дерматолога
                   </span>
-                  <span className="text-[12px] font-bold text-[#1E1B18]">
+                  <span className="text-[12px] font-bold text-[#1C1813]">
                     ~{scanResult.safeAlternative.price.toLocaleString('ru-RU')} ₽
                   </span>
                 </div>
-                <div className="text-[13.5px] font-bold text-[#1E1B18]">
+                <div className="text-[13.5px] font-bold text-[#1C1813]">
                   {scanResult.safeAlternative.brand} — {scanResult.safeAlternative.name}
                 </div>
                 <p className="text-[11.5px] text-[#786F67]">
@@ -392,7 +392,7 @@ export const ProductScannerModal: React.FC<ProductScannerModalProps> = ({
                 <button
                   type="button"
                   onClick={() => onAddScannedToRoutine(scanResult, true)}
-                  className="mt-1 py-2.5 px-4 rounded-full bg-[#1E1B18] text-white text-[12px] font-bold flex items-center justify-center gap-1.5 active:scale-95 transition-transform"
+                  className="mt-1 py-2.5 px-4 rounded-full bg-[#1C1813] text-white text-[12px] font-bold flex items-center justify-center gap-1.5 active:scale-95 transition-transform"
                 >
                   <Plus size={14} />
                   <span>Добавить безопасный аналог в рутину</span>
@@ -405,7 +405,7 @@ export const ProductScannerModal: React.FC<ProductScannerModalProps> = ({
             <button
               type="button"
               onClick={() => onAddScannedToRoutine(scanResult, false)}
-              className="w-full py-3.5 px-4 rounded-full bg-[#F8715E] text-white text-[13px] font-bold flex items-center justify-center gap-2 shadow-[0_6px_18px_rgba(248,113,94,0.3)] hover:bg-[#e5604d] active:scale-95 transition-all"
+              className="w-full py-3.5 px-4 rounded-full bg-[#A87C44] text-white text-[13px] font-bold flex items-center justify-center gap-2 shadow-[0_6px_18px_rgba(168,124,68,0.3)] hover:bg-[#e5604d] active:scale-95 transition-all"
             >
               <Plus size={16} strokeWidth={2.5} />
               <span>Добавить в мою рутину</span>
@@ -415,7 +415,7 @@ export const ProductScannerModal: React.FC<ProductScannerModalProps> = ({
               <button
                 type="button"
                 onClick={() => setShowAlternativeCard(true)}
-                className="w-full py-3 px-4 rounded-full bg-[#F5F2EB] text-[#1E1B18] text-[12.5px] font-bold flex items-center justify-center gap-1.5 hover:bg-[#EAE3DA] active:scale-95 transition-all"
+                className="w-full py-3 px-4 rounded-full bg-[#F4F0E8] text-[#1C1813] text-[12.5px] font-bold flex items-center justify-center gap-1.5 hover:bg-[#EAE3DA] active:scale-95 transition-all"
               >
                 <RefreshCw size={14} />
                 <span>Найти безопасный аналог</span>
@@ -428,7 +428,7 @@ export const ProductScannerModal: React.FC<ProductScannerModalProps> = ({
       {/* History of Previously Scanned Jars */}
       {scannedHistory.length > 0 && (
         <section aria-label="Недавно проверенные банки">
-          <h3 className="text-[13.5px] font-bold text-[#1E1B18] mb-2.5 px-1">
+          <h3 className="text-[13.5px] font-bold text-[#1C1813] mb-2.5 px-1">
             Проверенные ранее банки ({scannedHistory.length})
           </h3>
           <div className="flex flex-col gap-2">
@@ -437,13 +437,13 @@ export const ProductScannerModal: React.FC<ProductScannerModalProps> = ({
                 key={item.id}
                 type="button"
                 onClick={() => setScanResult(item)}
-                className="w-full text-left bg-white rounded-[20px] p-3 border border-[#F2ECE5] flex items-center justify-between hover:border-[#F8715E]/40 transition-all"
+                className="w-full text-left bg-white rounded-[20px] p-3 border border-[#ECE5D7] flex items-center justify-between hover:border-[#A87C44]/40 transition-all"
               >
                 <div className="min-w-0 pr-2">
-                  <div className="text-[12.5px] font-bold text-[#1E1B18] truncate">
+                  <div className="text-[12.5px] font-bold text-[#1C1813] truncate">
                     {item.brand} — {item.productName}
                   </div>
-                  <div className="text-[11px] text-[#9B9188] truncate mt-0.5">
+                  <div className="text-[11px] text-[#756C5D] truncate mt-0.5">
                     {item.verdictSummary}
                   </div>
                 </div>

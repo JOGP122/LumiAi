@@ -1,0 +1,51 @@
+id: button
+name: Button
+
+expose:
+  label: {node: button.label, field: content}
+  icon: {node: button.icon, field: children}
+
+root:
+  id: button.root
+  type: frame
+  size: [hug, 52]
+  layout:
+    type: flex
+    direction: row
+    gap: 10
+    padding: [0, 24]
+    alignItems: center
+    justifyContent: center
+  fill: $color.btnPrimary
+  cornerRadius: 14
+  children:
+    - id: button.icon
+      type: frame
+      size: [hug, hug]
+    - id: button.label
+      type: text
+      size: [hug, hug]
+      fontFamily: Manrope
+      fontSize: 15
+      fontWeight: 600
+      color: $color.onBtnPrimary
+      content: Действие
+
+variants:
+  kind:
+    primary:
+      button.root: {fill: $color.btnPrimary}
+      button.label: {color: $color.onBtnPrimary}
+    brass:
+      button.root: {fill: $color.brass}
+      button.label: {color: "#1C1813"}
+    outline:
+      button.root: {fill: "#FFFFFF00", stroke: {color: $color.line, width: 1, alignment: inside}}
+      button.label: {color: $color.ink}
+  size:
+    sm:
+      button.root: {size: [hug, 40], layout: {padding: [0, 16]}, cornerRadius: 12}
+      button.label: {fontSize: 13}
+  disabled:
+    true:
+      button.root: {opacity: 0.4}

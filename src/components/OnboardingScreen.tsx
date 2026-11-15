@@ -191,7 +191,7 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
               type="button"
               onClick={handlePrev}
               aria-label="Назад к предыдущему шагу"
-              className="w-9 h-9 rounded-full bg-white border border-[#F2ECE5] flex items-center justify-center text-[#1E1B18] shadow-xs active:scale-95 transition-transform"
+              className="w-9 h-9 rounded-full bg-white border border-[#ECE5D7] flex items-center justify-center text-[#1C1813] shadow-xs active:scale-95 transition-transform"
             >
               <ChevronLeft size={18} />
             </button>
@@ -199,7 +199,7 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
             <LumiLogo size="sm" />
           )}
 
-          <span className="text-[12px] font-bold text-[#9B9188] bg-white px-3.5 py-1 rounded-full border border-[#F2ECE5]">
+          <span className="text-[12px] font-bold text-[#756C5D] bg-white px-3.5 py-1 rounded-full border border-[#ECE5D7]">
             Шаг {currentStep + 1} из {totalSteps}
           </span>
 
@@ -207,7 +207,7 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
             <button
               type="button"
               onClick={onCancel}
-              className="text-[12px] font-bold text-[#9B9188] hover:text-[#1E1B18] transition-colors"
+              className="text-[12px] font-bold text-[#756C5D] hover:text-[#1C1813] transition-colors"
             >
               Закрыть
             </button>
@@ -219,7 +219,7 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
         {/* Progress Bar */}
         <div className="w-full h-1.5 bg-[#EFEAE4] rounded-full overflow-hidden mb-5">
           <div
-            className="h-full bg-[#F8715E] rounded-full transition-all duration-300"
+            className="h-full bg-[#A87C44] rounded-full transition-all duration-300"
             style={{ width: `${progressPercent}%` }}
           />
         </div>
@@ -228,42 +228,42 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
         {currentStep === 0 && (
           <div className="flex flex-col gap-4 animate-fade-in">
             <div>
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F8DDD4]/70 text-[#F8715E] text-[11px] font-bold mb-2">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F0E6D1]/70 text-[#A87C44] text-[11px] font-bold mb-2">
                 <Sparkles size={12} />
                 <span>Шаг 1 • Знакомство</span>
               </div>
-              <h1 className="text-[22px] font-extrabold text-[#1E1B18] leading-snug tracking-tight">
+              <h1 className="text-[22px] font-extrabold text-[#1C1813] leading-snug tracking-tight">
                 Базовые данные о себе
               </h1>
-              <p className="text-[12.5px] text-[#9B9188] mt-1 leading-relaxed">
+              <p className="text-[12.5px] text-[#756C5D] mt-1 leading-relaxed">
                 Никаких шаблонов: настроим профиль и алгоритмы дерматолога под тебя
               </p>
             </div>
 
             {/* Name Input */}
-            <div className="bg-white rounded-[24px] p-4 border border-[#F2ECE5] shadow-xs">
+            <div className="bg-white rounded-[24px] p-4 border border-[#ECE5D7] shadow-xs">
               <label
                 htmlFor="onboarding-user-name"
-                className="block text-[11px] font-bold uppercase tracking-wider text-[#9B9188] mb-2"
+                className="block text-[11px] font-bold uppercase tracking-wider text-[#756C5D] mb-2"
               >
                 Твое имя
               </label>
               <div className="flex items-center gap-2.5 bg-[#FBF8F5] rounded-2xl px-3.5 py-2.5 border border-[#EBE4DD]">
-                <User size={16} className="text-[#F8715E] shrink-0" />
+                <User size={16} className="text-[#A87C44] shrink-0" />
                 <input
                   id="onboarding-user-name"
                   type="text"
                   value={userName}
                   onChange={(e) => setUserName(e.target.value)}
                   placeholder="Введи свое имя..."
-                  className="w-full bg-transparent text-[14px] font-bold text-[#1E1B18] placeholder:text-[#9B9188] placeholder:font-normal focus:outline-none"
+                  className="w-full bg-transparent text-[14px] font-bold text-[#1C1813] placeholder:text-[#756C5D] placeholder:font-normal focus:outline-none"
                 />
               </div>
             </div>
 
             {/* Gender Selection */}
-            <div className="bg-white rounded-[24px] p-4 border border-[#F2ECE5] shadow-xs">
-              <span className="block text-[11px] font-bold uppercase tracking-wider text-[#9B9188] mb-2">
+            <div className="bg-white rounded-[24px] p-4 border border-[#ECE5D7] shadow-xs">
+              <span className="block text-[11px] font-bold uppercase tracking-wider text-[#756C5D] mb-2">
                 Пол (влияет на формулы и зону бритья)
               </span>
               <div className="grid grid-cols-2 gap-2.5">
@@ -272,8 +272,8 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
                   onClick={() => handleGenderChange('female')}
                   className={`py-3 px-3.5 rounded-2xl border text-[13.5px] font-bold flex items-center justify-center gap-2 transition-all ${
                     answers.gender === 'female'
-                      ? 'bg-[#F8715E] text-white border-[#F8715E] shadow-[0_6px_18px_rgba(248,113,94,0.28)]'
-                      : 'bg-[#FBF8F5] text-[#1E1B18] border-[#EBE4DD] hover:border-[#D9CFC5]'
+                      ? 'bg-[#A87C44] text-white border-[#A87C44] shadow-[0_6px_18px_rgba(168,124,68,0.28)]'
+                      : 'bg-[#FBF8F5] text-[#1C1813] border-[#EBE4DD] hover:border-[#D9CFC5]'
                   }`}
                 >
                   <span>🌸</span>
@@ -285,8 +285,8 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
                   onClick={() => handleGenderChange('male')}
                   className={`py-3 px-3.5 rounded-2xl border text-[13.5px] font-bold flex items-center justify-center gap-2 transition-all ${
                     answers.gender === 'male'
-                      ? 'bg-[#1E1B18] text-white border-[#1E1B18] shadow-[0_6px_18px_rgba(30,27,24,0.25)]'
-                      : 'bg-[#FBF8F5] text-[#1E1B18] border-[#EBE4DD] hover:border-[#D9CFC5]'
+                      ? 'bg-[#1C1813] text-white border-[#1C1813] shadow-[0_6px_18px_rgba(30,27,24,0.25)]'
+                      : 'bg-[#FBF8F5] text-[#1C1813] border-[#EBE4DD] hover:border-[#D9CFC5]'
                   }`}
                 >
                   <span>⚡</span>
@@ -294,15 +294,15 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
                 </button>
               </div>
               {isMale && (
-                <p className="text-[11px] text-[#786F67] mt-2 bg-[#FBF8F5] px-3 py-1.5 rounded-xl border border-[#F2ECE5]">
+                <p className="text-[11px] text-[#786F67] mt-2 bg-[#FBF8F5] px-3 py-1.5 rounded-xl border border-[#ECE5D7]">
                   Мужской режим: ИИ учтет более плотный эпидермис, зону бритья и соберет лаконичный уход без перегруза банками.
                 </p>
               )}
             </div>
 
             {/* Age Group Selection */}
-            <div className="bg-white rounded-[24px] p-4 border border-[#F2ECE5] shadow-xs">
-              <span className="block text-[11px] font-bold uppercase tracking-wider text-[#9B9188] mb-2">
+            <div className="bg-white rounded-[24px] p-4 border border-[#ECE5D7] shadow-xs">
+              <span className="block text-[11px] font-bold uppercase tracking-wider text-[#756C5D] mb-2">
                 Возраст
               </span>
               <div className="flex flex-wrap gap-2">
@@ -315,8 +315,8 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
                       onClick={() => handleAgeChange(age)}
                       className={`flex-1 min-w-[60px] py-2.5 px-2.5 rounded-2xl text-[12.5px] font-bold border transition-all ${
                         active
-                          ? 'bg-[#F8715E] text-white border-[#F8715E] shadow-xs'
-                          : 'bg-[#FBF8F5] text-[#1E1B18] border-[#EBE4DD] hover:border-[#D5C9BD]'
+                          ? 'bg-[#A87C44] text-white border-[#A87C44] shadow-xs'
+                          : 'bg-[#FBF8F5] text-[#1C1813] border-[#EBE4DD] hover:border-[#D5C9BD]'
                       }`}
                     >
                       {age}
@@ -327,8 +327,8 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
             </div>
 
             {/* Avatar Customization */}
-            <div className="bg-white rounded-[24px] p-4 border border-[#F2ECE5] shadow-xs">
-              <span className="block text-[11px] font-bold uppercase tracking-wider text-[#9B9188] mb-2.5">
+            <div className="bg-white rounded-[24px] p-4 border border-[#ECE5D7] shadow-xs">
+              <span className="block text-[11px] font-bold uppercase tracking-wider text-[#756C5D] mb-2.5">
                 Аватар профиля
               </span>
               <div className="flex items-center gap-3.5 mb-3">
@@ -340,10 +340,10 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
                   size="lg"
                 />
                 <div className="text-[12px] text-[#786F67] leading-snug">
-                  <div className="font-bold text-[#1E1B18]">
+                  <div className="font-bold text-[#1C1813]">
                     Привет, {displayName}!
                   </div>
-                  <div className="text-[11px] text-[#9B9188] mt-0.5">
+                  <div className="text-[11px] text-[#756C5D] mt-0.5">
                     Выбери стильные инициалы, фото из Telegram или загрузи свою картинку
                   </div>
                 </div>
@@ -355,7 +355,7 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
                   onClick={() => handleAvatarModeChange('initials')}
                   className={`py-2.5 px-2 rounded-xl text-[11.5px] font-bold border transition-all flex items-center justify-center gap-1 ${
                     answers.avatarMode === 'initials'
-                      ? 'bg-[#F8DDD4]/80 border-[#F8715E] text-[#1E1B18]'
+                      ? 'bg-[#F0E6D1]/80 border-[#A87C44] text-[#1C1813]'
                       : 'bg-[#FBF8F5] border-[#EBE4DD] text-[#786F67]'
                   }`}
                 >
@@ -367,7 +367,7 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
                   onClick={() => handleAvatarModeChange('custom')}
                   className={`py-2.5 px-2 rounded-xl text-[11.5px] font-bold border transition-all flex items-center justify-center gap-1 ${
                     answers.avatarMode === 'custom'
-                      ? 'bg-[#F8DDD4]/80 border-[#F8715E] text-[#1E1B18]'
+                      ? 'bg-[#F0E6D1]/80 border-[#A87C44] text-[#1C1813]'
                       : 'bg-[#FBF8F5] border-[#EBE4DD] text-[#786F67]'
                   }`}
                 >
@@ -380,7 +380,7 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
                   onClick={() => handleAvatarModeChange('telegram')}
                   className={`py-2.5 px-2 rounded-xl text-[11.5px] font-bold border transition-all flex items-center justify-center gap-1 ${
                     answers.avatarMode === 'telegram'
-                      ? 'bg-[#F8DDD4]/80 border-[#F8715E] text-[#1E1B18]'
+                      ? 'bg-[#F0E6D1]/80 border-[#A87C44] text-[#1C1813]'
                       : 'bg-[#FBF8F5] border-[#EBE4DD] text-[#786F67]'
                   }`}
                 >
@@ -396,14 +396,14 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
         {currentStep === 1 && (
           <div className="flex flex-col gap-3.5 animate-fade-in">
             <div>
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F8DDD4]/70 text-[#F8715E] text-[11px] font-bold mb-2">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F0E6D1]/70 text-[#A87C44] text-[11px] font-bold mb-2">
                 <Sparkles size={12} />
                 <span>Шаг 2 • Можно выбрать несколько</span>
               </div>
-              <h1 className="text-[21px] font-extrabold text-[#1E1B18] leading-snug tracking-tight">
+              <h1 className="text-[21px] font-extrabold text-[#1C1813] leading-snug tracking-tight">
                 Как ведет себя твоя кожа в течение дня?
               </h1>
-              <p className="text-[12.5px] text-[#9B9188] mt-1 leading-relaxed">
+              <p className="text-[12.5px] text-[#756C5D] mt-1 leading-relaxed">
                 Отметь один или несколько подходящих пунктов (мультивыбор)
               </p>
             </div>
@@ -420,23 +420,23 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
                     onClick={() => handleToggleBehavior(opt.label)}
                     className={`w-full text-left rounded-[22px] p-3.5 border transition-all duration-200 flex items-center justify-between gap-3 active:scale-[0.99] ${
                       isChecked
-                        ? 'bg-white border-[#F8715E] ring-2 ring-[#F8715E]/20 shadow-[0_8px_22px_rgba(248,113,94,0.12)]'
-                        : 'bg-white border-[#F2ECE5] hover:border-[#E2D9D0] shadow-xs'
+                        ? 'bg-white border-[#A87C44] ring-2 ring-[#A87C44]/20 shadow-[0_8px_22px_rgba(168,124,68,0.12)]'
+                        : 'bg-white border-[#ECE5D7] hover:border-[#E2D9D0] shadow-xs'
                     }`}
                   >
                     <div className="flex items-center gap-3 min-w-0">
                       <div
                         className={`w-10 h-10 rounded-2xl flex items-center justify-center text-[18px] shrink-0 ${
-                          isChecked ? 'bg-[#F8DDD4]/80' : 'bg-[#FBF8F5]'
+                          isChecked ? 'bg-[#F0E6D1]/80' : 'bg-[#FBF8F5]'
                         }`}
                       >
                         {opt.emoji}
                       </div>
                       <div className="min-w-0">
-                        <div className="text-[13.5px] font-bold text-[#1E1B18] leading-snug">
+                        <div className="text-[13.5px] font-bold text-[#1C1813] leading-snug">
                           {opt.label}
                         </div>
-                        <div className="text-[11px] text-[#9B9188] mt-0.5 leading-snug">
+                        <div className="text-[11px] text-[#756C5D] mt-0.5 leading-snug">
                           {opt.description}
                         </div>
                       </div>
@@ -445,7 +445,7 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
                     <div
                       className={`w-6 h-6 rounded-lg flex items-center justify-center shrink-0 transition-all ${
                         isChecked
-                          ? 'bg-[#F8715E] text-white'
+                          ? 'bg-[#A87C44] text-white'
                           : 'border-2 border-[#D9D1C9] bg-white'
                       }`}
                     >
@@ -461,8 +461,8 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
                 onClick={handleSelectUnknownBehavior}
                 className={`w-full text-left rounded-[22px] p-3.5 border-2 transition-all duration-200 flex items-center justify-between gap-3 mt-1 ${
                   answers.skinBehaviorUnknown
-                    ? 'bg-[#1E1B18] text-white border-[#1E1B18] shadow-md'
-                    : 'bg-[#F5F2EB] text-[#1E1B18] border-dashed border-[#D6CCC2] hover:border-[#1E1B18]'
+                    ? 'bg-[#1C1813] text-white border-[#1C1813] shadow-md'
+                    : 'bg-[#F4F0E8] text-[#1C1813] border-dashed border-[#D6CCC2] hover:border-[#1C1813]'
                 }`}
               >
                 <div className="text-[13px] font-bold leading-snug">
@@ -471,8 +471,8 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
                 <div
                   className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 ${
                     answers.skinBehaviorUnknown
-                      ? 'bg-[#F8715E] text-white'
-                      : 'border-2 border-[#9B9188]'
+                      ? 'bg-[#A87C44] text-white'
+                      : 'border-2 border-[#756C5D]'
                   }`}
                 >
                   {answers.skinBehaviorUnknown && <Check size={13} strokeWidth={3} />}
@@ -486,14 +486,14 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
         {currentStep === 2 && (
           <div className="flex flex-col gap-3.5 animate-fade-in">
             <div>
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F8DDD4]/70 text-[#F8715E] text-[11px] font-bold mb-2">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F0E6D1]/70 text-[#A87C44] text-[11px] font-bold mb-2">
                 <Sparkles size={12} />
                 <span>Шаг 3 • Выбери от 1 до всех задач</span>
               </div>
-              <h1 className="text-[21px] font-extrabold text-[#1E1B18] leading-snug tracking-tight">
+              <h1 className="text-[21px] font-extrabold text-[#1C1813] leading-snug tracking-tight">
                 Какие задачи хочешь решить?
               </h1>
-              <p className="text-[12.5px] text-[#9B9188] mt-1 leading-relaxed">
+              <p className="text-[12.5px] text-[#756C5D] mt-1 leading-relaxed">
                 ИИ-химик подберет активы точно под выбранные цели без конфликтов
               </p>
             </div>
@@ -508,15 +508,15 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
                     onClick={() => handleToggleGoal(goal.label)}
                     className={`w-full text-left rounded-[20px] p-3 border transition-all duration-200 flex items-center justify-between gap-3 ${
                       isSelected
-                        ? 'bg-white border-[#F8715E] ring-2 ring-[#F8715E]/20 shadow-xs'
-                        : 'bg-white border-[#F2ECE5] hover:border-[#E2D9D0]'
+                        ? 'bg-white border-[#A87C44] ring-2 ring-[#A87C44]/20 shadow-xs'
+                        : 'bg-white border-[#ECE5D7] hover:border-[#E2D9D0]'
                     }`}
                   >
                     <div className="flex items-center gap-3 min-w-0">
                       <span className="w-9 h-9 rounded-xl bg-[#FBF8F5] flex items-center justify-center text-[17px] shrink-0">
                         {goal.emoji}
                       </span>
-                      <span className="text-[13px] font-bold text-[#1E1B18] leading-snug">
+                      <span className="text-[13px] font-bold text-[#1C1813] leading-snug">
                         {goal.label}
                       </span>
                     </div>
@@ -524,7 +524,7 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
                     <div
                       className={`w-6 h-6 rounded-lg flex items-center justify-center shrink-0 transition-all ${
                         isSelected
-                          ? 'bg-[#F8715E] text-white'
+                          ? 'bg-[#A87C44] text-white'
                           : 'border-2 border-[#D9D1C9] bg-white'
                       }`}
                     >
@@ -541,21 +541,21 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
         {currentStep === 3 && (
           <div className="flex flex-col gap-4 animate-fade-in">
             <div>
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F8DDD4]/70 text-[#F8715E] text-[11px] font-bold mb-2">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F0E6D1]/70 text-[#A87C44] text-[11px] font-bold mb-2">
                 <Sparkles size={12} />
                 <span>Шаг 4 • Финальный штрих</span>
               </div>
-              <h1 className="text-[21px] font-extrabold text-[#1E1B18] leading-snug tracking-tight">
+              <h1 className="text-[21px] font-extrabold text-[#1C1813] leading-snug tracking-tight">
                 Твой текущий арсенал и бюджет
               </h1>
-              <p className="text-[12.5px] text-[#9B9188] mt-1 leading-relaxed">
+              <p className="text-[12.5px] text-[#756C5D] mt-1 leading-relaxed">
                 Чем ты пользуешься сейчас и какой бюджет комфортен?
               </p>
             </div>
 
             {/* Question 1: Чем ты пользуешься сейчас? */}
             <div>
-              <span className="block text-[11.5px] font-bold text-[#1E1B18] mb-2">
+              <span className="block text-[11.5px] font-bold text-[#1C1813] mb-2">
                 Чем ты пользуешься сейчас?
               </span>
               <div className="flex flex-col gap-2">
@@ -570,8 +570,8 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
                       }
                       className={`w-full text-left rounded-[20px] p-3 border transition-all flex items-center justify-between gap-3 ${
                         active
-                          ? 'bg-white border-[#F8715E] ring-2 ring-[#F8715E]/20 shadow-xs'
-                          : 'bg-white border-[#F2ECE5]'
+                          ? 'bg-white border-[#A87C44] ring-2 ring-[#A87C44]/20 shadow-xs'
+                          : 'bg-white border-[#ECE5D7]'
                       }`}
                     >
                       <div className="flex items-center gap-3 min-w-0">
@@ -579,10 +579,10 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
                           {ars.emoji}
                         </span>
                         <div>
-                          <div className="text-[13px] font-bold text-[#1E1B18] leading-snug">
+                          <div className="text-[13px] font-bold text-[#1C1813] leading-snug">
                             {ars.label}
                           </div>
-                          <div className="text-[11px] text-[#9B9188] mt-0.5">
+                          <div className="text-[11px] text-[#756C5D] mt-0.5">
                             {ars.description}
                           </div>
                         </div>
@@ -591,7 +591,7 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
                       <div
                         className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 ${
                           active
-                            ? 'bg-[#F8715E] text-white'
+                            ? 'bg-[#A87C44] text-white'
                             : 'border-2 border-[#D9D1C9]'
                         }`}
                       >
@@ -605,7 +605,7 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
 
             {/* Question 2: Комфортный бюджет на одно средство */}
             <div>
-              <span className="block text-[11.5px] font-bold text-[#1E1B18] mb-2">
+              <span className="block text-[11.5px] font-bold text-[#1C1813] mb-2">
                 Комфортный бюджет на одно средство:
               </span>
               <div className="grid grid-cols-2 gap-2">
@@ -620,14 +620,14 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
                       }
                       className={`text-left rounded-[18px] p-3 border transition-all flex flex-col justify-between ${
                         active
-                          ? 'bg-[#1E1B18] text-white border-[#1E1B18] shadow-sm'
-                          : 'bg-white text-[#1E1B18] border-[#F2ECE5]'
+                          ? 'bg-[#1C1813] text-white border-[#1C1813] shadow-sm'
+                          : 'bg-white text-[#1C1813] border-[#ECE5D7]'
                       }`}
                     >
                       <span className="text-[13px] font-extrabold">{b.label}</span>
                       <span
                         className={`text-[10.5px] mt-1 leading-tight ${
-                          active ? 'text-white/80' : 'text-[#9B9188]'
+                          active ? 'text-white/80' : 'text-[#756C5D]'
                         }`}
                       >
                         {b.description}
@@ -647,7 +647,7 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
           type="button"
           disabled={!canProceedFromCurrentStep()}
           onClick={handleNext}
-          className="w-full py-4 px-5 rounded-full bg-[#F8715E] text-white text-[14px] font-bold flex items-center justify-center gap-2 shadow-[0_10px_25px_rgba(248,113,94,0.35)] hover:bg-[#e5604d] active:scale-[0.98] transition-all disabled:opacity-50"
+          className="w-full py-4 px-5 rounded-full bg-[#A87C44] text-white text-[14px] font-bold flex items-center justify-center gap-2 shadow-[0_10px_25px_rgba(168,124,68,0.35)] hover:bg-[#e5604d] active:scale-[0.98] transition-all disabled:opacity-50"
         >
           <span>
             {currentStep < totalSteps - 1
@@ -666,9 +666,9 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
                 userName.trim() || (answers.gender === 'male' ? 'Алекс' : 'Аня');
               onComplete(finalName, answers, true);
             }}
-            className="w-full py-3.5 px-5 rounded-full bg-white border border-[#EBE4DD] text-[#1E1B18] text-[13px] font-bold flex items-center justify-center gap-2 hover:bg-[#F5F2EB] active:scale-[0.98] transition-all"
+            className="w-full py-3.5 px-5 rounded-full bg-white border border-[#EBE4DD] text-[#1C1813] text-[13px] font-bold flex items-center justify-center gap-2 hover:bg-[#F4F0E8] active:scale-[0.98] transition-all"
           >
-            <ScanFace size={16} className="text-[#F8715E]" />
+            <ScanFace size={16} className="text-[#A87C44]" />
             <span>Сохранить и сразу запустить AI-скан лица</span>
           </button>
         )}

@@ -38,7 +38,7 @@ export const DailyRoutineScreen: React.FC<DailyRoutineScreenProps> = ({
       <div key={step.id} className="flex items-center gap-2.5">
         {/* Time Column on Left */}
         <div className="w-[46px] shrink-0 text-right pr-1">
-          <span className="block text-[12.5px] font-bold text-[#1E1B18] leading-tight">
+          <span className="block text-[12.5px] font-bold text-[#1C1813] leading-tight">
             {step.time}
           </span>
         </div>
@@ -48,14 +48,14 @@ export const DailyRoutineScreen: React.FC<DailyRoutineScreenProps> = ({
           onClick={() => onToggleStep(step.id)}
           className={`flex-1 min-w-0 rounded-[22px] py-2.5 px-3 shadow-[0_4px_16px_rgba(0,0,0,0.02)] border flex items-center justify-between cursor-pointer transition-all duration-200 active:scale-[0.99] ${
             step.completed
-              ? 'bg-white/75 border-[#F8715E]/30 shadow-[0_6px_20px_rgba(248,113,94,0.06)] opacity-80'
-              : 'bg-white border-[#F2ECE5] hover:border-[#E5DDD4]'
+              ? 'bg-white/75 border-[#A87C44]/30 shadow-[0_6px_20px_rgba(168,124,68,0.06)] opacity-80'
+              : 'bg-white border-[#ECE5D7] hover:border-[#E5DDD4]'
           }`}
         >
           {/* Product Thumbnail with soft background */}
           <div
             className="w-11 h-11 rounded-[16px] p-1 flex items-center justify-center shrink-0 mr-2.5"
-            style={{ backgroundColor: step.iconBg || '#F5F2EB' }}
+            style={{ backgroundColor: step.iconBg || '#F4F0E8' }}
           >
             <img
               src={step.imageUrl}
@@ -70,17 +70,17 @@ export const DailyRoutineScreen: React.FC<DailyRoutineScreenProps> = ({
 
           {/* Product Info */}
           <div className="flex-1 min-w-0 pr-1.5">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-[#9B9188] block">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-[#756C5D] block">
               {step.stepCategory}
             </span>
             <h3
               className={`text-[12.5px] font-bold leading-tight truncate transition-colors ${
-                step.completed ? 'line-through text-[#9B9188]' : 'text-[#1E1B18]'
+                step.completed ? 'line-through text-[#756C5D]' : 'text-[#1C1813]'
               }`}
             >
               {step.name}
             </h3>
-            <p className="text-[10.5px] text-[#9B9188] truncate mt-0.5">
+            <p className="text-[10.5px] text-[#756C5D] truncate mt-0.5">
               {step.brand}
             </p>
           </div>
@@ -95,8 +95,8 @@ export const DailyRoutineScreen: React.FC<DailyRoutineScreenProps> = ({
             aria-label={`Отметить ${step.name} как ${step.completed ? 'невыполненное' : 'выполненное'}`}
             className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 transition-all duration-200 ${
               step.completed
-                ? 'bg-[#F8715E] text-white shadow-[0_3px_10px_rgba(248,113,94,0.4)] scale-105'
-                : 'border-2 border-[#D9D1C9] hover:border-[#F8715E] bg-white'
+                ? 'bg-[#A87C44] text-white shadow-[0_3px_10px_rgba(168,124,68,0.4)] scale-105'
+                : 'border-2 border-[#D9D1C9] hover:border-[#A87C44] bg-white'
             }`}
           >
             {step.completed && <Check size={13} strokeWidth={3} />}
@@ -113,20 +113,20 @@ export const DailyRoutineScreen: React.FC<DailyRoutineScreenProps> = ({
         <button
           onClick={onBackToHome}
           aria-label="Назад на главную"
-          className="w-9 h-9 rounded-full bg-white flex items-center justify-center text-[#1E1B18] shadow-xs border border-[#F2ECE5] active:scale-90 transition-transform"
+          className="w-9 h-9 rounded-full bg-white flex items-center justify-center text-[#1C1813] shadow-xs border border-[#ECE5D7] active:scale-90 transition-transform"
         >
           <ChevronLeft size={20} strokeWidth={2.2} />
         </button>
 
-        <h1 className="text-[18px] font-bold text-[#1E1B18] tracking-tight">
+        <h1 className="text-[18px] font-bold text-[#1C1813] tracking-tight">
           Ежедневный уход
         </h1>
 
         <button
           aria-label="Статус защиты барьера кожи"
-          className="w-9 h-9 rounded-full bg-white flex items-center justify-center text-[#1E1B18] shadow-xs border border-[#F2ECE5] active:scale-90 transition-transform"
+          className="w-9 h-9 rounded-full bg-white flex items-center justify-center text-[#1C1813] shadow-xs border border-[#ECE5D7] active:scale-90 transition-transform"
         >
-          <ShieldCheck size={18} strokeWidth={2} className="text-[#F8715E]" />
+          <ShieldCheck size={18} strokeWidth={2} className="text-[#A87C44]" />
         </button>
       </header>
 
@@ -142,20 +142,20 @@ export const DailyRoutineScreen: React.FC<DailyRoutineScreenProps> = ({
               onClick={() => setSelectedDateKey(day.dateKey)}
               className={`py-2.5 px-1 rounded-[18px] flex flex-col items-center justify-center transition-all duration-200 active:scale-95 ${
                 isActive
-                  ? 'bg-[#F8715E] text-white shadow-[0_8px_20px_rgba(248,113,94,0.35)] scale-105'
-                  : 'bg-white text-[#9B9188] hover:text-[#1E1B18] border border-[#F2ECE5] shadow-xs'
+                  ? 'bg-[#A87C44] text-white shadow-[0_8px_20px_rgba(168,124,68,0.35)] scale-105'
+                  : 'bg-white text-[#756C5D] hover:text-[#1C1813] border border-[#ECE5D7] shadow-xs'
               }`}
             >
               <span
                 className={`text-[15px] font-bold leading-none ${
-                  isActive ? 'text-white' : 'text-[#1E1B18]'
+                  isActive ? 'text-white' : 'text-[#1C1813]'
                 }`}
               >
                 {day.dayNumber}
               </span>
               <span
                 className={`text-[9.5px] font-bold tracking-wider mt-1 uppercase ${
-                  isActive ? 'text-white/95' : 'text-[#9B9188]'
+                  isActive ? 'text-white/95' : 'text-[#756C5D]'
                 }`}
               >
                 {day.dayName}
@@ -168,16 +168,16 @@ export const DailyRoutineScreen: React.FC<DailyRoutineScreenProps> = ({
       {/* Date Header & Progress Summary */}
       <div className="flex items-end justify-between mb-4">
         <div>
-          <h2 className="text-[18px] font-bold text-[#1E1B18] tracking-tight">
+          <h2 className="text-[18px] font-bold text-[#1C1813] tracking-tight">
             {selectedDateHeading}
           </h2>
-          <p className="text-[12px] text-[#9B9188] font-medium mt-0.5">
+          <p className="text-[12px] text-[#756C5D] font-medium mt-0.5">
             Выполнено {completed} из {total} шагов ухода
           </p>
         </div>
 
         {/* Completion Pill */}
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F8DDD4]/70 text-[#F8715E] text-[11px] font-bold">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F0E6D1]/70 text-[#A87C44] text-[11px] font-bold">
           <Sparkles size={12} />
           <span>{percentage}% Готово</span>
         </div>
@@ -189,10 +189,10 @@ export const DailyRoutineScreen: React.FC<DailyRoutineScreenProps> = ({
           <div className="w-6 h-6 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center">
             <Sun size={14} strokeWidth={2.5} />
           </div>
-          <h3 className="text-[14px] font-bold text-[#1E1B18]">
+          <h3 className="text-[14px] font-bold text-[#1C1813]">
             Утренняя рутина
           </h3>
-          <span className="text-[11px] text-[#9B9188] font-medium">
+          <span className="text-[11px] text-[#756C5D] font-medium">
             (Защита и сияние)
           </span>
         </div>
@@ -208,10 +208,10 @@ export const DailyRoutineScreen: React.FC<DailyRoutineScreenProps> = ({
           <div className="w-6 h-6 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center">
             <Moon size={14} strokeWidth={2.5} />
           </div>
-          <h3 className="text-[14px] font-bold text-[#1E1B18]">
+          <h3 className="text-[14px] font-bold text-[#1C1813]">
             Вечерняя рутина
           </h3>
-          <span className="text-[11px] text-[#9B9188] font-medium">
+          <span className="text-[11px] text-[#756C5D] font-medium">
             (Восстановление барьера)
           </span>
         </div>
@@ -226,7 +226,7 @@ export const DailyRoutineScreen: React.FC<DailyRoutineScreenProps> = ({
         <button
           onClick={onBackToHome}
           aria-label="Вернуться на главную"
-          className="w-full py-3.5 px-4 rounded-full bg-white border border-[#EBE4DD] text-[#1E1B18] text-[13.5px] font-bold flex items-center justify-center gap-2 hover:bg-[#FBF8F5] active:scale-[0.98] transition-all shadow-xs"
+          className="w-full py-3.5 px-4 rounded-full bg-white border border-[#EBE4DD] text-[#1C1813] text-[13.5px] font-bold flex items-center justify-center gap-2 hover:bg-[#FBF8F5] active:scale-[0.98] transition-all shadow-xs"
         >
           <ArrowLeft size={16} strokeWidth={2.2} />
           <span>На главную</span>

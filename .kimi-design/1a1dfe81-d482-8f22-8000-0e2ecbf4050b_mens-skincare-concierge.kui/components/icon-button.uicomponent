@@ -1,0 +1,24 @@
+id: icon-button
+name: Icon Button
+
+expose:
+  icon: {node: icon-button.icon, field: children}
+
+root:
+  id: icon-button.root
+  type: frame
+  size: [40, 40]
+  layout: {type: flex, alignItems: center, justifyContent: center}
+  cornerRadius: 999
+  stroke: {color: $color.line, width: 1, alignment: inside}
+  children:
+    - id: icon-button.icon
+      type: frame
+      size: [hug, hug]
+      children:
+        - {id: icon-button.icon.default, type: svg, size: [15, 15], icon: "far:bell", fill: $color.inkSecondary}
+
+variants:
+  size:
+    sm:
+      icon-button.root: {size: [32, 32]}

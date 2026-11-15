@@ -1,0 +1,818 @@
+name: UI-кит для разработки
+
+children:
+  - id: note.buttons
+    type: text
+    position: [ 80, 82 ]
+    size: [ hug, hug ]
+    fontFamily: Manrope
+    fontSize: 34
+    fontWeight: 700
+    color: "#000000"
+    content: Кнопки
+
+  - id: kit.buttons
+    type: frame
+    position: [ 80, 150 ]
+    size: [ 760, hug ]
+    layout: { type: flex, direction: column, gap: 24, padding: 32 }
+    fill: $color.surface
+    cornerRadius: 24
+    children:
+      - {
+          id: kit.buttons.title,
+          type: text,
+          size: [ hug, hug ],
+          style: $text.title,
+          content: Кнопки
+        }
+      - id: kit.buttons.md
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, gap: 24, alignItems: end }
+        children:
+          - id: kit.buttons.md.p
+            type: frame
+            size: [ hug, hug ]
+            layout: { type: flex, direction: column, gap: 8, alignItems: center }
+            children:
+              - id: kit.btn.primary
+                type: instance
+                source: button
+                size: [ hug, 52 ]
+                values:
+                  label: В корзину
+                  icon:
+                    - {
+                        id: kit.btn.primary.icon,
+                        type: svg,
+                        size: [ 15, 15 ],
+                        icon: "fas:bag-shopping",
+                        fill: $color.onBtnPrimary
+                      }
+              - {
+                  id: kit.buttons.md.p.spec,
+                  type: text,
+                  size: [ hug, hug ],
+                  fontFamily: Manrope,
+                  fontSize: 11,
+                  color: $color.inkTertiary,
+                  content: "primary · md · h 52 · r 14"
+                }
+          - id: kit.buttons.md.b
+            type: frame
+            size: [ hug, hug ]
+            layout: { type: flex, direction: column, gap: 8, alignItems: center }
+            children:
+              - id: kit.btn.brass
+                type: instance
+                source: button
+                size: [ hug, 52 ]
+                values:
+                  kind: brass
+                  label: Подобрать уход
+                  icon:
+                    - {
+                        id: kit.btn.brass.icon,
+                        type: svg,
+                        size: [ 15, 15 ],
+                        icon: "fas:wand-magic-sparkles",
+                        fill: "#1C1813"
+                      }
+              - {
+                  id: kit.buttons.md.b.spec,
+                  type: text,
+                  size: [ hug, hug ],
+                  fontFamily: Manrope,
+                  fontSize: 11,
+                  color: $color.inkTertiary,
+                  content: "brass · md · h 52 · r 14"
+                }
+          - id: kit.buttons.md.o
+            type: frame
+            size: [ hug, hug ]
+            layout: { type: flex, direction: column, gap: 8, alignItems: center }
+            children:
+              - id: kit.btn.outline
+                type: instance
+                source: button
+                size: [ hug, 52 ]
+                values: { kind: outline, label: Подробнее }
+              - {
+                  id: kit.buttons.md.o.spec,
+                  type: text,
+                  size: [ hug, hug ],
+                  fontFamily: Manrope,
+                  fontSize: 11,
+                  color: $color.inkTertiary,
+                  content: "outline · md · h 52 · r 14"
+                }
+      - id: kit.buttons.sm
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, gap: 24, alignItems: end }
+        children:
+          - id: kit.buttons.sm.p
+            type: frame
+            size: [ hug, hug ]
+            layout: { type: flex, direction: column, gap: 8, alignItems: center }
+            children:
+              - id: kit.btn.primary.sm
+                type: instance
+                source: button
+                size: [ hug, 40 ]
+                values: { size: sm, label: Повторить скан }
+              - {
+                  id: kit.buttons.sm.p.spec,
+                  type: text,
+                  size: [ hug, hug ],
+                  fontFamily: Manrope,
+                  fontSize: 11,
+                  color: $color.inkTertiary,
+                  content: "primary · sm · h 40 · r 12"
+                }
+          - id: kit.buttons.sm.b
+            type: frame
+            size: [ hug, hug ]
+            layout: { type: flex, direction: column, gap: 8, alignItems: center }
+            children:
+              - id: kit.btn.brass.sm
+                type: instance
+                source: button
+                size: [ hug, 40 ]
+                values: { kind: brass, size: sm, label: Купить }
+              - {
+                  id: kit.buttons.sm.b.spec,
+                  type: text,
+                  size: [ hug, hug ],
+                  fontFamily: Manrope,
+                  fontSize: 11,
+                  color: $color.inkTertiary,
+                  content: "brass · sm · h 40 · r 12"
+                }
+          - id: kit.buttons.sm.o
+            type: frame
+            size: [ hug, hug ]
+            layout: { type: flex, direction: column, gap: 8, alignItems: center }
+            children:
+              - id: kit.btn.outline.sm
+                type: instance
+                source: button
+                size: [ hug, 40 ]
+                values: { kind: outline, size: sm, label: Загрузить фото }
+              - {
+                  id: kit.buttons.sm.o.spec,
+                  type: text,
+                  size: [ hug, hug ],
+                  fontFamily: Manrope,
+                  fontSize: 11,
+                  color: $color.inkTertiary,
+                  content: "outline · sm · h 40 · r 12"
+                }
+      - id: kit.buttons.disabled
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, gap: 24, alignItems: end }
+        children:
+          - id: kit.buttons.dis.p
+            type: frame
+            size: [ hug, hug ]
+            layout: { type: flex, direction: column, gap: 8, alignItems: center }
+            children:
+              - id: kit.btn.primary.dis
+                type: instance
+                source: button
+                size: [ hug, 52 ]
+                values: { disabled: true, label: Снять селфи }
+              - {
+                  id: kit.buttons.dis.p.spec,
+                  type: text,
+                  size: [ hug, hug ],
+                  fontFamily: Manrope,
+                  fontSize: 11,
+                  color: $color.inkTertiary,
+                  content: "disabled · opacity 0.4"
+                }
+          - id: kit.buttons.dis.b
+            type: frame
+            size: [ hug, hug ]
+            layout: { type: flex, direction: column, gap: 8, alignItems: center }
+            children:
+              - id: kit.btn.brass.dis
+                type: instance
+                source: button
+                size: [ hug, 52 ]
+                values: { kind: brass, disabled: true, label: Оформить заказ }
+              - {
+                  id: kit.buttons.dis.b.spec,
+                  type: text,
+                  size: [ hug, hug ],
+                  fontFamily: Manrope,
+                  fontSize: 11,
+                  color: $color.inkTertiary,
+                  content: "brass · disabled"
+                }
+
+  - id: note.controls
+    type: text
+    position: [ 920, 82 ]
+    size: [ hug, hug ]
+    fontFamily: Manrope
+    fontSize: 34
+    fontWeight: 700
+    color: "#000000"
+    content: Контролы
+
+  - id: kit.controls
+    type: frame
+    position: [ 920, 150 ]
+    size: [ 640, hug ]
+    layout: { type: flex, direction: column, gap: 24, padding: 32 }
+    fill: $color.surface
+    cornerRadius: 24
+    children:
+      - {
+          id: kit.controls.title,
+          type: text,
+          size: [ hug, hug ],
+          style: $text.title,
+          content: Контролы
+        }
+      - id: kit.controls.chips
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, direction: column, gap: 10 }
+        children:
+          - {
+              id: kit.controls.chips.label,
+              type: text,
+              size: [ hug, hug ],
+              style: $text.overline,
+              content: ЧИПЫ / ФИЛЬТРЫ
+            }
+          - id: kit.controls.chips.row
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, gap: 10 }
+            children:
+              - {
+                  id: kit.chip.default,
+                  type: instance,
+                  source: chip,
+                  size: [ hug, 34 ],
+                  values: { label: Все }
+                }
+              - {
+                  id: kit.chip.active,
+                  type: instance,
+                  source: chip,
+                  size: [ hug, 34 ],
+                  values: { kind: active, label: Сыворотки }
+                }
+              - id: kit.chip.soft
+                type: instance
+                source: chip
+                size: [ hug, 34 ]
+                values:
+                  kind: soft
+                  label: Мужской уход
+                  leading:
+                    - {
+                        id: kit.chip.soft.icon,
+                        type: svg,
+                        size: [ 12, 12 ],
+                        icon: "fas:medal",
+                        fill: $color.brassDeep
+                      }
+      - id: kit.controls.iconbtn
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, direction: column, gap: 10 }
+        children:
+          - {
+              id: kit.controls.iconbtn.label,
+              type: text,
+              size: [ hug, hug ],
+              style: $text.overline,
+              content: ИКОНКИ И СТЕППЕР
+            }
+          - id: kit.controls.iconbtn.row
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, gap: 12, alignItems: center }
+            children:
+              - id: kit.ib.bell
+                type: instance
+                source: icon-button
+                size: [ 40, 40 ]
+                values:
+                  icon:
+                    - {
+                        id: kit.ib.bell.icon,
+                        type: svg,
+                        size: [ 15, 15 ],
+                        icon: "far:heart",
+                        fill: $color.inkSecondary
+                      }
+              - id: kit.ib.back
+                type: instance
+                source: icon-button
+                size: [ 32, 32 ]
+                values:
+                  size: sm
+                  icon:
+                    - {
+                        id: kit.ib.back.icon,
+                        type: svg,
+                        size: [ 13, 13 ],
+                        icon: "fas:arrow-left",
+                        fill: $color.ink
+                      }
+              - id: kit.stepper
+                type: frame
+                size: [ hug, 36 ]
+                layout: { type: flex, gap: 14, padding: [ 0, 12 ], alignItems: center }
+                fill: $color.sunken
+                cornerRadius: 999
+                children:
+                  - {
+                      id: kit.stepper.minus,
+                      type: svg,
+                      size: [ 12, 12 ],
+                      icon: "fas:minus",
+                      fill: $color.inkSecondary
+                    }
+                  - {
+                      id: kit.stepper.value,
+                      type: text,
+                      size: [ 20, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 14,
+                      fontWeight: 700,
+                      color: $color.ink,
+                      content: "1",
+                      align: [ center, middle ]
+                    }
+                  - {
+                      id: kit.stepper.plus,
+                      type: svg,
+                      size: [ 12, 12 ],
+                      icon: "fas:plus",
+                      fill: $color.ink
+                    }
+      - id: kit.controls.input
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, direction: column, gap: 10 }
+        children:
+          - {
+              id: kit.controls.input.label,
+              type: text,
+              size: [ hug, hug ],
+              style: $text.overline,
+              content: ПОЛЕ ВВОДА
+            }
+          - id: kit.input
+            type: frame
+            size: [ fill, 52 ]
+            layout: { type: flex, gap: 10, padding: [ 0, 16 ], alignItems: center }
+            cornerRadius: 14
+            stroke: { color: $color.line, width: 1, alignment: inside }
+            children:
+              - {
+                  id: kit.input.icon,
+                  type: svg,
+                  size: [ 15, 15 ],
+                  icon: "fas:magnifying-glass",
+                  fill: $color.inkTertiary
+                }
+              - {
+                  id: kit.input.text,
+                  type: text,
+                  size: [ hug, hug ],
+                  fontFamily: Manrope,
+                  fontSize: 14,
+                  color: $color.inkTertiary,
+                  content: Поиск средства
+                }
+      - id: kit.controls.toggle
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, direction: column, gap: 10 }
+        children:
+          - {
+              id: kit.controls.toggle.label,
+              type: text,
+              size: [ hug, hug ],
+              style: $text.overline,
+              content: ПЕРЕКЛЮЧАТЕЛЬ
+            }
+          - id: kit.controls.toggle.row
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, gap: 14, alignItems: center }
+            children:
+              - id: kit.toggle.on
+                type: frame
+                size: [ 48, 28 ]
+                layout: { type: flex, padding: 3, justifyContent: end }
+                fill: $color.sage
+                cornerRadius: 999
+                children:
+                  - { id: kit.toggle.on.knob, type: ellipse, size: [ 22, 22 ], fill: "#FFFFFF" }
+              - id: kit.toggle.off
+                type: frame
+                size: [ 48, 28 ]
+                layout: { type: flex, padding: 3 }
+                fill: $color.sunken
+                cornerRadius: 999
+                children:
+                  - {
+                      id: kit.toggle.off.knob,
+                      type: ellipse,
+                      size: [ 22, 22 ],
+                      fill: $color.inkTertiary
+                    }
+      - id: kit.controls.progress
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, direction: column, gap: 10 }
+        children:
+          - {
+              id: kit.controls.progress.label,
+              type: text,
+              size: [ hug, hug ],
+              style: $text.overline,
+              content: ПРОГРЕСС
+            }
+          - id: kit.progress.brass
+            type: frame
+            size: [ fill, 4 ]
+            layout: { type: flex }
+            fill: $color.sunken
+            cornerRadius: 999
+            children:
+              - {
+                  id: kit.progress.brass.fill,
+                  type: rect,
+                  size: [ "62%", 4 ],
+                  cornerRadius: 999,
+                  fill: $color.brass
+                }
+          - id: kit.progress.sage
+            type: frame
+            size: [ fill, 4 ]
+            layout: { type: flex }
+            fill: $color.sunken
+            cornerRadius: 999
+            children:
+              - {
+                  id: kit.progress.sage.fill,
+                  type: rect,
+                  size: [ "82%", 4 ],
+                  cornerRadius: 999,
+                  fill: $color.sage
+                }
+
+  - id: note.cards
+    type: text
+    position: [ 80, 692 ]
+    size: [ hug, hug ]
+    fontFamily: Manrope
+    fontSize: 34
+    fontWeight: 700
+    color: "#000000"
+    content: Карточки и строки
+
+  - id: kit.cards
+    type: frame
+    position: [ 80, 760 ]
+    size: [ 760, hug ]
+    layout: { type: flex, direction: column, gap: 24, padding: 32 }
+    fill: $color.surface
+    cornerRadius: 24
+    children:
+      - {
+          id: kit.cards.title,
+          type: text,
+          size: [ hug, hug ],
+          style: $text.title,
+          content: Карточки и строки
+        }
+      - id: kit.cards.rows
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, direction: column, gap: 10 }
+        children:
+          - {
+              id: kit.cards.rows.label,
+              type: text,
+              size: [ hug, hug ],
+              style: $text.overline,
+              content: СТРОКА ДЕЙСТВИЯ
+            }
+          - id: kit.row.light.wrap
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex }
+            fill: $color.canvas
+            cornerRadius: 16
+            children:
+              - id: kit.row.light
+                type: instance
+                source: action-row
+                size: [ fill, hug ]
+                values:
+                  title: Проверить банку по фото
+                  caption: Разбор состава по INCI
+          - id: kit.row.dark
+            type: instance
+            source: action-row
+            size: [ fill, hug ]
+            overrides:
+              action-row.root: { cornerRadius: 16 }
+            values:
+              kind: dark
+              title: Подходит твоей коже
+              caption: 0 комедогенных, 1 умеренный конфликт
+              icon:
+                - {
+                    id: kit.row.dark.icon,
+                    type: svg,
+                    size: [ 16, 16 ],
+                    icon: "fas:shield-halved",
+                    fill: $color.brassLight
+                  }
+      - id: kit.cards.product
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, direction: column, gap: 10 }
+        children:
+          - {
+              id: kit.cards.product.label,
+              type: text,
+              size: [ hug, hug ],
+              style: $text.overline,
+              content: КАРТОЧКА ТОВАРА
+            }
+          - id: kit.product.fit
+            type: instance
+            source: product-card
+            size: [ fill, hug ]
+            values:
+              name: Сыворотка с ниацинамидом 10%
+              brand: The Ordinary
+              price: 1 290 ₽
+              image: { type: image, src: assets/product-serum.png, fit: contain }
+              meta:
+                - { id: kit.product.fit.dot, type: ellipse, size: [ 7, 7 ], fill: $color.sage }
+                - {
+                    id: kit.product.fit.meta,
+                    type: text,
+                    size: [ hug, hug ],
+                    fontFamily: Manrope,
+                    fontSize: 11.5,
+                    fontWeight: 600,
+                    color: $color.sage,
+                    content: Подходит твоей коже
+                  }
+              trailing:
+                - {
+                    id: kit.product.fit.heart,
+                    type: svg,
+                    size: [ 17, 17 ],
+                    icon: "fas:heart",
+                    fill: $color.brass
+                  }
+      - id: kit.cards.stats
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, direction: column, gap: 10 }
+        children:
+          - {
+              id: kit.cards.stats.label,
+              type: text,
+              size: [ hug, hug ],
+              style: $text.overline,
+              content: МЕТРИКИ
+            }
+          - id: kit.cards.stats.row
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, gap: 12 }
+            children:
+              - id: kit.stat.skin
+                type: instance
+                source: stat-tile
+                size: [ fill, hug ]
+                values:
+                  value: "78"
+                  label: Индекс кожи
+                  icon:
+                    - {
+                        id: kit.stat.skin.icon,
+                        type: svg,
+                        size: [ 14, 14 ],
+                        icon: "fas:face-smile",
+                        fill: $color.brassDeep
+                      }
+              - id: kit.stat.streak
+                type: instance
+                source: stat-tile
+                size: [ fill, hug ]
+                values:
+                  value: "12"
+                  label: Дней рутины
+                  icon:
+                    - {
+                        id: kit.stat.streak.icon,
+                        type: svg,
+                        size: [ 14, 14 ],
+                        icon: "fas:calendar-check",
+                        fill: $color.brassDeep
+                      }
+              - id: kit.stat.shelf
+                type: instance
+                source: stat-tile
+                size: [ fill, hug ]
+                values:
+                  value: "4"
+                  label: Средства в уходе
+                  icon:
+                    - {
+                        id: kit.stat.shelf.icon,
+                        type: svg,
+                        size: [ 14, 14 ],
+                        icon: "fas:droplet",
+                        fill: $color.brassDeep
+                      }
+
+  - id: note.bars
+    type: text
+    position: [ 920, 950 ]
+    size: [ hug, hug ]
+    fontFamily: Manrope
+    fontSize: 34
+    fontWeight: 700
+    color: "#000000"
+    content: Навигация
+
+  - id: kit.bars
+    type: frame
+    position: [ 920, 1018 ]
+    size: [ 640, hug ]
+    layout: { type: flex, direction: column, gap: 24, padding: 32 }
+    fill: $color.surface
+    cornerRadius: 24
+    children:
+      - {
+          id: kit.bars.title,
+          type: text,
+          size: [ hug, hug ],
+          style: $text.title,
+          content: Навигация
+        }
+      - id: kit.bars.tab
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, direction: column, gap: 10 }
+        children:
+          - {
+              id: kit.bars.tab.label,
+              type: text,
+              size: [ hug, hug ],
+              style: $text.overline,
+              content: ТАБ-БАР
+            }
+          - id: kit.bars.tab.demo
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, direction: column }
+            fill: $color.canvas
+            cornerRadius: 16
+            children:
+              - { id: kit.bars.tab.line, type: rect, size: [ fill, 1 ], fill: $color.line }
+              - id: kit.bars.tab.items
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, padding: [ 14, 32, 18, 32 ], justifyContent: spaceBetween }
+                children:
+                  - id: kit.tab.home
+                    type: instance
+                    source: tab-item
+                    size: [ 52, hug ]
+                    values:
+                      active: true
+                      icon:
+                        - {
+                            id: kit.tab.home.icon,
+                            type: svg,
+                            size: [ 21, 21 ],
+                            icon: "fas:house",
+                            fill: $color.ink
+                          }
+                  - id: kit.tab.fav
+                    type: instance
+                    source: tab-item
+                    size: [ 52, hug ]
+                    values:
+                      icon:
+                        - {
+                            id: kit.tab.fav.icon,
+                            type: svg,
+                            size: [ 21, 21 ],
+                            icon: "far:heart",
+                            fill: $color.inkTertiary
+                          }
+                  - id: kit.tab.cart
+                    type: instance
+                    source: tab-item
+                    size: [ 52, hug ]
+                    values:
+                      icon:
+                        - {
+                            id: kit.tab.cart.icon,
+                            type: svg,
+                            size: [ 21, 21 ],
+                            icon: "fas:bag-shopping",
+                            fill: $color.inkTertiary
+                          }
+                  - id: kit.tab.profile
+                    type: instance
+                    source: tab-item
+                    size: [ 52, hug ]
+                    values:
+                      icon:
+                        - {
+                            id: kit.tab.profile.icon,
+                            type: svg,
+                            size: [ 21, 21 ],
+                            icon: "far:user",
+                            fill: $color.inkTertiary
+                          }
+      - id: kit.bars.week
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, direction: column, gap: 10 }
+        children:
+          - {
+              id: kit.bars.week.label,
+              type: text,
+              size: [ hug, hug ],
+              style: $text.overline,
+              content: НЕДЕЛЯ / КАЛЕНДАРЬ
+            }
+          - id: kit.bars.week.row
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, gap: 6 }
+            children:
+              - {
+                  id: kit.day.1,
+                  type: instance,
+                  source: day-cell,
+                  size: [ fill, 62 ],
+                  values: { weekday: ПН, num: "13" }
+                }
+              - {
+                  id: kit.day.2,
+                  type: instance,
+                  source: day-cell,
+                  size: [ fill, 62 ],
+                  values: { weekday: ВТ, num: "14" }
+                }
+              - {
+                  id: kit.day.3,
+                  type: instance,
+                  source: day-cell,
+                  size: [ fill, 62 ],
+                  values: { active: true, weekday: СР, num: "15" }
+                }
+              - {
+                  id: kit.day.4,
+                  type: instance,
+                  source: day-cell,
+                  size: [ fill, 62 ],
+                  values: { weekday: ЧТ, num: "16" }
+                }
+              - {
+                  id: kit.day.5,
+                  type: instance,
+                  source: day-cell,
+                  size: [ fill, 62 ],
+                  values: { weekday: ПТ, num: "17" }
+                }
+              - {
+                  id: kit.day.6,
+                  type: instance,
+                  source: day-cell,
+                  size: [ fill, 62 ],
+                  values: { weekday: СБ, num: "18" }
+                }
+              - {
+                  id: kit.day.7,
+                  type: instance,
+                  source: day-cell,
+                  size: [ fill, 62 ],
+                  values: { weekday: ВС, num: "19" }
+                }

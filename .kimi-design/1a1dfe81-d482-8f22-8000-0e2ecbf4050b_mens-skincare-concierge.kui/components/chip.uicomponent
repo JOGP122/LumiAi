@@ -1,0 +1,35 @@
+id: chip
+name: Chip
+
+expose:
+  label: {node: chip.label, field: content}
+  leading: {node: chip.leading, field: children}
+
+root:
+  id: chip.root
+  type: frame
+  size: [hug, 34]
+  layout: {type: flex, gap: 8, padding: [0, 14], alignItems: center}
+  cornerRadius: 999
+  stroke: {color: $color.line, width: 1, alignment: inside}
+  children:
+    - id: chip.leading
+      type: frame
+      size: [hug, hug]
+    - id: chip.label
+      type: text
+      size: [hug, hug]
+      fontFamily: Manrope
+      fontSize: 12.5
+      fontWeight: 500
+      color: $color.inkSecondary
+      content: Чип
+
+variants:
+  kind:
+    active:
+      chip.root: {fill: $color.dark, stroke: null}
+      chip.label: {color: $color.ivory, fontWeight: 600}
+    soft:
+      chip.root: {fill: $color.brassSoft, stroke: null}
+      chip.label: {color: $color.brassDeep, fontWeight: 600}

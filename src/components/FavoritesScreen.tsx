@@ -37,16 +37,16 @@ export const FavoritesScreen: React.FC<FavoritesScreenProps> = ({
       {/* Header */}
       <header className="flex items-center justify-between mb-4">
         <div>
-          <h1 className="text-[22px] font-bold tracking-tight text-[#1E1B18] leading-tight">
+          <h1 className="text-[22px] font-bold tracking-tight text-[#1C1813] leading-tight">
             Избранный уход
           </h1>
-          <p className="text-[13px] font-normal text-[#9B9188] mt-0.5">
+          <p className="text-[13px] font-normal text-[#756C5D] mt-0.5">
             Средства, отобранные AI-консьержем
           </p>
         </div>
 
-        <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FEF3F2] border border-[#FEE4E2] text-[#F8715E] text-[12px] font-bold">
-          <Heart size={14} className="fill-[#F8715E]" />
+        <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FEF3F2] border border-[#FEE4E2] text-[#A87C44] text-[12px] font-bold">
+          <Heart size={14} className="fill-[#A87C44]" />
           <span>{favoriteProducts.length}</span>
         </div>
       </header>
@@ -56,14 +56,14 @@ export const FavoritesScreen: React.FC<FavoritesScreenProps> = ({
         type="button"
         onClick={onOpenJarScanner}
         aria-label="Проверить банку / Разбор состава по фото"
-        className="group w-full mb-4 flex items-center justify-between bg-gradient-to-r from-[#F8DDD4]/75 via-[#FBF1EE] to-white rounded-[24px] p-3.5 shadow-[0_8px_22px_rgba(248,113,94,0.08)] border border-[#F6DBD2] hover:border-[#F8715E] active:scale-[0.98] transition-all text-left"
+        className="group w-full mb-4 flex items-center justify-between bg-gradient-to-r from-[#F0E6D1]/75 via-[#FBF1EE] to-white rounded-[24px] p-3.5 shadow-[0_8px_22px_rgba(168,124,68,0.08)] border border-[#F6DBD2] hover:border-[#A87C44] active:scale-[0.98] transition-all text-left"
       >
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-2xl bg-[#F8715E] flex items-center justify-center text-white shrink-0 shadow-xs">
+          <div className="w-10 h-10 rounded-2xl bg-[#A87C44] flex items-center justify-center text-white shrink-0 shadow-xs">
             <FlaskConical size={19} strokeWidth={2.2} />
           </div>
           <div>
-            <span className="text-[13.5px] font-bold text-[#1E1B18] group-hover:text-[#F8715E] transition-colors block">
+            <span className="text-[13.5px] font-bold text-[#1C1813] group-hover:text-[#A87C44] transition-colors block">
               Проверить банку / Разбор состава по фото
             </span>
             <span className="text-[11px] text-[#786F67]">
@@ -71,12 +71,12 @@ export const FavoritesScreen: React.FC<FavoritesScreenProps> = ({
             </span>
           </div>
         </div>
-        <ArrowRight size={17} className="text-[#F8715E] shrink-0 ml-2" />
+        <ArrowRight size={17} className="text-[#A87C44] shrink-0 ml-2" />
       </button>
 
       {/* Info Banner */}
-      <div className="bg-white border border-[#F2ECE5] rounded-[22px] p-3.5 mb-4 flex items-center gap-3 shadow-xs">
-        <div className="w-8 h-8 rounded-full bg-[#F8DDD4]/60 flex items-center justify-center text-[#F8715E] shrink-0">
+      <div className="bg-white border border-[#ECE5D7] rounded-[22px] p-3.5 mb-4 flex items-center gap-3 shadow-xs">
+        <div className="w-8 h-8 rounded-full bg-[#F0E6D1]/60 flex items-center justify-center text-[#A87C44] shrink-0">
           <Sparkles size={16} />
         </div>
         <p className="text-[11.5px] text-[#786F67] leading-relaxed">
@@ -86,15 +86,15 @@ export const FavoritesScreen: React.FC<FavoritesScreenProps> = ({
 
       {/* Empty State vs Products List */}
       {favoriteProducts.length === 0 ? (
-        <div className="bg-white rounded-[26px] p-7 text-center border border-[#F2ECE5] shadow-xs my-2 flex flex-col items-center gap-3">
-          <div className="w-12 h-12 rounded-2xl bg-[#FEF3F2] text-[#F8715E] flex items-center justify-center">
+        <div className="bg-white rounded-[26px] p-7 text-center border border-[#ECE5D7] shadow-xs my-2 flex flex-col items-center gap-3">
+          <div className="w-12 h-12 rounded-2xl bg-[#FEF3F2] text-[#A87C44] flex items-center justify-center">
             <Heart size={22} />
           </div>
           <div>
-            <h3 className="text-[15px] font-bold text-[#1E1B18]">
+            <h3 className="text-[15px] font-bold text-[#1C1813]">
               Избранный уход пока пуст
             </h3>
-            <p className="text-[12px] text-[#9B9188] mt-1 max-w-[270px] leading-relaxed">
+            <p className="text-[12px] text-[#756C5D] mt-1 max-w-[270px] leading-relaxed">
               Здесь появятся средства, которые ИИ подберет специально для тебя, или
               банки, проверенные через INCI-сканер
             </p>
@@ -105,7 +105,7 @@ export const FavoritesScreen: React.FC<FavoritesScreenProps> = ({
               <button
                 type="button"
                 onClick={onStartScan}
-                className="w-full py-3 px-4 rounded-full bg-[#F8715E] text-white text-[12.5px] font-bold flex items-center justify-center gap-2 shadow-xs active:scale-95 transition-all"
+                className="w-full py-3 px-4 rounded-full bg-[#A87C44] text-white text-[12.5px] font-bold flex items-center justify-center gap-2 shadow-xs active:scale-95 transition-all"
               >
                 <ScanFace size={15} />
                 <span>Подобрать уход через AI-диагностику</span>
@@ -114,9 +114,9 @@ export const FavoritesScreen: React.FC<FavoritesScreenProps> = ({
             <button
               type="button"
               onClick={onOpenJarScanner}
-              className="w-full py-3 px-4 rounded-full bg-[#FBF8F5] border border-[#EBE4DD] text-[#1E1B18] text-[12.5px] font-bold flex items-center justify-center gap-2 active:scale-95 transition-all"
+              className="w-full py-3 px-4 rounded-full bg-[#FBF8F5] border border-[#EBE4DD] text-[#1C1813] text-[12.5px] font-bold flex items-center justify-center gap-2 active:scale-95 transition-all"
             >
-              <FlaskConical size={15} className="text-[#F8715E]" />
+              <FlaskConical size={15} className="text-[#A87C44]" />
               <span>Проверить свою банку по составу</span>
             </button>
           </div>
@@ -127,7 +127,7 @@ export const FavoritesScreen: React.FC<FavoritesScreenProps> = ({
             return (
               <div
                 key={product.id}
-                className="bg-white rounded-[24px] p-3.5 shadow-[0_6px_20px_rgba(30,27,24,0.03)] border border-[#F2ECE5] flex flex-col gap-3 transition-all hover:shadow-md"
+                className="bg-white rounded-[24px] p-3.5 shadow-[0_6px_20px_rgba(30,27,24,0.03)] border border-[#ECE5D7] flex flex-col gap-3 transition-all hover:shadow-md"
               >
                 <div className="flex items-start gap-3">
                   {/* Product Thumbnail */}
@@ -146,20 +146,20 @@ export const FavoritesScreen: React.FC<FavoritesScreenProps> = ({
                   {/* Details */}
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between">
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-[#9B9188]">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-[#756C5D]">
                         {product.brand} • {product.categoryLabel || 'Уход'}
                       </span>
                       <button
                         type="button"
                         onClick={() => onToggleFavorite(product.id)}
                         aria-label={`Удалить ${product.name} из избранного`}
-                        className="w-7 h-7 rounded-full bg-white flex items-center justify-center text-[#F8715E] active:scale-90"
+                        className="w-7 h-7 rounded-full bg-white flex items-center justify-center text-[#A87C44] active:scale-90"
                       >
-                        <Heart size={15} className="fill-[#F8715E]" />
+                        <Heart size={15} className="fill-[#A87C44]" />
                       </button>
                     </div>
 
-                    <h3 className="text-[14px] font-bold text-[#1E1B18] truncate mt-0.5">
+                    <h3 className="text-[14px] font-bold text-[#1C1813] truncate mt-0.5">
                       {product.name}
                     </h3>
 
@@ -178,9 +178,9 @@ export const FavoritesScreen: React.FC<FavoritesScreenProps> = ({
                     </div>
 
                     {product.price && (
-                      <div className="mt-1 text-[13px] font-bold text-[#1E1B18]">
+                      <div className="mt-1 text-[13px] font-bold text-[#1C1813]">
                         {product.price.toLocaleString('ru-RU')} ₽
-                        <span className="text-[11px] font-normal text-[#9B9188] ml-1.5">
+                        <span className="text-[11px] font-normal text-[#756C5D] ml-1.5">
                           в {product.partnerStore || 'Золотое Яблоко'}
                         </span>
                       </div>
@@ -196,8 +196,8 @@ export const FavoritesScreen: React.FC<FavoritesScreenProps> = ({
                     aria-label={`Добавить ${product.name} в рутину`}
                     className={`flex-1 py-2 px-3 rounded-full text-[12px] font-bold flex items-center justify-center gap-1.5 transition-all ${
                       product.inRoutine
-                        ? 'bg-[#F5F2EB] text-[#786F67] hover:bg-[#EBE4DD]'
-                        : 'bg-[#F8715E]/10 text-[#F8715E] hover:bg-[#F8715E]/20'
+                        ? 'bg-[#F4F0E8] text-[#786F67] hover:bg-[#EBE4DD]'
+                        : 'bg-[#A87C44]/10 text-[#A87C44] hover:bg-[#A87C44]/20'
                     }`}
                   >
                     <Check size={14} strokeWidth={2.5} />
@@ -208,7 +208,7 @@ export const FavoritesScreen: React.FC<FavoritesScreenProps> = ({
                     type="button"
                     onClick={() => onAddToCart(product)}
                     aria-label={`Добавить ${product.name} в корзину`}
-                    className="py-2 px-4 rounded-full bg-[#1E1B18] text-white text-[12px] font-bold flex items-center justify-center gap-1.5 active:scale-95 transition-transform"
+                    className="py-2 px-4 rounded-full bg-[#1C1813] text-white text-[12px] font-bold flex items-center justify-center gap-1.5 active:scale-95 transition-transform"
                   >
                     <ShoppingBag size={14} />
                     <span>В корзину</span>

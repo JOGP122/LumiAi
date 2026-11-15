@@ -1,0 +1,23 @@
+id: day-cell
+name: Day Cell
+
+expose:
+  weekday: {node: day-cell.wd, field: content}
+  num: {node: day-cell.num, field: content}
+
+root:
+  id: day-cell.root
+  type: frame
+  size: [fill, 62]
+  layout: {type: flex, direction: column, gap: 3, alignItems: center, justifyContent: center}
+  cornerRadius: 16
+  children:
+    - {id: day-cell.wd, type: text, size: [hug, hug], fontFamily: Manrope, fontSize: 10, fontWeight: 700, letterSpacing: 1, color: $color.inkTertiary, content: "ПН"}
+    - {id: day-cell.num, type: text, size: [hug, hug], fontFamily: Manrope, fontSize: 15, fontWeight: 600, color: $color.ink, content: "9"}
+
+variants:
+  active:
+    true:
+      day-cell.root: {fill: $color.dark, effects: $shadow.lift}
+      day-cell.wd: {color: $color.brassLight}
+      day-cell.num: {color: $color.ivory}

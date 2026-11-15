@@ -20,24 +20,24 @@ export const BottomNav: React.FC<BottomNavProps> = ({
       aria-label="Нижняя панель навигации"
       className="fixed bottom-4 left-1/2 -translate-x-1/2 z-40 w-[92%] max-w-[370px]"
     >
-      <div className="bg-white/95 backdrop-blur-md rounded-full px-5 py-2.5 shadow-[0_12px_32px_rgba(30,27,24,0.12)] border border-[#F2ECE5] flex items-center justify-between transition-all duration-300">
+      <div className="bg-white/95 backdrop-blur-md rounded-full px-5 py-2.5 shadow-[0_12px_32px_rgba(30,27,24,0.12)] border border-[#ECE5D7] flex items-center justify-between transition-all duration-300">
         {/* Вкладка 1: Главная / Рутина */}
         <button
           onClick={() => onSelectTab('home')}
           aria-label="Главная и рутина ухода"
           className={`relative p-2.5 rounded-full flex flex-col items-center transition-all duration-200 ${
             activeTab === 'home'
-              ? 'text-[#F8715E] scale-105'
-              : 'text-[#9B9188] hover:text-[#1E1B18]'
+              ? 'text-[#A87C44] scale-105'
+              : 'text-[#756C5D] hover:text-[#1C1813]'
           }`}
         >
           <Home
             size={22}
             strokeWidth={activeTab === 'home' ? 2.5 : 1.8}
-            className={activeTab === 'home' ? 'fill-[#F8715E]/15' : ''}
+            className={activeTab === 'home' ? 'fill-[#A87C44]/15' : ''}
           />
           {activeTab === 'home' && (
-            <span className="absolute -bottom-0.5 w-1.5 h-1.5 rounded-full bg-[#F8715E]" />
+            <span className="absolute -bottom-0.5 w-1.5 h-1.5 rounded-full bg-[#A87C44]" />
           )}
         </button>
 
@@ -47,20 +47,20 @@ export const BottomNav: React.FC<BottomNavProps> = ({
           aria-label="Избранный уход"
           className={`relative p-2.5 rounded-full flex flex-col items-center transition-all duration-200 ${
             activeTab === 'favorites'
-              ? 'text-[#F8715E] scale-105'
-              : 'text-[#9B9188] hover:text-[#1E1B18]'
+              ? 'text-[#A87C44] scale-105'
+              : 'text-[#756C5D] hover:text-[#1C1813]'
           }`}
         >
           <Heart
             size={22}
             strokeWidth={activeTab === 'favorites' ? 2.5 : 1.8}
-            className={activeTab === 'favorites' ? 'fill-[#F8715E]' : ''}
+            className={activeTab === 'favorites' ? 'fill-[#A87C44]' : ''}
           />
           {favoritesCount > 0 && activeTab !== 'favorites' && (
-            <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-[#F8715E]" />
+            <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-[#A87C44]" />
           )}
           {activeTab === 'favorites' && (
-            <span className="absolute -bottom-0.5 w-1.5 h-1.5 rounded-full bg-[#F8715E]" />
+            <span className="absolute -bottom-0.5 w-1.5 h-1.5 rounded-full bg-[#A87C44]" />
           )}
         </button>
 
@@ -70,22 +70,22 @@ export const BottomNav: React.FC<BottomNavProps> = ({
           aria-label="Корзина ухода"
           className={`relative p-2.5 rounded-full flex flex-col items-center transition-all duration-200 ${
             activeTab === 'cart'
-              ? 'text-[#F8715E] scale-105'
-              : 'text-[#9B9188] hover:text-[#1E1B18]'
+              ? 'text-[#A87C44] scale-105'
+              : 'text-[#756C5D] hover:text-[#1C1813]'
           }`}
         >
           <ShoppingBag
             size={22}
             strokeWidth={activeTab === 'cart' ? 2.5 : 1.8}
-            className={activeTab === 'cart' ? 'fill-[#F8715E]/15' : ''}
+            className={activeTab === 'cart' ? 'fill-[#A87C44]/15' : ''}
           />
           {cartCount > 0 && (
-            <span className="absolute top-1 right-1 min-w-4 h-4 px-1 rounded-full bg-[#F8715E] text-white text-[9.5px] font-bold flex items-center justify-center leading-none">
+            <span className="absolute top-1 right-1 min-w-4 h-4 px-1 rounded-full bg-[#A87C44] text-white text-[9.5px] font-bold flex items-center justify-center leading-none">
               {cartCount}
             </span>
           )}
           {activeTab === 'cart' && (
-            <span className="absolute -bottom-0.5 w-1.5 h-1.5 rounded-full bg-[#F8715E]" />
+            <span className="absolute -bottom-0.5 w-1.5 h-1.5 rounded-full bg-[#A87C44]" />
           )}
         </button>
 
@@ -95,17 +95,17 @@ export const BottomNav: React.FC<BottomNavProps> = ({
           aria-label="Профиль Ани"
           className={`relative p-2.5 rounded-full flex flex-col items-center transition-all duration-200 ${
             activeTab === 'profile'
-              ? 'text-[#F8715E] scale-105'
-              : 'text-[#9B9188] hover:text-[#1E1B18]'
+              ? 'text-[#A87C44] scale-105'
+              : 'text-[#756C5D] hover:text-[#1C1813]'
           }`}
         >
           <User
             size={22}
             strokeWidth={activeTab === 'profile' ? 2.5 : 1.8}
-            className={activeTab === 'profile' ? 'fill-[#F8715E]/15' : ''}
+            className={activeTab === 'profile' ? 'fill-[#A87C44]/15' : ''}
           />
           {activeTab === 'profile' && (
-            <span className="absolute -bottom-0.5 w-1.5 h-1.5 rounded-full bg-[#F8715E]" />
+            <span className="absolute -bottom-0.5 w-1.5 h-1.5 rounded-full bg-[#A87C44]" />
           )}
         </button>
       </div>

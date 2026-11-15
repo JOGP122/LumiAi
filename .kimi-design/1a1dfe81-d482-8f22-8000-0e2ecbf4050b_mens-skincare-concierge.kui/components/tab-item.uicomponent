@@ -1,0 +1,26 @@
+id: tab-item
+name: Tab Item
+
+expose:
+  icon: {node: tab-item.icon, field: children}
+
+root:
+  id: tab-item.root
+  type: frame
+  size: [52, hug]
+  layout: {type: flex, direction: column, gap: 5, alignItems: center}
+  children:
+    - id: tab-item.icon
+      type: frame
+      size: [hug, hug]
+      children:
+        - {id: tab-item.icon.default, type: svg, size: [21, 21], icon: "fas:house", fill: $color.inkTertiary}
+    - id: tab-item.dot
+      type: ellipse
+      size: [4, 4]
+      fill: "#FFFFFF00"
+
+variants:
+  active:
+    true:
+      tab-item.dot: {fill: $color.brass}

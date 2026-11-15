@@ -1,0 +1,175 @@
+version: v1
+name: Мужской консерж ухода — дизайн-код
+
+modes: [ light, dark ]
+defaultMode: light
+
+customFonts:
+  - {
+      family: Cormorant,
+      src: "https://fonts.googleapis.com/css2?family=Cormorant"
+    }
+  - { family: Manrope, src: "https://fonts.googleapis.com/css2?family=Manrope" }
+
+tokens:
+  color.canvas:
+    type: color
+    values: { light: "#F4F0E8", dark: "#14110D" }
+  color.surface:
+    type: color
+    values: { light: "#FCFAF4", dark: "#1E1A15" }
+  color.sunken:
+    type: color
+    values: { light: "#ECE5D7", dark: "#292319" }
+  color.dark:
+    type: color
+    values: { light: "#1C1813", dark: "#2A241C" }
+  color.darkSoft:
+    type: color
+    values: { light: "#322B22", dark: "#3A332A" }
+  color.btnPrimary:
+    type: color
+    values: { light: "#1C1813", dark: "#F0EAE0" }
+  color.onBtnPrimary:
+    type: color
+    values: { light: "#F5F0E5", dark: "#1C1813" }
+  color.ink:
+    type: color
+    values: { light: "#1C1813", dark: "#F0EAE0" }
+  color.inkSecondary:
+    type: color
+    values: { light: "#756C5D", dark: "#A79C8A" }
+  color.inkTertiary:
+    type: color
+    values: { light: "#A79C8A", dark: "#6E6455" }
+  color.ivory:
+    type: color
+    values: "#F5F0E5"
+  color.ivoryDim:
+    type: color
+    values: "#B4A993"
+  color.brass:
+    type: color
+    values: { light: "#A87C44", dark: "#C09A5E" }
+  color.brassDeep:
+    type: color
+    values: { light: "#84622F", dark: "#CDA872" }
+  color.brassLight:
+    type: color
+    values: "#CDA872"
+  color.brassSoft:
+    type: color
+    values: { light: "#F0E6D1", dark: "#3A2E1D" }
+  color.sage:
+    type: color
+    values: { light: "#5F7A60", dark: "#8CA98B" }
+  color.sageLight:
+    type: color
+    values: "#93A98C"
+  color.terracotta:
+    type: color
+    values: { light: "#C05F3C", dark: "#D07A56" }
+  color.danger:
+    type: color
+    values: { light: "#A8452B", dark: "#C96A4D" }
+  color.line:
+    type: color
+    values: { light: "#E6DFCF", dark: "#322C23" }
+  color.lineDark:
+    type: color
+    values: { light: "#3B332A", dark: "#4A4236" }
+  color.homeIndicator:
+    type: color
+    values: { light: "#1C18132E", dark: "#F0EAE02E" }
+
+  shadow.card:
+    type: shadow
+    values:
+      light:
+        {
+          type: shadow,
+          color: "#3D34261A",
+          offset: [ 0, 12 ],
+          blur: 32,
+          spread: -16
+        }
+      dark:
+        {
+          type: shadow,
+          color: "#00000066",
+          offset: [ 0, 12 ],
+          blur: 32,
+          spread: -16
+        }
+  shadow.lift:
+    type: shadow
+    values:
+      light: { type: shadow, color: "#3D342624", offset: [ 0, 6 ], blur: 18, spread: -8 }
+      dark: { type: shadow, color: "#00000080", offset: [ 0, 6 ], blur: 18, spread: -8 }
+
+  text.display:
+    type: typography
+    values:
+      {
+        fontFamily: Cormorant,
+        fontSize: 34,
+        fontWeight: 500,
+        lineHeight: 38,
+        color: $color.ink
+      }
+  text.title:
+    type: typography
+    values:
+      {
+        fontFamily: Cormorant,
+        fontSize: 26,
+        fontWeight: 500,
+        lineHeight: 30,
+        color: $color.ink
+      }
+  text.headline:
+    type: typography
+    values:
+      {
+        fontFamily: Manrope,
+        fontSize: 16,
+        fontWeight: 600,
+        lineHeight: 22,
+        color: $color.ink
+      }
+  text.body:
+    type: typography
+    values:
+      {
+        fontFamily: Manrope,
+        fontSize: 14,
+        fontWeight: 400,
+        lineHeight: 21,
+        color: $color.ink
+      }
+  text.caption:
+    type: typography
+    values:
+      {
+        fontFamily: Manrope,
+        fontSize: 12.5,
+        fontWeight: 400,
+        lineHeight: 17,
+        color: $color.inkSecondary
+      }
+  text.overline:
+    type: typography
+    values:
+      {
+        fontFamily: Manrope,
+        fontSize: 11,
+        fontWeight: 700,
+        lineHeight: 14,
+        letterSpacing: 1.8,
+        color: $color.brass
+      }
+
+pages:
+  - pages/design-system.uipage
+  - pages/ui-kit.uipage
+  - pages/app.uipage

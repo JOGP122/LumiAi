@@ -1,0 +1,3464 @@
+name: Экраны приложения
+
+children:
+  - id: note.home
+    type: text
+    position: [ 80, 82 ]
+    size: [ hug, hug ]
+    fontFamily: Manrope
+    fontSize: 34
+    fontWeight: 700
+    color: "#000000"
+    content: Главная
+
+  - id: screen.home
+    type: frame
+    position: [ 80, 150 ]
+    size: [ 402, hug ]
+    layout: { type: flex, direction: column }
+    fill: $color.canvas
+    children:
+      - id: home.content
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, direction: column, gap: 20, padding: [ 24, 20, 28, 20 ] }
+        children:
+          - id: home.header
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, justifyContent: spaceBetween, alignItems: center }
+            children:
+              - id: home.header.texts
+                type: frame
+                size: [ hug, hug ]
+                layout: { type: flex, direction: column, gap: 5 }
+                children:
+                  - {
+                      id: home.header.overline,
+                      type: text,
+                      size: [ hug, hug ],
+                      style: $text.overline,
+                      content: "ВОСКРЕСЕНЬЕ, 15 НОЯБРЯ"
+                    }
+                  - {
+                      id: home.header.title,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Cormorant,
+                      fontSize: 30,
+                      fontWeight: 500,
+                      lineHeight: 34,
+                      color: $color.ink,
+                      content: "Здравствуй, бурмалда"
+                    }
+                  - {
+                      id: home.header.sub,
+                      type: text,
+                      size: [ hug, hug ],
+                      style: $text.caption,
+                      content: "Лаконичный мужской уход и зона бритья"
+                    }
+              - id: home.avatar
+                type: frame
+                size: [ 46, 46 ]
+                children:
+                  - id: home.avatar.circle
+                    type: frame
+                    position: [ 0, 0 ]
+                    size: [ 46, 46 ]
+                    layout: { type: flex, alignItems: center, justifyContent: center }
+                    fill: $color.brassSoft
+                    cornerRadius: 999
+                    children:
+                      - {
+                          id: home.avatar.initials,
+                          type: text,
+                          size: [ hug, hug ],
+                          fontFamily: Cormorant,
+                          fontSize: 19,
+                          fontWeight: 600,
+                          color: $color.brassDeep,
+                          content: "БУ"
+                        }
+                  - {
+                      id: home.avatar.dot,
+                      type: ellipse,
+                      position: [ 33, 34 ],
+                      size: [ 11, 11 ],
+                      fill: $color.sage,
+                      stroke: { color: $color.canvas, width: 2 }
+                    }
+          - id: home.skin
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, direction: column, gap: 16, padding: 20 }
+            fill: $color.dark
+            cornerRadius: 20
+            effects: $shadow.card
+            children:
+              - id: home.skin.top
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, justifyContent: spaceBetween, alignItems: start }
+                children:
+                  - id: home.skin.texts
+                    type: frame
+                    size: [ hug, hug ]
+                    layout: { type: flex, direction: column, gap: 5 }
+                    children:
+                      - {
+                          id: home.skin.overline,
+                          type: text,
+                          size: [ hug, hug ],
+                          style: $text.overline,
+                          color: $color.brassLight,
+                          content: "ИНДЕКС КОЖИ"
+                        }
+                      - {
+                          id: home.skin.value,
+                          type: text,
+                          size: [ hug, hug ],
+                          fontFamily: Cormorant,
+                          fontSize: 27,
+                          fontWeight: 500,
+                          lineHeight: 30,
+                          color: $color.ivory,
+                          content: "Пока не определён"
+                        }
+                      - {
+                          id: home.skin.hint,
+                          type: text,
+                          size: [ hug, hug ],
+                          fontFamily: Manrope,
+                          fontSize: 12,
+                          lineHeight: 16,
+                          color: $color.ivoryDim,
+                          content: "Сделай первый AI-скан"
+                        }
+                  - id: home.skin.streak
+                    type: frame
+                    size: [ hug, hug ]
+                    layout: { type: flex, gap: 6, padding: [ 7, 12 ], alignItems: center }
+                    fill: $color.darkSoft
+                    cornerRadius: 999
+                    children:
+                      - {
+                          id: home.skin.streak.icon,
+                          type: svg,
+                          size: [ 11, 11 ],
+                          icon: "fas:fire",
+                          fill: "#D97B52"
+                        }
+                      - {
+                          id: home.skin.streak.text,
+                          type: text,
+                          size: [ hug, hug ],
+                          fontFamily: Manrope,
+                          fontSize: 12,
+                          fontWeight: 600,
+                          color: $color.ivory,
+                          content: "0 дней"
+                        }
+              - id: home.skin.track
+                type: frame
+                size: [ fill, 4 ]
+                layout: { type: free, overflow: hidden }
+                fill: $color.darkSoft
+                cornerRadius: 999
+                children:
+                  - {
+                      id: home.skin.track.fill,
+                      type: rect,
+                      position: [ 0, 0 ],
+                      size: [ 48, 4 ],
+                      cornerRadius: 999,
+                      fill: $color.brass
+                    }
+              - {
+                  id: home.skin.divider,
+                  type: rect,
+                  size: [ fill, 1 ],
+                  fill: $color.lineDark
+                }
+              - id: home.skin.meta
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, justifyContent: spaceBetween, alignItems: center }
+                children:
+                  - id: home.skin.meta.left
+                    type: frame
+                    size: [ hug, hug ]
+                    layout: { type: flex, gap: 8, alignItems: center }
+                    children:
+                      - {
+                          id: home.skin.meta.face,
+                          type: svg,
+                          size: [ 13, 13 ],
+                          icon: "far:face-smile",
+                          fill: $color.sageLight
+                        }
+                      - {
+                          id: home.skin.meta.skintype,
+                          type: text,
+                          size: [ hug, hug ],
+                          fontFamily: Manrope,
+                          fontSize: 13,
+                          color: $color.ivoryDim,
+                          content: "Кожа: нормальная"
+                        }
+                  - id: home.skin.meta.right
+                    type: frame
+                    size: [ hug, hug ]
+                    layout: { type: flex, gap: 6, alignItems: center }
+                    children:
+                      - {
+                          id: home.skin.meta.shield,
+                          type: svg,
+                          size: [ 12, 12 ],
+                          icon: "fas:shield-halved",
+                          fill: $color.sageLight
+                        }
+                      - {
+                          id: home.skin.meta.clean,
+                          type: text,
+                          size: [ hug, hug ],
+                          fontFamily: Manrope,
+                          fontSize: 12,
+                          color: $color.ivoryDim,
+                          content: "Чистый профиль"
+                        }
+          - id: home.hero
+            type: frame
+            size: [ fill, 200 ]
+            layout:
+              {
+                type: flex,
+                direction: column,
+                gap: 4,
+                padding: [ 18, 20 ],
+                justifyContent: end,
+                overflow: hidden
+              }
+            cornerRadius: 20
+            fill:
+              - type: image
+                src: assets/hero-skincare.png
+                fit: cover
+                position: [ 0.5, 0.35 ]
+              - type: linearGradient
+                angle: 90
+                stops:
+                  - [ 0, "#14100B00" ]
+                  - [ 0.45, "#14100B8C" ]
+                  - [ 1, "#14100BE6" ]
+            children:
+              - {
+                  id: home.hero.overline,
+                  type: text,
+                  size: [ hug, hug ],
+                  style: $text.overline,
+                  color: $color.brassLight,
+                  content: "МУЖСКОЙ КОНСЬЕРЖ"
+                }
+              - {
+                  id: home.hero.title,
+                  type: text,
+                  size: [ fill, hug ],
+                  fontFamily: Cormorant,
+                  fontSize: 27,
+                  fontWeight: 500,
+                  lineHeight: 30,
+                  color: $color.ivory,
+                  content: "Лаконичный уход для кожи"
+                }
+          - id: home.actions
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, direction: column }
+            fill: $color.surface
+            cornerRadius: 20
+            effects: $shadow.card
+            children:
+              - id: home.action.scan
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, gap: 14, padding: [ 16, 18 ], alignItems: center }
+                children:
+                  - id: home.action.scan.tile
+                    type: frame
+                    size: [ 42, 42 ]
+                    layout: { type: flex, alignItems: center, justifyContent: center }
+                    fill: $color.brassSoft
+                    cornerRadius: 12
+                    children:
+                      - {
+                          id: home.action.scan.icon,
+                          type: svg,
+                          size: [ 17, 17 ],
+                          icon: "fas:face-smile",
+                          fill: $color.brassDeep
+                        }
+                  - id: home.action.scan.texts
+                    type: frame
+                    size: [ fill, hug ]
+                    layout: { type: flex, direction: column, gap: 3 }
+                    children:
+                      - {
+                          id: home.action.scan.title,
+                          type: text,
+                          size: [ fill, hug ],
+                          fontFamily: Manrope,
+                          fontSize: 15,
+                          fontWeight: 600,
+                          color: $color.ink,
+                          content: "AI-диагностика кожи лица"
+                        }
+                      - {
+                          id: home.action.scan.caption,
+                          type: text,
+                          size: [ fill, hug ],
+                          style: $text.caption,
+                          content: "Селфи-анализ и персональный подбор"
+                        }
+                  - {
+                      id: home.action.scan.chevron,
+                      type: svg,
+                      size: [ 13, 13 ],
+                      icon: "fas:chevron-right",
+                      fill: $color.brass
+                    }
+              - {
+                  id: home.actions.divider,
+                  type: rect,
+                  size: [ fill, 1 ],
+                  margin: [ 0, 18, 0, 74 ],
+                  fill: $color.line
+                }
+              - id: home.action.inci
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, gap: 14, padding: [ 16, 18 ], alignItems: center }
+                children:
+                  - id: home.action.inci.tile
+                    type: frame
+                    size: [ 42, 42 ]
+                    layout: { type: flex, alignItems: center, justifyContent: center }
+                    fill: $color.brassSoft
+                    cornerRadius: 12
+                    children:
+                      - {
+                          id: home.action.inci.icon,
+                          type: svg,
+                          size: [ 16, 16 ],
+                          icon: "fas:flask",
+                          fill: $color.brassDeep
+                        }
+                  - id: home.action.inci.texts
+                    type: frame
+                    size: [ fill, hug ]
+                    layout: { type: flex, direction: column, gap: 3 }
+                    children:
+                      - {
+                          id: home.action.inci.title,
+                          type: text,
+                          size: [ fill, hug ],
+                          fontFamily: Manrope,
+                          fontSize: 15,
+                          fontWeight: 600,
+                          color: $color.ink,
+                          content: "Проверить банку по фото"
+                        }
+                      - {
+                          id: home.action.inci.caption,
+                          type: text,
+                          size: [ 235, hug ],
+                          style: $text.caption,
+                          content: "INCI-скан комедогенности и конфликта активов"
+                        }
+                  - {
+                      id: home.action.inci.chevron,
+                      type: svg,
+                      size: [ 13, 13 ],
+                      icon: "fas:chevron-right",
+                      fill: $color.brass
+                    }
+          - id: home.calendar
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, direction: column, gap: 14 }
+            children:
+              - id: home.calendar.header
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, justifyContent: spaceBetween, alignItems: center }
+                children:
+                  - id: home.calendar.month
+                    type: frame
+                    size: [ hug, hug ]
+                    layout: { type: flex, gap: 8, alignItems: center }
+                    children:
+                      - {
+                          id: home.calendar.month.icon,
+                          type: svg,
+                          size: [ 13, 13 ],
+                          icon: "far:calendar",
+                          fill: $color.brassDeep
+                        }
+                      - {
+                          id: home.calendar.month.text,
+                          type: text,
+                          size: [ hug, hug ],
+                          fontFamily: Manrope,
+                          fontSize: 15,
+                          fontWeight: 600,
+                          color: $color.ink,
+                          content: "Ноябрь 2026"
+                        }
+                  - id: home.calendar.nav
+                    type: frame
+                    size: [ hug, hug ]
+                    layout: { type: flex, gap: 8 }
+                    children:
+                      - id: home.calendar.prev
+                        type: frame
+                        size: [ 32, 32 ]
+                        layout: { type: flex, alignItems: center, justifyContent: center }
+                        cornerRadius: 999
+                        stroke: { color: $color.line, width: 1, alignment: inside }
+                        children:
+                          - {
+                              id: home.calendar.prev.icon,
+                              type: svg,
+                              size: [ 12, 12 ],
+                              icon: "fas:chevron-left",
+                              fill: $color.inkSecondary
+                            }
+                      - id: home.calendar.next
+                        type: frame
+                        size: [ 32, 32 ]
+                        layout: { type: flex, alignItems: center, justifyContent: center }
+                        cornerRadius: 999
+                        stroke: { color: $color.line, width: 1, alignment: inside }
+                        children:
+                          - {
+                              id: home.calendar.next.icon,
+                              type: svg,
+                              size: [ 12, 12 ],
+                              icon: "fas:chevron-right",
+                              fill: $color.inkSecondary
+                            }
+              - id: home.calendar.week
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, gap: 6 }
+                children:
+                  - id: home.day.9
+                    type: instance
+                    source: day-cell
+                    size: [ fill, 62 ]
+                    values: { weekday: "ПН", num: "9" }
+                  - id: home.day.10
+                    type: instance
+                    source: day-cell
+                    size: [ fill, 62 ]
+                    values: { weekday: "ВТ", num: "10" }
+                  - id: home.day.11
+                    type: instance
+                    source: day-cell
+                    size: [ fill, 62 ]
+                    values: { weekday: "СР", num: "11" }
+                  - id: home.day.12
+                    type: instance
+                    source: day-cell
+                    size: [ fill, 62 ]
+                    values: { weekday: "ЧТ", num: "12" }
+                  - id: home.day.13
+                    type: instance
+                    source: day-cell
+                    size: [ fill, 62 ]
+                    values: { weekday: "ПТ", num: "13" }
+                  - id: home.day.14
+                    type: instance
+                    source: day-cell
+                    size: [ fill, 62 ]
+                    values: { weekday: "СБ", num: "14" }
+                  - id: home.day.15
+                    type: instance
+                    source: day-cell
+                    size: [ fill, 62 ]
+                    values: { active: true, weekday: "ВС", num: "15" }
+          - id: home.routine
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, direction: column, gap: 12 }
+            children:
+              - id: home.routine.head
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, direction: column, gap: 5 }
+                children:
+                  - {
+                      id: home.routine.overline,
+                      type: text,
+                      size: [ hug, hug ],
+                      style: $text.overline,
+                      content: "ЕЖЕДНЕВНЫЙ УХОД"
+                    }
+                  - {
+                      id: home.routine.title,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Cormorant,
+                      fontSize: 24,
+                      fontWeight: 500,
+                      lineHeight: 28,
+                      color: $color.ink,
+                      content: "Воскресенье, 15 ноября"
+                    }
+                  - {
+                      id: home.routine.caption,
+                      type: text,
+                      size: [ hug, hug ],
+                      style: $text.caption,
+                      content: "План ухода ещё не сформирован"
+                    }
+              - id: home.routine.card
+                type: frame
+                size: [ fill, hug ]
+                layout:
+                  {
+                    type: flex,
+                    direction: column,
+                    gap: 14,
+                    padding: [ 26, 22 ],
+                    alignItems: center
+                  }
+                fill: $color.surface
+                cornerRadius: 20
+                effects: $shadow.card
+                children:
+                  - id: home.routine.iconwrap
+                    type: frame
+                    size: [ 56, 56 ]
+                    layout: { type: flex, alignItems: center, justifyContent: center }
+                    fill: $color.brassSoft
+                    cornerRadius: 999
+                    children:
+                      - {
+                          id: home.routine.icon,
+                          type: svg,
+                          size: [ 20, 20 ],
+                          icon: "fas:wand-magic-sparkles",
+                          fill: $color.brassDeep
+                        }
+                  - {
+                      id: home.routine.headline,
+                      type: text,
+                      size: [ hug, hug ],
+                      style: $text.headline,
+                      content: "Рутина пока пуста"
+                    }
+                  - {
+                      id: home.routine.body,
+                      type: text,
+                      size: [ fill, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 13,
+                      lineHeight: 19,
+                      color: $color.inkSecondary,
+                      align: [ center, top ],
+                      content: "Никаких чужих шаблонов: пройди AI-скан лица, добавь свои средства или
+                        собери базовый уход по ответам анкеты."
+                    }
+                  - id: home.routine.buttons
+                    type: frame
+                    size: [ fill, hug ]
+                    layout: { type: flex, direction: column, gap: 10, padding: [ 6, 0, 0, 0 ] }
+                    children:
+                      - id: home.routine.cta
+                        type: instance
+                        source: button
+                        size: [ fill, 52 ]
+                        values:
+                          label: "Провести AI-скан лица"
+                          icon:
+                            - {
+                                id: home.routine.cta.icon,
+                                type: svg,
+                                size: [ 15, 15 ],
+                                icon: "fas:face-smile",
+                                fill: $color.onBtnPrimary
+                              }
+                      - id: home.routine.quiz
+                        type: instance
+                        source: button
+                        size: [ fill, 52 ]
+                        values: { kind: outline, label: "Подобрать уход по анкете" }
+                      - {
+                          id: home.routine.add,
+                          type: text,
+                          size: [ hug, hug ],
+                          alignSelf: center,
+                          fontFamily: Manrope,
+                          fontSize: 13,
+                          fontWeight: 600,
+                          color: $color.brassDeep,
+                          content: "Добавить мои текущие средства"
+                        }
+      - id: home.tabbar
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, direction: column }
+        children:
+          - { id: home.tabbar.line, type: rect, size: [ fill, 1 ], fill: $color.line }
+          - id: home.tabbar.items
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, padding: [ 13, 28, 16, 28 ], justifyContent: spaceBetween }
+            children:
+              - id: home.tab.home
+                type: instance
+                source: tab-item
+                values:
+                  active: true
+                  icon:
+                    - {
+                        id: home.tab.home.icon,
+                        type: svg,
+                        size: [ 21, 21 ],
+                        icon: "fas:house",
+                        fill: $color.ink
+                      }
+              - id: home.tab.fav
+                type: instance
+                source: tab-item
+                values:
+                  icon:
+                    - {
+                        id: home.tab.fav.icon,
+                        type: svg,
+                        size: [ 21, 21 ],
+                        icon: "far:heart",
+                        fill: $color.inkTertiary
+                      }
+              - id: home.tab.cart
+                type: instance
+                source: tab-item
+                values:
+                  icon:
+                    - {
+                        id: home.tab.cart.icon,
+                        type: svg,
+                        size: [ 21, 21 ],
+                        icon: "fas:bag-shopping",
+                        fill: $color.inkTertiary
+                      }
+              - id: home.tab.profile
+                type: instance
+                source: tab-item
+                values:
+                  icon:
+                    - {
+                        id: home.tab.profile.icon,
+                        type: svg,
+                        size: [ 21, 21 ],
+                        icon: "far:user",
+                        fill: $color.inkTertiary
+                      }
+      - id: home.indicator
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, padding: [ 4, 0, 8, 0 ], justifyContent: center }
+        children:
+          - {
+              id: home.indicator.bar,
+              type: rect,
+              size: [ 134, 5 ],
+              cornerRadius: 999,
+              fill: $color.homeIndicator
+            }
+  - id: note.favorites
+    type: text
+    position: [ 562, 82 ]
+    size: [ hug, hug ]
+    fontFamily: Manrope
+    fontSize: 34
+    fontWeight: 700
+    color: "#000000"
+    content: Избранное
+
+  - id: screen.favorites
+    type: frame
+    position: [ 562, 150 ]
+    size: [ 402, hug ]
+    layout: { type: flex, direction: column }
+    fill: $color.canvas
+    children:
+      - id: fav.content
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, direction: column, gap: 20, padding: [ 24, 20, 28, 20 ] }
+        children:
+          - id: fav.header
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, justifyContent: spaceBetween, alignItems: end }
+            children:
+              - id: fav.header.texts
+                type: frame
+                size: [ hug, hug ]
+                layout: { type: flex, direction: column, gap: 5 }
+                children:
+                  - {
+                      id: fav.header.overline,
+                      type: text,
+                      size: [ hug, hug ],
+                      style: $text.overline,
+                      content: "ПОДБОРКА"
+                    }
+                  - {
+                      id: fav.header.title,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Cormorant,
+                      fontSize: 30,
+                      fontWeight: 500,
+                      lineHeight: 34,
+                      color: $color.ink,
+                      content: "Избранный уход"
+                    }
+                  - {
+                      id: fav.header.sub,
+                      type: text,
+                      size: [ hug, hug ],
+                      style: $text.caption,
+                      content: "Средства, отобранные AI-консержем"
+                    }
+              - id: fav.header.count
+                type: frame
+                size: [ hug, hug ]
+                layout: { type: flex, gap: 6, padding: [ 8, 13 ], alignItems: center }
+                fill: $color.surface
+                cornerRadius: 999
+                stroke: { color: $color.line, width: 1, alignment: inside }
+                children:
+                  - {
+                      id: fav.header.count.icon,
+                      type: svg,
+                      size: [ 12, 12 ],
+                      icon: "fas:heart",
+                      fill: $color.brass
+                    }
+                  - {
+                      id: fav.header.count.num,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 13,
+                      fontWeight: 600,
+                      color: $color.ink,
+                      content: "2"
+                    }
+          - id: fav.scan
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, gap: 14, padding: [ 16, 18 ], alignItems: center }
+            fill: $color.dark
+            cornerRadius: 20
+            effects: $shadow.card
+            children:
+              - id: fav.scan.tile
+                type: frame
+                size: [ 42, 42 ]
+                layout: { type: flex, alignItems: center, justifyContent: center }
+                fill: $color.darkSoft
+                cornerRadius: 12
+                children:
+                  - {
+                      id: fav.scan.icon,
+                      type: svg,
+                      size: [ 16, 16 ],
+                      icon: "fas:flask",
+                      fill: $color.brassLight
+                    }
+              - id: fav.scan.texts
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, direction: column, gap: 3 }
+                children:
+                  - {
+                      id: fav.scan.title,
+                      type: text,
+                      size: [ fill, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 15,
+                      fontWeight: 600,
+                      color: $color.ivory,
+                      content: "Проверить банку по составу"
+                    }
+                  - {
+                      id: fav.scan.caption,
+                      type: text,
+                      size: [ fill, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 12,
+                      lineHeight: 16,
+                      color: $color.ivoryDim,
+                      content: "Анализ INCI на комедогены и конфликт с уходом"
+                    }
+              - {
+                  id: fav.scan.chevron,
+                  type: svg,
+                  size: [ 13, 13 ],
+                  icon: "fas:chevron-right",
+                  fill: $color.brassLight
+                }
+          - id: fav.note
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, gap: 10, padding: [ 2, 4 ], alignItems: start }
+            children:
+              - {
+                  id: fav.note.icon,
+                  type: svg,
+                  size: [ 13, 13 ],
+                  margin: [ 2, 0, 0, 0 ],
+                  icon: "fas:wand-magic-sparkles",
+                  fill: $color.brass
+                }
+              - {
+                  id: fav.note.text,
+                  type: text,
+                  size: [ 328, hug ],
+                  fontFamily: Manrope,
+                  fontSize: 12.5,
+                  lineHeight: 18,
+                  color: $color.inkSecondary,
+                  content: "Каждое средство проверяется по составу на совместимость с твоей
+                    кожей."
+                }
+          - id: fav.list
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, direction: column, gap: 12 }
+            children:
+              - id: fav.item.1
+                type: instance
+                source: product-card
+                size: [ fill, hug ]
+                values:
+                  name: "Очищающий гель"
+                  brand: "CeraVe"
+                  price: "890 ₽"
+                  image: { type: image, src: assets/product-tube.png, fit: contain }
+              - id: fav.item.2
+                type: instance
+                source: product-card
+                size: [ fill, hug ]
+                values:
+                  name: "Сыворотка с ниацинамидом"
+                  brand: "The Ordinary"
+                  price: "1 290 ₽"
+                  image: { type: image, src: assets/product-serum.png, fit: contain }
+          - id: fav.cta
+            type: instance
+            source: button
+            size: [ fill, 52 ]
+            values:
+              kind: outline
+              label: "Подобрать ещё через AI-диагностику"
+      - id: fav.tabbar
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, direction: column }
+        children:
+          - { id: fav.tabbar.line, type: rect, size: [ fill, 1 ], fill: $color.line }
+          - id: fav.tabbar.items
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, padding: [ 13, 28, 16, 28 ], justifyContent: spaceBetween }
+            children:
+              - id: fav.tab.home
+                type: instance
+                source: tab-item
+                values:
+                  icon:
+                    - {
+                        id: fav.tab.home.icon,
+                        type: svg,
+                        size: [ 21, 21 ],
+                        icon: "fas:house",
+                        fill: $color.inkTertiary
+                      }
+              - id: fav.tab.fav
+                type: instance
+                source: tab-item
+                values:
+                  active: true
+                  icon:
+                    - {
+                        id: fav.tab.fav.icon,
+                        type: svg,
+                        size: [ 21, 21 ],
+                        icon: "fas:heart",
+                        fill: $color.ink
+                      }
+              - id: fav.tab.cart
+                type: instance
+                source: tab-item
+                values:
+                  icon:
+                    - {
+                        id: fav.tab.cart.icon,
+                        type: svg,
+                        size: [ 21, 21 ],
+                        icon: "fas:bag-shopping",
+                        fill: $color.inkTertiary
+                      }
+              - id: fav.tab.profile
+                type: instance
+                source: tab-item
+                values:
+                  icon:
+                    - {
+                        id: fav.tab.profile.icon,
+                        type: svg,
+                        size: [ 21, 21 ],
+                        icon: "far:user",
+                        fill: $color.inkTertiary
+                      }
+      - id: fav.indicator
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, padding: [ 4, 0, 8, 0 ], justifyContent: center }
+        children:
+          - {
+              id: fav.indicator.bar,
+              type: rect,
+              size: [ 134, 5 ],
+              cornerRadius: 999,
+              fill: $color.homeIndicator
+            }
+  - id: note.cart
+    type: text
+    position: [ 1044, 82 ]
+    size: [ hug, hug ]
+    fontFamily: Manrope
+    fontSize: 34
+    fontWeight: 700
+    color: "#000000"
+    content: Корзина
+
+  - id: screen.cart
+    type: frame
+    position: [ 1044, 150 ]
+    size: [ 402, hug ]
+    layout: { type: flex, direction: column }
+    fill: $color.canvas
+    children:
+      - id: cart.content
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, direction: column, gap: 20, padding: [ 24, 20, 28, 20 ] }
+        children:
+          - id: cart.header
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, direction: column, gap: 5 }
+            children:
+              - {
+                  id: cart.header.overline,
+                  type: text,
+                  size: [ hug, hug ],
+                  style: $text.overline,
+                  content: "КОРЗИНА"
+                }
+              - {
+                  id: cart.header.title,
+                  type: text,
+                  size: [ hug, hug ],
+                  fontFamily: Cormorant,
+                  fontSize: 30,
+                  fontWeight: 500,
+                  lineHeight: 34,
+                  color: $color.ink,
+                  content: "Уход в один клик"
+                }
+              - {
+                  id: cart.header.sub,
+                  type: text,
+                  size: [ hug, hug ],
+                  style: $text.caption,
+                  content: "Прямая корзина в партнёрские сети"
+                }
+          - id: cart.partners
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, gap: 10, alignItems: center }
+            children:
+              - {
+                  id: cart.partners.label,
+                  type: text,
+                  size: [ hug, hug ],
+                  style: $text.caption,
+                  content: "Доставка"
+                }
+              - id: cart.partners.zy
+                type: frame
+                size: [ hug, 34 ]
+                layout: { type: flex, gap: 8, padding: [ 0, 14 ], alignItems: center }
+                fill: $color.dark
+                cornerRadius: 999
+                children:
+                  - {
+                      id: cart.partners.zy.dot,
+                      type: ellipse,
+                      size: [ 6, 6 ],
+                      fill: $color.brassLight
+                    }
+                  - {
+                      id: cart.partners.zy.text,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 12.5,
+                      fontWeight: 600,
+                      color: $color.ivory,
+                      content: "Золотое Яблоко"
+                    }
+              - id: cart.partners.letu
+                type: frame
+                size: [ hug, 34 ]
+                layout: { type: flex, padding: [ 0, 14 ], alignItems: center }
+                cornerRadius: 999
+                stroke: { color: $color.line, width: 1, alignment: inside }
+                children:
+                  - {
+                      id: cart.partners.letu.text,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 12.5,
+                      fontWeight: 500,
+                      color: $color.inkSecondary,
+                      content: "Лэтуаль"
+                    }
+          - id: cart.list
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, direction: column, gap: 12 }
+            children:
+              - id: cart.item.1
+                type: instance
+                source: product-card
+                size: [ fill, hug ]
+                values:
+                  name: "Очищающий гель"
+                  brand: "CeraVe"
+                  price: "890 ₽"
+                  image: { type: image, src: assets/product-tube.png, fit: contain }
+                  meta:
+                    - id: cart.item.1.minus
+                      type: frame
+                      size: [ 26, 26 ]
+                      layout: { type: flex, alignItems: center, justifyContent: center }
+                      cornerRadius: 999
+                      stroke: { color: $color.line, width: 1, alignment: inside }
+                      children:
+                        - {
+                            id: cart.item.1.minus.icon,
+                            type: svg,
+                            size: [ 10, 10 ],
+                            icon: "fas:minus",
+                            fill: $color.inkSecondary
+                          }
+                    - {
+                        id: cart.item.1.qty,
+                        type: text,
+                        size: [ hug, hug ],
+                        fontFamily: Manrope,
+                        fontSize: 14,
+                        fontWeight: 600,
+                        color: $color.ink,
+                        content: "1"
+                      }
+                    - id: cart.item.1.plus
+                      type: frame
+                      size: [ 26, 26 ]
+                      layout: { type: flex, alignItems: center, justifyContent: center }
+                      fill: $color.dark
+                      cornerRadius: 999
+                      children:
+                        - {
+                            id: cart.item.1.plus.icon,
+                            type: svg,
+                            size: [ 10, 10 ],
+                            icon: "fas:plus",
+                            fill: $color.ivory
+                          }
+                  trailing:
+                    - {
+                        id: cart.item.1.total,
+                        type: text,
+                        size: [ hug, hug ],
+                        fontFamily: Manrope,
+                        fontSize: 15,
+                        fontWeight: 700,
+                        color: $color.ink,
+                        content: "890 ₽"
+                      }
+                overrides:
+                  product-card.meta: { layout: { gap: 12, padding: [ 6, 0, 0, 0 ] } }
+                  product-card.trailing: { alignSelf: end, margin: [ 0, 2, 2, 0 ] }
+              - id: cart.item.2
+                type: instance
+                source: product-card
+                size: [ fill, hug ]
+                values:
+                  name: "Сыворотка с ниацинамидом"
+                  brand: "The Ordinary"
+                  price: "1 290 ₽"
+                  image: { type: image, src: assets/product-serum.png, fit: contain }
+                  meta:
+                    - id: cart.item.2.minus
+                      type: frame
+                      size: [ 26, 26 ]
+                      layout: { type: flex, alignItems: center, justifyContent: center }
+                      cornerRadius: 999
+                      stroke: { color: $color.line, width: 1, alignment: inside }
+                      children:
+                        - {
+                            id: cart.item.2.minus.icon,
+                            type: svg,
+                            size: [ 10, 10 ],
+                            icon: "fas:minus",
+                            fill: $color.inkSecondary
+                          }
+                    - {
+                        id: cart.item.2.qty,
+                        type: text,
+                        size: [ hug, hug ],
+                        fontFamily: Manrope,
+                        fontSize: 14,
+                        fontWeight: 600,
+                        color: $color.ink,
+                        content: "1"
+                      }
+                    - id: cart.item.2.plus
+                      type: frame
+                      size: [ 26, 26 ]
+                      layout: { type: flex, alignItems: center, justifyContent: center }
+                      fill: $color.dark
+                      cornerRadius: 999
+                      children:
+                        - {
+                            id: cart.item.2.plus.icon,
+                            type: svg,
+                            size: [ 10, 10 ],
+                            icon: "fas:plus",
+                            fill: $color.ivory
+                          }
+                  trailing:
+                    - {
+                        id: cart.item.2.total,
+                        type: text,
+                        size: [ hug, hug ],
+                        fontFamily: Manrope,
+                        fontSize: 15,
+                        fontWeight: 700,
+                        color: $color.ink,
+                        content: "1 290 ₽"
+                      }
+                overrides:
+                  product-card.meta: { layout: { gap: 12, padding: [ 6, 0, 0, 0 ] } }
+                  product-card.trailing: { alignSelf: end, margin: [ 0, 2, 2, 0 ] }
+          - id: cart.summary
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, direction: column, gap: 12, padding: 18 }
+            fill: $color.surface
+            cornerRadius: 20
+            effects: $shadow.card
+            children:
+              - id: cart.summary.goods
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, justifyContent: spaceBetween, alignItems: center }
+                children:
+                  - {
+                      id: cart.summary.goods.label,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 14,
+                      color: $color.inkSecondary,
+                      content: "Товары (2)"
+                    }
+                  - {
+                      id: cart.summary.goods.value,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 14,
+                      fontWeight: 600,
+                      color: $color.ink,
+                      content: "2 180 ₽"
+                    }
+              - id: cart.summary.delivery
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, justifyContent: spaceBetween, alignItems: center }
+                children:
+                  - {
+                      id: cart.summary.delivery.label,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 14,
+                      color: $color.inkSecondary,
+                      content: "Доставка"
+                    }
+                  - {
+                      id: cart.summary.delivery.value,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 14,
+                      fontWeight: 600,
+                      color: $color.sage,
+                      content: "Бесплатно"
+                    }
+              - {
+                  id: cart.summary.divider,
+                  type: rect,
+                  size: [ fill, 1 ],
+                  fill: $color.line
+                }
+              - id: cart.summary.total
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, justifyContent: spaceBetween, alignItems: center }
+                children:
+                  - {
+                      id: cart.summary.total.label,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 16,
+                      fontWeight: 600,
+                      color: $color.ink,
+                      content: "Итого"
+                    }
+                  - {
+                      id: cart.summary.total.value,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Cormorant,
+                      fontSize: 27,
+                      fontWeight: 600,
+                      color: $color.ink,
+                      content: "2 180 ₽"
+                    }
+          - id: cart.checkout
+            type: instance
+            source: button
+            size: [ fill, 52 ]
+            values:
+              label: "Оформить заказ"
+              icon:
+                - {
+                    id: cart.checkout.icon,
+                    type: svg,
+                    size: [ 14, 14 ],
+                    icon: "fas:bag-shopping",
+                    fill: $color.onBtnPrimary
+                  }
+          - {
+              id: cart.hint,
+              type: text,
+              size: [ fill, hug ],
+              fontFamily: Manrope,
+              fontSize: 12,
+              color: $color.inkTertiary,
+              align: [ center, top ],
+              content: "Оплата и доставка — на стороне партнёра"
+            }
+      - id: cart.tabbar
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, direction: column }
+        children:
+          - { id: cart.tabbar.line, type: rect, size: [ fill, 1 ], fill: $color.line }
+          - id: cart.tabbar.items
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, padding: [ 13, 28, 16, 28 ], justifyContent: spaceBetween }
+            children:
+              - id: cart.tab.home
+                type: instance
+                source: tab-item
+                values:
+                  icon:
+                    - {
+                        id: cart.tab.home.icon,
+                        type: svg,
+                        size: [ 21, 21 ],
+                        icon: "fas:house",
+                        fill: $color.inkTertiary
+                      }
+              - id: cart.tab.fav
+                type: instance
+                source: tab-item
+                values:
+                  icon:
+                    - {
+                        id: cart.tab.fav.icon,
+                        type: svg,
+                        size: [ 21, 21 ],
+                        icon: "far:heart",
+                        fill: $color.inkTertiary
+                      }
+              - id: cart.tab.cart
+                type: instance
+                source: tab-item
+                values:
+                  active: true
+                  icon:
+                    - {
+                        id: cart.tab.cart.icon,
+                        type: svg,
+                        size: [ 21, 21 ],
+                        icon: "fas:bag-shopping",
+                        fill: $color.ink
+                      }
+              - id: cart.tab.profile
+                type: instance
+                source: tab-item
+                values:
+                  icon:
+                    - {
+                        id: cart.tab.profile.icon,
+                        type: svg,
+                        size: [ 21, 21 ],
+                        icon: "far:user",
+                        fill: $color.inkTertiary
+                      }
+      - id: cart.indicator
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, padding: [ 4, 0, 8, 0 ], justifyContent: center }
+        children:
+          - {
+              id: cart.indicator.bar,
+              type: rect,
+              size: [ 134, 5 ],
+              cornerRadius: 999,
+              fill: $color.homeIndicator
+            }
+  - id: note.profile
+    type: text
+    position: [ 1526, 82 ]
+    size: [ hug, hug ]
+    fontFamily: Manrope
+    fontSize: 34
+    fontWeight: 700
+    color: "#000000"
+    content: Профиль
+
+  - id: screen.profile
+    type: frame
+    position: [ 1526, 150 ]
+    size: [ 402, hug ]
+    layout: { type: flex, direction: column }
+    fill: $color.canvas
+    children:
+      - id: prof.content
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, direction: column, gap: 20, padding: [ 24, 20, 28, 20 ] }
+        children:
+          - id: prof.header
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, justifyContent: spaceBetween, alignItems: center }
+            children:
+              - {
+                  id: prof.header.title,
+                  type: text,
+                  size: [ hug, hug ],
+                  fontFamily: Cormorant,
+                  fontSize: 30,
+                  fontWeight: 500,
+                  lineHeight: 34,
+                  color: $color.ink,
+                  content: "Профиль"
+                }
+              - id: prof.header.actions
+                type: frame
+                size: [ hug, hug ]
+                layout: { type: flex, gap: 10 }
+                children:
+                  - id: prof.header.bell
+                    type: frame
+                    size: [ 40, 40 ]
+                    layout: { type: flex, alignItems: center, justifyContent: center }
+                    cornerRadius: 999
+                    stroke: { color: $color.line, width: 1, alignment: inside }
+                    children:
+                      - {
+                          id: prof.header.bell.icon,
+                          type: svg,
+                          size: [ 15, 15 ],
+                          icon: "far:bell",
+                          fill: $color.inkSecondary
+                        }
+                  - id: prof.header.gear
+                    type: frame
+                    size: [ 40, 40 ]
+                    layout: { type: flex, alignItems: center, justifyContent: center }
+                    cornerRadius: 999
+                    stroke: { color: $color.line, width: 1, alignment: inside }
+                    children:
+                      - {
+                          id: prof.header.gear.icon,
+                          type: svg,
+                          size: [ 15, 15 ],
+                          icon: "fas:gear",
+                          fill: $color.inkSecondary
+                        }
+          - id: prof.user
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, direction: column, gap: 14, padding: 18 }
+            fill: $color.surface
+            cornerRadius: 20
+            effects: $shadow.card
+            children:
+              - id: prof.user.row
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, gap: 14, alignItems: center }
+                children:
+                  - id: prof.user.avatar
+                    type: frame
+                    size: [ 56, 56 ]
+                    children:
+                      - id: prof.user.avatar.circle
+                        type: frame
+                        position: [ 0, 0 ]
+                        size: [ 56, 56 ]
+                        layout: { type: flex, alignItems: center, justifyContent: center }
+                        fill: $color.brassSoft
+                        cornerRadius: 999
+                        children:
+                          - {
+                              id: prof.user.avatar.initials,
+                              type: text,
+                              size: [ hug, hug ],
+                              fontFamily: Cormorant,
+                              fontSize: 23,
+                              fontWeight: 600,
+                              color: $color.brassDeep,
+                              content: "БУ"
+                            }
+                      - {
+                          id: prof.user.avatar.dot,
+                          type: ellipse,
+                          position: [ 42, 42 ],
+                          size: [ 12, 12 ],
+                          fill: $color.sage,
+                          stroke: { color: $color.surface, width: 2 }
+                        }
+                  - id: prof.user.texts
+                    type: frame
+                    size: [ fill, hug ]
+                    layout: { type: flex, direction: column, gap: 3 }
+                    children:
+                      - {
+                          id: prof.user.name,
+                          type: text,
+                          size: [ hug, hug ],
+                          fontFamily: Manrope,
+                          fontSize: 17,
+                          fontWeight: 700,
+                          color: $color.ink,
+                          content: "бурмалда"
+                        }
+                      - {
+                          id: prof.user.skin,
+                          type: text,
+                          size: [ hug, hug ],
+                          style: $text.caption,
+                          content: "Кожа: нормальная"
+                        }
+              - id: prof.user.chip
+                type: frame
+                size: [ hug, 30 ]
+                layout: { type: flex, gap: 7, padding: [ 0, 12 ], alignItems: center }
+                fill: $color.brassSoft
+                cornerRadius: 999
+                children:
+                  - {
+                      id: prof.user.chip.icon,
+                      type: svg,
+                      size: [ 11, 11 ],
+                      icon: "fas:medal",
+                      fill: $color.brassDeep
+                    }
+                  - {
+                      id: prof.user.chip.text,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 12,
+                      fontWeight: 600,
+                      color: $color.brassDeep,
+                      content: "Мужской уход, 18–24"
+                    }
+              - { id: prof.user.divider, type: rect, size: [ fill, 1 ], fill: $color.line }
+              - id: prof.user.segment
+                type: frame
+                size: [ fill, 36 ]
+                layout: { type: flex, gap: 2, padding: 3 }
+                fill: $color.sunken
+                cornerRadius: 999
+                children:
+                  - id: prof.user.seg.1
+                    type: frame
+                    size: [ fill, fill ]
+                    layout: { type: flex, alignItems: center, justifyContent: center }
+                    fill: $color.surface
+                    cornerRadius: 999
+                    children:
+                      - {
+                          id: prof.user.seg.1.text,
+                          type: text,
+                          size: [ hug, hug ],
+                          fontFamily: Manrope,
+                          fontSize: 12,
+                          fontWeight: 600,
+                          color: $color.ink,
+                          content: "Инициалы"
+                        }
+                  - id: prof.user.seg.2
+                    type: frame
+                    size: [ fill, fill ]
+                    layout: { type: flex, alignItems: center, justifyContent: center }
+                    cornerRadius: 999
+                    children:
+                      - {
+                          id: prof.user.seg.2.text,
+                          type: text,
+                          size: [ hug, hug ],
+                          fontFamily: Manrope,
+                          fontSize: 12,
+                          fontWeight: 500,
+                          color: $color.inkSecondary,
+                          content: "Своё фото"
+                        }
+                  - id: prof.user.seg.3
+                    type: frame
+                    size: [ fill, fill ]
+                    layout: { type: flex, alignItems: center, justifyContent: center }
+                    cornerRadius: 999
+                    children:
+                      - {
+                          id: prof.user.seg.3.text,
+                          type: text,
+                          size: [ hug, hug ],
+                          fontFamily: Manrope,
+                          fontSize: 12,
+                          fontWeight: 500,
+                          color: $color.inkSecondary,
+                          content: "Из Telegram"
+                        }
+          - id: prof.stats
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, gap: 12 }
+            children:
+              - id: prof.stat.scans
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, direction: column, gap: 6, padding: 16 }
+                fill: $color.surface
+                cornerRadius: 16
+                effects: $shadow.card
+                children:
+                  - {
+                      id: prof.stat.scans.icon,
+                      type: svg,
+                      size: [ 14, 14 ],
+                      icon: "fas:face-smile",
+                      fill: $color.brassDeep
+                    }
+                  - {
+                      id: prof.stat.scans.value,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Cormorant,
+                      fontSize: 30,
+                      fontWeight: 600,
+                      lineHeight: 32,
+                      color: $color.ink,
+                      content: "0"
+                    }
+                  - {
+                      id: prof.stat.scans.label,
+                      type: text,
+                      size: [ fill, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 11.5,
+                      lineHeight: 15,
+                      color: $color.inkSecondary,
+                      content: "анализов пройдено"
+                    }
+              - id: prof.stat.saved
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, direction: column, gap: 6, padding: 16 }
+                fill: $color.surface
+                cornerRadius: 16
+                effects: $shadow.card
+                children:
+                  - {
+                      id: prof.stat.saved.icon,
+                      type: svg,
+                      size: [ 14, 14 ],
+                      icon: "fas:piggy-bank",
+                      fill: $color.sage
+                    }
+                  - {
+                      id: prof.stat.saved.value,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Cormorant,
+                      fontSize: 30,
+                      fontWeight: 600,
+                      lineHeight: 32,
+                      color: $color.ink,
+                      content: "0 ₽"
+                    }
+                  - {
+                      id: prof.stat.saved.label,
+                      type: text,
+                      size: [ fill, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 11.5,
+                      lineHeight: 15,
+                      color: $color.inkSecondary,
+                      content: "экономия на лишних банках"
+                    }
+          - id: prof.streak
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, gap: 14, padding: [ 16, 18 ], alignItems: center }
+            fill: $color.dark
+            cornerRadius: 20
+            effects: $shadow.card
+            children:
+              - id: prof.streak.tile
+                type: frame
+                size: [ 44, 44 ]
+                layout: { type: flex, alignItems: center, justifyContent: center }
+                fill: $color.darkSoft
+                cornerRadius: 12
+                children:
+                  - {
+                      id: prof.streak.icon,
+                      type: svg,
+                      size: [ 17, 17 ],
+                      icon: "fas:fire",
+                      fill: "#D97B52"
+                    }
+              - id: prof.streak.texts
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, direction: column, gap: 3 }
+                children:
+                  - {
+                      id: prof.streak.title,
+                      type: text,
+                      size: [ fill, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 15,
+                      fontWeight: 600,
+                      color: $color.ivory,
+                      content: "Стрик ухода"
+                    }
+                  - {
+                      id: prof.streak.caption,
+                      type: text,
+                      size: [ 180, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 12,
+                      lineHeight: 16,
+                      color: $color.ivoryDim,
+                      content: "Сделай первый AI-скан, чтобы начать отсчёт"
+                    }
+              - {
+                  id: prof.streak.value,
+                  type: text,
+                  size: [ hug, hug ],
+                  fontFamily: Cormorant,
+                  fontSize: 24,
+                  fontWeight: 600,
+                  color: $color.ivory,
+                  content: "0 дн."
+                }
+          - id: prof.survey
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, direction: column, gap: 12, padding: 18 }
+            fill: $color.surface
+            cornerRadius: 20
+            effects: $shadow.card
+            children:
+              - id: prof.survey.header
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, justifyContent: spaceBetween, alignItems: center }
+                children:
+                  - {
+                      id: prof.survey.title,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 15,
+                      fontWeight: 600,
+                      color: $color.ink,
+                      content: "Анкета кожи"
+                    }
+                  - {
+                      id: prof.survey.edit,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 13,
+                      fontWeight: 600,
+                      color: $color.brass,
+                      content: "Изменить"
+                    }
+              - id: prof.survey.row.1
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, direction: column, gap: 2 }
+                children:
+                  - {
+                      id: prof.survey.row.1.label,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 11.5,
+                      color: $color.inkTertiary,
+                      content: "Поведение кожи днём"
+                    }
+                  - {
+                      id: prof.survey.row.1.value,
+                      type: text,
+                      size: [ fill, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 13.5,
+                      lineHeight: 19,
+                      color: $color.ink,
+                      content: "В целом комфортно, ничего не беспокоит"
+                    }
+              - { id: prof.survey.div.1, type: rect, size: [ fill, 1 ], fill: $color.line }
+              - id: prof.survey.row.2
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, direction: column, gap: 2 }
+                children:
+                  - {
+                      id: prof.survey.row.2.label,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 11.5,
+                      color: $color.inkTertiary,
+                      content: "Задачи"
+                    }
+                  - {
+                      id: prof.survey.row.2.value,
+                      type: text,
+                      size: [ fill, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 13.5,
+                      lineHeight: 19,
+                      color: $color.ink,
+                      content: "Базовый уход на каждый день, чёрные точки и поры, воспаления"
+                    }
+              - { id: prof.survey.div.2, type: rect, size: [ fill, 1 ], fill: $color.line }
+              - id: prof.survey.row.3
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, direction: column, gap: 2 }
+                children:
+                  - {
+                      id: prof.survey.row.3.label,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 11.5,
+                      color: $color.inkTertiary,
+                      content: "Бюджет на средство"
+                    }
+                  - {
+                      id: prof.survey.row.3.value,
+                      type: text,
+                      size: [ fill, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 13.5,
+                      lineHeight: 19,
+                      color: $color.ink,
+                      content: "1 000 – 2 500 ₽"
+                    }
+          - id: prof.history
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, direction: column, gap: 12 }
+            children:
+              - id: prof.history.header
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, justifyContent: spaceBetween, alignItems: center }
+                children:
+                  - {
+                      id: prof.history.title,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 15,
+                      fontWeight: 600,
+                      color: $color.ink,
+                      content: "История сканирований"
+                    }
+                  - {
+                      id: prof.history.new,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 13,
+                      fontWeight: 600,
+                      color: $color.brass,
+                      content: "+ Новый анализ"
+                    }
+              - id: prof.history.empty
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, padding: [ 18, 20 ] }
+                fill: $color.sunken
+                cornerRadius: 16
+                children:
+                  - {
+                      id: prof.history.empty.text,
+                      type: text,
+                      size: [ 318, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 13,
+                      lineHeight: 18,
+                      color: $color.inkSecondary,
+                      align: [ center, top ],
+                      content: "Пока пусто — проведи первый AI-скан кожи"
+                    }
+          - id: prof.scan
+            type: instance
+            source: button
+            size: [ fill, 52 ]
+            values:
+              label: "Запустить AI-скан кожи"
+              icon:
+                - {
+                    id: prof.scan.icon,
+                    type: svg,
+                    size: [ 15, 15 ],
+                    icon: "fas:face-smile",
+                    fill: $color.onBtnPrimary
+                  }
+          - {
+              id: prof.reset,
+              type: text,
+              size: [ hug, hug ],
+              alignSelf: center,
+              fontFamily: Manrope,
+              fontSize: 13,
+              fontWeight: 600,
+              color: $color.danger,
+              content: "Сбросить профиль и начать заново"
+            }
+      - id: prof.tabbar
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, direction: column }
+        children:
+          - { id: prof.tabbar.line, type: rect, size: [ fill, 1 ], fill: $color.line }
+          - id: prof.tabbar.items
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, padding: [ 13, 28, 16, 28 ], justifyContent: spaceBetween }
+            children:
+              - id: prof.tab.home
+                type: instance
+                source: tab-item
+                values:
+                  icon:
+                    - {
+                        id: prof.tab.home.icon,
+                        type: svg,
+                        size: [ 21, 21 ],
+                        icon: "fas:house",
+                        fill: $color.inkTertiary
+                      }
+              - id: prof.tab.fav
+                type: instance
+                source: tab-item
+                values:
+                  icon:
+                    - {
+                        id: prof.tab.fav.icon,
+                        type: svg,
+                        size: [ 21, 21 ],
+                        icon: "far:heart",
+                        fill: $color.inkTertiary
+                      }
+              - id: prof.tab.cart
+                type: instance
+                source: tab-item
+                values:
+                  icon:
+                    - {
+                        id: prof.tab.cart.icon,
+                        type: svg,
+                        size: [ 21, 21 ],
+                        icon: "fas:bag-shopping",
+                        fill: $color.inkTertiary
+                      }
+              - id: prof.tab.profile
+                type: instance
+                source: tab-item
+                values:
+                  active: true
+                  icon:
+                    - {
+                        id: prof.tab.profile.icon,
+                        type: svg,
+                        size: [ 21, 21 ],
+                        icon: "fas:user",
+                        fill: $color.ink
+                      }
+      - id: prof.indicator
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, padding: [ 4, 0, 8, 0 ], justifyContent: center }
+        children:
+          - {
+              id: prof.indicator.bar,
+              type: rect,
+              size: [ 134, 5 ],
+              cornerRadius: 999,
+              fill: $color.homeIndicator
+            }
+
+  - id: note.scan
+    type: text
+    position: [ 80, 1532 ]
+    size: [ hug, hug ]
+    fontFamily: Manrope
+    fontSize: 34
+    fontWeight: 700
+    color: "#000000"
+    content: AI-скан
+
+  - id: screen.scan
+    type: frame
+    position: [ 80, 1600 ]
+    size: [ 402, hug ]
+    layout: { type: flex, direction: column }
+    fill: $color.canvas
+    children:
+      - id: scan.content
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, direction: column, gap: 20, padding: [ 24, 20, 28, 20 ] }
+        children:
+          - id: scan.header
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, gap: 14, alignItems: center }
+            children:
+              - id: scan.back
+                type: instance
+                source: icon-button
+                values:
+                  icon:
+                    - {
+                        id: scan.back.icon,
+                        type: svg,
+                        size: [ 14, 14 ],
+                        icon: "fas:chevron-left",
+                        fill: $color.ink
+                      }
+              - id: scan.header.texts
+                type: frame
+                size: [ hug, hug ]
+                layout: { type: flex, direction: column, gap: 4 }
+                children:
+                  - {
+                      id: scan.header.overline,
+                      type: text,
+                      size: [ hug, hug ],
+                      style: $text.overline,
+                      content: "ДИАГНОСТИКА"
+                    }
+                  - {
+                      id: scan.header.title,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Cormorant,
+                      fontSize: 26,
+                      fontWeight: 500,
+                      lineHeight: 30,
+                      color: $color.ink,
+                      content: "AI-скан кожи"
+                    }
+          - id: scan.viewfinder
+            type: frame
+            size: [ fill, 380 ]
+            layout: { type: free, overflow: hidden }
+            fill: $color.dark
+            cornerRadius: 20
+            effects: $shadow.card
+            children:
+              - {
+                  id: scan.face,
+                  type: ellipse,
+                  position: [ 91, 58 ],
+                  size: [ 180, 240 ],
+                  stroke: { color: $color.brassLight, width: 1.5, style: dash }
+                }
+              - {
+                  id: scan.line,
+                  type: rect,
+                  position: [ 40, 190 ],
+                  size: [ 282, 2 ],
+                  cornerRadius: 1,
+                  fill:
+                    {
+                      type: linearGradient,
+                      angle: 0,
+                      stops: [ [ 0, "#CDA87200" ], [ 0.5, "#CDA872" ], [ 1, "#CDA87200" ] ]
+                    }
+                }
+              - {
+                  id: scan.hint,
+                  type: text,
+                  position: [ 0, 328 ],
+                  size: [ 362, hug ],
+                  fontFamily: Manrope,
+                  fontSize: 12,
+                  color: $color.ivoryDim,
+                  align: [ center, top ],
+                  content: "Расположи лицо в овале"
+                }
+          - id: scan.tips
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, direction: column, gap: 4, padding: [ 14, 18 ] }
+            fill: $color.surface
+            cornerRadius: 20
+            effects: $shadow.card
+            children:
+              - id: scan.tip.1
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, gap: 12, padding: [ 8, 0 ], alignItems: center }
+                children:
+                  - id: scan.tip.1.tile
+                    type: frame
+                    size: [ 36, 36 ]
+                    layout: { type: flex, alignItems: center, justifyContent: center }
+                    fill: $color.brassSoft
+                    cornerRadius: 10
+                    children:
+                      - {
+                          id: scan.tip.1.icon,
+                          type: svg,
+                          size: [ 14, 14 ],
+                          icon: "fas:sun",
+                          fill: $color.brassDeep
+                        }
+                  - {
+                      id: scan.tip.1.text,
+                      type: text,
+                      size: [ fill, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 13.5,
+                      lineHeight: 19,
+                      color: $color.ink,
+                      content: "Дневной свет, без фильтров"
+                    }
+              - id: scan.tip.2
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, gap: 12, padding: [ 8, 0 ], alignItems: center }
+                children:
+                  - id: scan.tip.2.tile
+                    type: frame
+                    size: [ 36, 36 ]
+                    layout: { type: flex, alignItems: center, justifyContent: center }
+                    fill: $color.brassSoft
+                    cornerRadius: 10
+                    children:
+                      - {
+                          id: scan.tip.2.icon,
+                          type: svg,
+                          size: [ 14, 14 ],
+                          icon: "fas:droplet",
+                          fill: $color.brassDeep
+                        }
+                  - {
+                      id: scan.tip.2.text,
+                      type: text,
+                      size: [ fill, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 13.5,
+                      lineHeight: 19,
+                      color: $color.ink,
+                      content: "Чистая кожа, без макияжа"
+                    }
+              - id: scan.tip.3
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, gap: 12, padding: [ 8, 0 ], alignItems: center }
+                children:
+                  - id: scan.tip.3.tile
+                    type: frame
+                    size: [ 36, 36 ]
+                    layout: { type: flex, alignItems: center, justifyContent: center }
+                    fill: $color.brassSoft
+                    cornerRadius: 10
+                    children:
+                      - {
+                          id: scan.tip.3.icon,
+                          type: svg,
+                          size: [ 14, 14 ],
+                          icon: "fas:camera",
+                          fill: $color.brassDeep
+                        }
+                  - {
+                      id: scan.tip.3.text,
+                      type: text,
+                      size: [ fill, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 13.5,
+                      lineHeight: 19,
+                      color: $color.ink,
+                      content: "Камера на уровне глаз"
+                    }
+          - id: scan.capture
+            type: instance
+            source: button
+            size: [ fill, 52 ]
+            values:
+              label: "Снять селфи"
+              icon:
+                - {
+                    id: scan.capture.icon,
+                    type: svg,
+                    size: [ 15, 15 ],
+                    icon: "fas:camera",
+                    fill: $color.onBtnPrimary
+                  }
+          - id: scan.upload
+            type: instance
+            source: button
+            size: [ fill, 52 ]
+            values: { kind: outline, label: "Загрузить из галереи" }
+          - {
+              id: scan.privacy,
+              type: text,
+              size: [ fill, hug ],
+              fontFamily: Manrope,
+              fontSize: 12,
+              lineHeight: 16,
+              color: $color.inkTertiary,
+              align: [ center, top ],
+              content: "Фото обрабатывается локально и не сохраняется"
+            }
+      - id: scan.indicator
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, padding: [ 4, 0, 8, 0 ], justifyContent: center }
+        children:
+          - {
+              id: scan.indicator.bar,
+              type: rect,
+              size: [ 134, 5 ],
+              cornerRadius: 999,
+              fill: $color.homeIndicator
+            }
+
+  - id: note.scanresult
+    type: text
+    position: [ 562, 1532 ]
+    size: [ hug, hug ]
+    fontFamily: Manrope
+    fontSize: 34
+    fontWeight: 700
+    color: "#000000"
+    content: Результат скана
+
+  - id: screen.scanResult
+    type: frame
+    position: [ 562, 1600 ]
+    size: [ 402, hug ]
+    layout: { type: flex, direction: column }
+    fill: $color.canvas
+    children:
+      - id: scanResult.content
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, direction: column, gap: 20, padding: [ 24, 20, 28, 20 ] }
+        children:
+          - id: scanResult.header
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, gap: 14, alignItems: center }
+            children:
+              - id: scanResult.close
+                type: instance
+                source: icon-button
+                values:
+                  icon:
+                    - {
+                        id: scanResult.close.icon,
+                        type: svg,
+                        size: [ 14, 14 ],
+                        icon: "fas:xmark",
+                        fill: $color.ink
+                      }
+              - id: scanResult.header.texts
+                type: frame
+                size: [ hug, hug ]
+                layout: { type: flex, direction: column, gap: 4 }
+                children:
+                  - {
+                      id: scanResult.header.overline,
+                      type: text,
+                      size: [ hug, hug ],
+                      style: $text.overline,
+                      content: "РЕЗУЛЬТАТ АНАЛИЗА"
+                    }
+                  - {
+                      id: scanResult.header.title,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Cormorant,
+                      fontSize: 26,
+                      fontWeight: 500,
+                      lineHeight: 30,
+                      color: $color.ink,
+                      content: "Индекс кожи"
+                    }
+          - id: scanResult.score
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, direction: column, gap: 14, padding: 22 }
+            fill: $color.dark
+            cornerRadius: 20
+            effects: $shadow.card
+            children:
+              - id: scanResult.score.top
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, justifyContent: spaceBetween, alignItems: end }
+                children:
+                  - id: scanResult.score.left
+                    type: frame
+                    size: [ hug, hug ]
+                    layout: { type: flex, direction: column, gap: 6 }
+                    children:
+                      - {
+                          id: scanResult.score.overline,
+                          type: text,
+                          size: [ hug, hug ],
+                          style: $text.overline,
+                          color: $color.brassLight,
+                          content: "ОБЩИЙ ИНДЕКС"
+                        }
+                      - id: scanResult.score.row
+                        type: frame
+                        size: [ hug, hug ]
+                        layout: { type: flex, gap: 6, alignItems: end }
+                        children:
+                          - {
+                              id: scanResult.score.value,
+                              type: text,
+                              size: [ hug, hug ],
+                              fontFamily: Cormorant,
+                              fontSize: 52,
+                              fontWeight: 600,
+                              lineHeight: 52,
+                              color: $color.ivory,
+                              content: "78"
+                            }
+                          - {
+                              id: scanResult.score.max,
+                              type: text,
+                              size: [ hug, hug ],
+                              margin: [ 0, 0, 4, 0 ],
+                              fontFamily: Manrope,
+                              fontSize: 14,
+                              color: $color.ivoryDim,
+                              content: "/ 100"
+                            }
+                  - id: scanResult.score.chip
+                    type: instance
+                    source: chip
+                    values: { kind: soft, label: "Хорошее состояние" }
+              - id: scanResult.score.track
+                type: frame
+                size: [ fill, 4 ]
+                layout: { type: free, overflow: hidden }
+                fill: $color.darkSoft
+                cornerRadius: 999
+                children:
+                  - {
+                      id: scanResult.score.fill,
+                      type: rect,
+                      position: [ 0, 0 ],
+                      size: [ "78%", 4 ],
+                      cornerRadius: 999,
+                      fill: $color.brass
+                    }
+              - {
+                  id: scanResult.score.caption,
+                  type: text,
+                  size: [ hug, hug ],
+                  fontFamily: Manrope,
+                  fontSize: 12,
+                  color: $color.ivoryDim,
+                  content: "Скан от 15 ноября, 14:20"
+                }
+          - id: scanResult.metrics
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, direction: column, gap: 14, padding: 18 }
+            fill: $color.surface
+            cornerRadius: 20
+            effects: $shadow.card
+            children:
+              - {
+                  id: scanResult.metrics.title,
+                  type: text,
+                  size: [ hug, hug ],
+                  style: $text.headline,
+                  fontSize: 15,
+                  content: "Метрики"
+                }
+              - id: scanResult.metric.1
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, direction: column, gap: 6 }
+                children:
+                  - id: scanResult.metric.1.row
+                    type: frame
+                    size: [ fill, hug ]
+                    layout: { type: flex, justifyContent: spaceBetween, alignItems: center }
+                    children:
+                      - {
+                          id: scanResult.metric.1.label,
+                          type: text,
+                          size: [ hug, hug ],
+                          fontFamily: Manrope,
+                          fontSize: 13,
+                          color: $color.inkSecondary,
+                          content: "Увлажнённость"
+                        }
+                      - {
+                          id: scanResult.metric.1.value,
+                          type: text,
+                          size: [ hug, hug ],
+                          fontFamily: Manrope,
+                          fontSize: 13,
+                          fontWeight: 700,
+                          color: $color.ink,
+                          content: "82"
+                        }
+                  - id: scanResult.metric.1.track
+                    type: frame
+                    size: [ fill, 3 ]
+                    layout: { type: free, overflow: hidden }
+                    fill: $color.sunken
+                    cornerRadius: 999
+                    children:
+                      - {
+                          id: scanResult.metric.1.fill,
+                          type: rect,
+                          position: [ 0, 0 ],
+                          size: [ "82%", 3 ],
+                          cornerRadius: 999,
+                          fill: $color.sage
+                        }
+              - id: scanResult.metric.2
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, direction: column, gap: 6 }
+                children:
+                  - id: scanResult.metric.2.row
+                    type: frame
+                    size: [ fill, hug ]
+                    layout: { type: flex, justifyContent: spaceBetween, alignItems: center }
+                    children:
+                      - {
+                          id: scanResult.metric.2.label,
+                          type: text,
+                          size: [ hug, hug ],
+                          fontFamily: Manrope,
+                          fontSize: 13,
+                          color: $color.inkSecondary,
+                          content: "Тон и текстура"
+                        }
+                      - {
+                          id: scanResult.metric.2.value,
+                          type: text,
+                          size: [ hug, hug ],
+                          fontFamily: Manrope,
+                          fontSize: 13,
+                          fontWeight: 700,
+                          color: $color.ink,
+                          content: "74"
+                        }
+                  - id: scanResult.metric.2.track
+                    type: frame
+                    size: [ fill, 3 ]
+                    layout: { type: free, overflow: hidden }
+                    fill: $color.sunken
+                    cornerRadius: 999
+                    children:
+                      - {
+                          id: scanResult.metric.2.fill,
+                          type: rect,
+                          position: [ 0, 0 ],
+                          size: [ "74%", 3 ],
+                          cornerRadius: 999,
+                          fill: $color.brass
+                        }
+              - id: scanResult.metric.3
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, direction: column, gap: 6 }
+                children:
+                  - id: scanResult.metric.3.row
+                    type: frame
+                    size: [ fill, hug ]
+                    layout: { type: flex, justifyContent: spaceBetween, alignItems: center }
+                    children:
+                      - {
+                          id: scanResult.metric.3.label,
+                          type: text,
+                          size: [ hug, hug ],
+                          fontFamily: Manrope,
+                          fontSize: 13,
+                          color: $color.inkSecondary,
+                          content: "Поры"
+                        }
+                      - {
+                          id: scanResult.metric.3.value,
+                          type: text,
+                          size: [ hug, hug ],
+                          fontFamily: Manrope,
+                          fontSize: 13,
+                          fontWeight: 700,
+                          color: $color.ink,
+                          content: "68"
+                        }
+                  - id: scanResult.metric.3.track
+                    type: frame
+                    size: [ fill, 3 ]
+                    layout: { type: free, overflow: hidden }
+                    fill: $color.sunken
+                    cornerRadius: 999
+                    children:
+                      - {
+                          id: scanResult.metric.3.fill,
+                          type: rect,
+                          position: [ 0, 0 ],
+                          size: [ "68%", 3 ],
+                          cornerRadius: 999,
+                          fill: $color.brass
+                        }
+              - id: scanResult.metric.4
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, direction: column, gap: 6 }
+                children:
+                  - id: scanResult.metric.4.row
+                    type: frame
+                    size: [ fill, hug ]
+                    layout: { type: flex, justifyContent: spaceBetween, alignItems: center }
+                    children:
+                      - {
+                          id: scanResult.metric.4.label,
+                          type: text,
+                          size: [ hug, hug ],
+                          fontFamily: Manrope,
+                          fontSize: 13,
+                          color: $color.inkSecondary,
+                          content: "Воспаления"
+                        }
+                      - {
+                          id: scanResult.metric.4.value,
+                          type: text,
+                          size: [ hug, hug ],
+                          fontFamily: Manrope,
+                          fontSize: 13,
+                          fontWeight: 700,
+                          color: $color.ink,
+                          content: "91"
+                        }
+                  - id: scanResult.metric.4.track
+                    type: frame
+                    size: [ fill, 3 ]
+                    layout: { type: free, overflow: hidden }
+                    fill: $color.sunken
+                    cornerRadius: 999
+                    children:
+                      - {
+                          id: scanResult.metric.4.fill,
+                          type: rect,
+                          position: [ 0, 0 ],
+                          size: [ "91%", 3 ],
+                          cornerRadius: 999,
+                          fill: $color.sage
+                        }
+          - id: scanResult.advice
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, direction: column, gap: 6, padding: 16 }
+            fill: $color.brassSoft
+            cornerRadius: 16
+            children:
+              - {
+                  id: scanResult.advice.overline,
+                  type: text,
+                  size: [ hug, hug ],
+                  style: $text.overline,
+                  color: $color.brassDeep,
+                  content: "РЕКОМЕНДАЦИЯ КОНСЕРЖА"
+                }
+              - {
+                  id: scanResult.advice.text,
+                  type: text,
+                  size: [ fill, hug ],
+                  fontFamily: Manrope,
+                  fontSize: 13,
+                  lineHeight: 19,
+                  color: $color.ink,
+                  content: "Лёгкое увлажнение утром, мягкое очищение вечером и SPF каждый день —
+                    даже зимой."
+                }
+          - id: scanResult.cta
+            type: instance
+            source: button
+            size: [ fill, 52 ]
+            values:
+              label: "Сформировать уход"
+              icon:
+                - {
+                    id: scanResult.cta.icon,
+                    type: svg,
+                    size: [ 14, 14 ],
+                    icon: "fas:wand-magic-sparkles",
+                    fill: $color.onBtnPrimary
+                  }
+          - {
+              id: scanResult.saved,
+              type: text,
+              size: [ fill, hug ],
+              fontFamily: Manrope,
+              fontSize: 12,
+              color: $color.inkTertiary,
+              align: [ center, top ],
+              content: "Результат сохранён в истории сканирований"
+            }
+      - id: scanResult.indicator
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, padding: [ 4, 0, 8, 0 ], justifyContent: center }
+        children:
+          - {
+              id: scanResult.indicator.bar,
+              type: rect,
+              size: [ 134, 5 ],
+              cornerRadius: 999,
+              fill: $color.homeIndicator
+            }
+
+  - id: note.inci
+    type: text
+    position: [ 1044, 1532 ]
+    size: [ hug, hug ]
+    fontFamily: Manrope
+    fontSize: 34
+    fontWeight: 700
+    color: "#000000"
+    content: INCI-сканер
+
+  - id: screen.inci
+    type: frame
+    position: [ 1044, 1600 ]
+    size: [ 402, hug ]
+    layout: { type: flex, direction: column }
+    fill: $color.canvas
+    children:
+      - id: inci.content
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, direction: column, gap: 20, padding: [ 24, 20, 28, 20 ] }
+        children:
+          - id: inci.header
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, gap: 14, alignItems: center }
+            children:
+              - id: inci.back
+                type: instance
+                source: icon-button
+                values:
+                  icon:
+                    - {
+                        id: inci.back.icon,
+                        type: svg,
+                        size: [ 14, 14 ],
+                        icon: "fas:chevron-left",
+                        fill: $color.ink
+                      }
+              - id: inci.header.texts
+                type: frame
+                size: [ hug, hug ]
+                layout: { type: flex, direction: column, gap: 4 }
+                children:
+                  - {
+                      id: inci.header.overline,
+                      type: text,
+                      size: [ hug, hug ],
+                      style: $text.overline,
+                      content: "INCI-СКАНЕР"
+                    }
+                  - {
+                      id: inci.header.title,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Cormorant,
+                      fontSize: 26,
+                      fontWeight: 500,
+                      lineHeight: 30,
+                      color: $color.ink,
+                      content: "Разбор состава"
+                    }
+          - id: inci.product
+            type: instance
+            source: product-card
+            size: [ fill, hug ]
+            values:
+              name: "Сыворотка с ниацинамидом 10%"
+              brand: "The Ordinary"
+              price: "1 290 ₽"
+              image: { type: image, src: assets/product-serum.png, fit: contain }
+          - id: inci.verdict
+            type: instance
+            source: action-row
+            size: [ fill, hug ]
+            values:
+              kind: dark
+              title: "Подходит твоей коже"
+              caption: "0 комедогенных, 1 умеренный конфликт"
+              icon:
+                - {
+                    id: inci.verdict.icon,
+                    type: svg,
+                    size: [ 16, 16 ],
+                    icon: "fas:shield-halved",
+                    fill: $color.brassLight
+                  }
+          - id: inci.list
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, direction: column, gap: 12, padding: 18 }
+            fill: $color.surface
+            cornerRadius: 20
+            effects: $shadow.card
+            children:
+              - id: inci.list.header
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, justifyContent: spaceBetween, alignItems: center }
+                children:
+                  - {
+                      id: inci.list.title,
+                      type: text,
+                      size: [ hug, hug ],
+                      style: $text.headline,
+                      fontSize: 15,
+                      content: "Состав"
+                    }
+                  - {
+                      id: inci.list.count,
+                      type: text,
+                      size: [ hug, hug ],
+                      style: $text.caption,
+                      content: "12 компонентов"
+                    }
+              - id: inci.ing.1
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, gap: 12, alignItems: start }
+                children:
+                  - {
+                      id: inci.ing.1.dot,
+                      type: ellipse,
+                      size: [ 8, 8 ],
+                      margin: [ 5, 0, 0, 0 ],
+                      fill: $color.sage
+                    }
+                  - id: inci.ing.1.texts
+                    type: frame
+                    size: [ fill, hug ]
+                    layout: { type: flex, direction: column, gap: 2 }
+                    children:
+                      - {
+                          id: inci.ing.1.name,
+                          type: text,
+                          size: [ fill, hug ],
+                          fontFamily: Manrope,
+                          fontSize: 13.5,
+                          fontWeight: 600,
+                          color: $color.ink,
+                          content: "Ниацинамид 10%"
+                        }
+                      - {
+                          id: inci.ing.1.note,
+                          type: text,
+                          size: [ fill, hug ],
+                          fontFamily: Manrope,
+                          fontSize: 12,
+                          lineHeight: 16,
+                          color: $color.inkSecondary,
+                          content: "Сужает поры, выравнивает тон"
+                        }
+              - { id: inci.ing.div.1, type: rect, size: [ fill, 1 ], fill: $color.line }
+              - id: inci.ing.2
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, gap: 12, alignItems: start }
+                children:
+                  - {
+                      id: inci.ing.2.dot,
+                      type: ellipse,
+                      size: [ 8, 8 ],
+                      margin: [ 5, 0, 0, 0 ],
+                      fill: $color.sage
+                    }
+                  - id: inci.ing.2.texts
+                    type: frame
+                    size: [ fill, hug ]
+                    layout: { type: flex, direction: column, gap: 2 }
+                    children:
+                      - {
+                          id: inci.ing.2.name,
+                          type: text,
+                          size: [ fill, hug ],
+                          fontFamily: Manrope,
+                          fontSize: 13.5,
+                          fontWeight: 600,
+                          color: $color.ink,
+                          content: "Глицерин"
+                        }
+                      - {
+                          id: inci.ing.2.note,
+                          type: text,
+                          size: [ fill, hug ],
+                          fontFamily: Manrope,
+                          fontSize: 12,
+                          lineHeight: 16,
+                          color: $color.inkSecondary,
+                          content: "Базовое увлажнение"
+                        }
+              - { id: inci.ing.div.2, type: rect, size: [ fill, 1 ], fill: $color.line }
+              - id: inci.ing.3
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, gap: 12, alignItems: start }
+                children:
+                  - {
+                      id: inci.ing.3.dot,
+                      type: ellipse,
+                      size: [ 8, 8 ],
+                      margin: [ 5, 0, 0, 0 ],
+                      fill: $color.terracotta
+                    }
+                  - id: inci.ing.3.texts
+                    type: frame
+                    size: [ fill, hug ]
+                    layout: { type: flex, direction: column, gap: 2 }
+                    children:
+                      - {
+                          id: inci.ing.3.name,
+                          type: text,
+                          size: [ fill, hug ],
+                          fontFamily: Manrope,
+                          fontSize: 13.5,
+                          fontWeight: 600,
+                          color: $color.ink,
+                          content: "Денатурированный спирт"
+                        }
+                      - {
+                          id: inci.ing.3.note,
+                          type: text,
+                          size: [ fill, hug ],
+                          fontFamily: Manrope,
+                          fontSize: 12,
+                          lineHeight: 16,
+                          color: $color.inkSecondary,
+                          content: "Может сушить при ежедневном использовании"
+                        }
+              - { id: inci.ing.div.3, type: rect, size: [ fill, 1 ], fill: $color.line }
+              - id: inci.ing.4
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, gap: 12, alignItems: start }
+                children:
+                  - {
+                      id: inci.ing.4.dot,
+                      type: ellipse,
+                      size: [ 8, 8 ],
+                      margin: [ 5, 0, 0, 0 ],
+                      fill: $color.terracotta
+                    }
+                  - id: inci.ing.4.texts
+                    type: frame
+                    size: [ fill, hug ]
+                    layout: { type: flex, direction: column, gap: 2 }
+                    children:
+                      - {
+                          id: inci.ing.4.name,
+                          type: text,
+                          size: [ fill, hug ],
+                          fontFamily: Manrope,
+                          fontSize: 13.5,
+                          fontWeight: 600,
+                          color: $color.ink,
+                          content: "Отдушка"
+                        }
+                      - {
+                          id: inci.ing.4.note,
+                          type: text,
+                          size: [ fill, hug ],
+                          fontFamily: Manrope,
+                          fontSize: 12,
+                          lineHeight: 16,
+                          color: $color.inkSecondary,
+                          content: "Может раздражать чувствительную кожу"
+                        }
+          - id: inci.conflict
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, gap: 12, padding: 16, alignItems: start }
+            fill: $color.brassSoft
+            cornerRadius: 16
+            children:
+              - {
+                  id: inci.conflict.icon,
+                  type: svg,
+                  size: [ 15, 15 ],
+                  margin: [ 2, 0, 0, 0 ],
+                  icon: "fas:triangle-exclamation",
+                  fill: $color.brassDeep
+                }
+              - {
+                  id: inci.conflict.text,
+                  type: text,
+                  size: [ 290, hug ],
+                  fontFamily: Manrope,
+                  fontSize: 13,
+                  lineHeight: 19,
+                  color: $color.ink,
+                  content: "Не сочетай с ретинолом в один вечер — возможно раздражение."
+                }
+          - id: inci.actions
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, gap: 10 }
+            children:
+              - id: inci.fav
+                type: instance
+                source: button
+                size: [ fill, 52 ]
+                values: { kind: outline, label: "В избранное" }
+              - id: inci.buy
+                type: instance
+                source: button
+                size: [ fill, 52 ]
+                values: { label: "Где купить" }
+      - id: inci.indicator
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, padding: [ 4, 0, 8, 0 ], justifyContent: center }
+        children:
+          - {
+              id: inci.indicator.bar,
+              type: rect,
+              size: [ 134, 5 ],
+              cornerRadius: 999,
+              fill: $color.homeIndicator
+            }
+
+  - id: note.quiz
+    type: text
+    position: [ 1526, 1532 ]
+    size: [ hug, hug ]
+    fontFamily: Manrope
+    fontSize: 34
+    fontWeight: 700
+    color: "#000000"
+    content: Анкета
+
+  - id: screen.quiz
+    type: frame
+    position: [ 1526, 1600 ]
+    size: [ 402, hug ]
+    layout: { type: flex, direction: column }
+    fill: $color.canvas
+    children:
+      - id: quiz.content
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, direction: column, gap: 20, padding: [ 24, 20, 28, 20 ] }
+        children:
+          - id: quiz.header
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, gap: 14, alignItems: center }
+            children:
+              - id: quiz.back
+                type: instance
+                source: icon-button
+                values:
+                  icon:
+                    - {
+                        id: quiz.back.icon,
+                        type: svg,
+                        size: [ 14, 14 ],
+                        icon: "fas:chevron-left",
+                        fill: $color.ink
+                      }
+              - id: quiz.header.texts
+                type: frame
+                size: [ hug, hug ]
+                layout: { type: flex, direction: column, gap: 4 }
+                children:
+                  - {
+                      id: quiz.header.overline,
+                      type: text,
+                      size: [ hug, hug ],
+                      style: $text.overline,
+                      content: "АНКЕТА — ВОПРОС 2 ИЗ 6"
+                    }
+                  - {
+                      id: quiz.header.title,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Cormorant,
+                      fontSize: 26,
+                      fontWeight: 500,
+                      lineHeight: 30,
+                      color: $color.ink,
+                      content: "Поведение кожи"
+                    }
+          - id: quiz.progress
+            type: frame
+            size: [ fill, 4 ]
+            layout: { type: free, overflow: hidden }
+            fill: $color.sunken
+            cornerRadius: 999
+            children:
+              - {
+                  id: quiz.progress.fill,
+                  type: rect,
+                  position: [ 0, 0 ],
+                  size: [ "33%", 4 ],
+                  cornerRadius: 999,
+                  fill: $color.brass
+                }
+          - {
+              id: quiz.question,
+              type: text,
+              size: [ fill, hug ],
+              fontFamily: Cormorant,
+              fontSize: 24,
+              fontWeight: 500,
+              lineHeight: 29,
+              color: $color.ink,
+              content: "Как кожа ведёт себя к концу дня?"
+            }
+          - id: quiz.options
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, direction: column, gap: 10 }
+            children:
+              - id: quiz.opt.1
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, gap: 12, padding: [ 16, 18 ], alignItems: center }
+                fill: $color.brassSoft
+                cornerRadius: 16
+                stroke: { color: $color.brass, width: 1, alignment: inside }
+                children:
+                  - id: quiz.opt.1.radio
+                    type: frame
+                    size: [ 18, 18 ]
+                    layout: { type: free }
+                    children:
+                      - {
+                          id: quiz.opt.1.radio.outer,
+                          type: ellipse,
+                          position: [ 0, 0 ],
+                          size: [ 18, 18 ],
+                          stroke: { color: $color.brass, width: 1.5 }
+                        }
+                      - {
+                          id: quiz.opt.1.radio.inner,
+                          type: ellipse,
+                          position: [ 4, 4 ],
+                          size: [ 10, 10 ],
+                          fill: $color.brass
+                        }
+                  - {
+                      id: quiz.opt.1.text,
+                      type: text,
+                      size: [ fill, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 14.5,
+                      fontWeight: 600,
+                      color: $color.ink,
+                      content: "Жирнится Т-зона"
+                    }
+              - id: quiz.opt.2
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, gap: 12, padding: [ 16, 18 ], alignItems: center }
+                fill: $color.surface
+                cornerRadius: 16
+                stroke: { color: $color.line, width: 1, alignment: inside }
+                children:
+                  - {
+                      id: quiz.opt.2.radio,
+                      type: ellipse,
+                      size: [ 18, 18 ],
+                      stroke: { color: $color.line, width: 1.5 }
+                    }
+                  - {
+                      id: quiz.opt.2.text,
+                      type: text,
+                      size: [ fill, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 14.5,
+                      fontWeight: 500,
+                      color: $color.ink,
+                      content: "В целом комфортно"
+                    }
+              - id: quiz.opt.3
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, gap: 12, padding: [ 16, 18 ], alignItems: center }
+                fill: $color.surface
+                cornerRadius: 16
+                stroke: { color: $color.line, width: 1, alignment: inside }
+                children:
+                  - {
+                      id: quiz.opt.3.radio,
+                      type: ellipse,
+                      size: [ 18, 18 ],
+                      stroke: { color: $color.line, width: 1.5 }
+                    }
+                  - {
+                      id: quiz.opt.3.text,
+                      type: text,
+                      size: [ fill, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 14.5,
+                      fontWeight: 500,
+                      color: $color.ink,
+                      content: "Сухость и стянутость"
+                    }
+              - id: quiz.opt.4
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, gap: 12, padding: [ 16, 18 ], alignItems: center }
+                fill: $color.surface
+                cornerRadius: 16
+                stroke: { color: $color.line, width: 1, alignment: inside }
+                children:
+                  - {
+                      id: quiz.opt.4.radio,
+                      type: ellipse,
+                      size: [ 18, 18 ],
+                      stroke: { color: $color.line, width: 1.5 }
+                    }
+                  - {
+                      id: quiz.opt.4.text,
+                      type: text,
+                      size: [ fill, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 14.5,
+                      fontWeight: 500,
+                      color: $color.ink,
+                      content: "Зависит от сезона"
+                    }
+          - id: quiz.next
+            type: instance
+            source: button
+            size: [ fill, 52 ]
+            values:
+              label: "Далее"
+              icon:
+                - {
+                    id: quiz.next.icon,
+                    type: svg,
+                    size: [ 13, 13 ],
+                    icon: "fas:chevron-right",
+                    fill: $color.onBtnPrimary
+                  }
+          - {
+              id: quiz.later,
+              type: text,
+              size: [ hug, hug ],
+              alignSelf: center,
+              fontFamily: Manrope,
+              fontSize: 13,
+              fontWeight: 600,
+              color: $color.brassDeep,
+              content: "Ответить позже"
+            }
+      - id: quiz.indicator
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, padding: [ 4, 0, 8, 0 ], justifyContent: center }
+        children:
+          - {
+              id: quiz.indicator.bar,
+              type: rect,
+              size: [ 134, 5 ],
+              cornerRadius: 999,
+              fill: $color.homeIndicator
+            }
+
+  - id: note.product
+    type: text
+    position: [ 2008, 1532 ]
+    size: [ hug, hug ]
+    fontFamily: Manrope
+    fontSize: 34
+    fontWeight: 700
+    color: "#000000"
+    content: Карточка товара
+
+  - id: screen.product
+    type: frame
+    position: [ 2008, 1600 ]
+    size: [ 402, hug ]
+    layout: { type: flex, direction: column }
+    fill: $color.canvas
+    children:
+      - id: product.content
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, direction: column, gap: 20, padding: [ 24, 20, 28, 20 ] }
+        children:
+          - id: product.header
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, justifyContent: spaceBetween, alignItems: center }
+            children:
+              - id: product.back
+                type: instance
+                source: icon-button
+                values:
+                  icon:
+                    - {
+                        id: product.back.icon,
+                        type: svg,
+                        size: [ 14, 14 ],
+                        icon: "fas:chevron-left",
+                        fill: $color.ink
+                      }
+              - id: product.favBtn
+                type: instance
+                source: icon-button
+                values:
+                  icon:
+                    - {
+                        id: product.favBtn.icon,
+                        type: svg,
+                        size: [ 15, 15 ],
+                        icon: "fas:heart",
+                        fill: $color.brass
+                      }
+          - id: product.media
+            type: frame
+            size: [ fill, 300 ]
+            layout: { type: free, overflow: hidden }
+            fill: $color.sunken
+            cornerRadius: 20
+            children:
+              - {
+                  id: product.media.img,
+                  type: rect,
+                  position: [ 91, 24 ],
+                  size: [ 180, 252 ],
+                  fill: { type: image, src: assets/product-serum.png, fit: contain }
+                }
+              - id: product.media.chip
+                type: instance
+                source: chip
+                position: [ 16, 250 ]
+                values:
+                  kind: soft
+                  label: "Подходит твоей коже"
+                  leading:
+                    - {
+                        id: product.media.chip.dot,
+                        type: ellipse,
+                        size: [ 6, 6 ],
+                        fill: $color.sage
+                      }
+          - id: product.info
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, direction: column, gap: 5 }
+            children:
+              - {
+                  id: product.info.overline,
+                  type: text,
+                  size: [ hug, hug ],
+                  style: $text.overline,
+                  content: "THE ORDINARY"
+                }
+              - {
+                  id: product.info.title,
+                  type: text,
+                  size: [ fill, hug ],
+                  style: $text.title,
+                  content: "Сыворотка с ниацинамидом 10%"
+                }
+              - {
+                  id: product.info.caption,
+                  type: text,
+                  size: [ hug, hug ],
+                  style: $text.caption,
+                  content: "30 мл, сыворотка для лица"
+                }
+          - id: product.price
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, justifyContent: spaceBetween, alignItems: center }
+            children:
+              - {
+                  id: product.price.value,
+                  type: text,
+                  size: [ hug, hug ],
+                  fontFamily: Cormorant,
+                  fontSize: 30,
+                  fontWeight: 600,
+                  color: $color.ink,
+                  content: "1 290 ₽"
+                }
+              - id: product.price.partner
+                type: instance
+                source: chip
+                values: { label: "Золотое Яблоко" }
+          - id: product.compat
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, gap: 12, padding: 16, alignItems: start }
+            fill: $color.surface
+            cornerRadius: 20
+            effects: $shadow.card
+            children:
+              - {
+                  id: product.compat.dot,
+                  type: ellipse,
+                  size: [ 8, 8 ],
+                  margin: [ 6, 0, 0, 0 ],
+                  fill: $color.sage
+                }
+              - id: product.compat.texts
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, direction: column, gap: 3 }
+                children:
+                  - {
+                      id: product.compat.title,
+                      type: text,
+                      size: [ fill, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 14.5,
+                      fontWeight: 600,
+                      color: $color.ink,
+                      content: "Подходит твоей коже"
+                    }
+                  - {
+                      id: product.compat.caption,
+                      type: text,
+                      size: [ 250, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 12,
+                      lineHeight: 16,
+                      color: $color.inkSecondary,
+                      content: "Проверено по INCI: 0 комедогенных компонентов"
+                    }
+          - id: product.inciCard
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, direction: column }
+            fill: $color.surface
+            cornerRadius: 20
+            effects: $shadow.card
+            children:
+              - id: product.inci
+                type: instance
+                source: action-row
+                size: [ fill, hug ]
+                values:
+                  title: "Разбор состава (INCI)"
+                  caption: "12 компонентов, 1 умеренный конфликт"
+          - id: product.cta
+            type: instance
+            source: button
+            size: [ fill, 52 ]
+            values:
+              label: "В корзину"
+              icon:
+                - {
+                    id: product.cta.icon,
+                    type: svg,
+                    size: [ 14, 14 ],
+                    icon: "fas:bag-shopping",
+                    fill: $color.onBtnPrimary
+                  }
+          - id: product.toFav
+            type: instance
+            source: button
+            size: [ fill, 52 ]
+            values: { kind: outline, label: "В избранное" }
+      - id: product.indicator
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, padding: [ 4, 0, 8, 0 ], justifyContent: center }
+        children:
+          - {
+              id: product.indicator.bar,
+              type: rect,
+              size: [ 134, 5 ],
+              cornerRadius: 999,
+              fill: $color.homeIndicator
+            }
+
+prototype: |
+  flow home = "screen.home" {
+    viewport: [402, 874]
+  }
+  on click("home.tab.fav") {
+    navigate("screen.favorites", transition: none())
+  }
+  on click("home.tab.cart") {
+    navigate("screen.cart", transition: none())
+  }
+  on click("home.tab.profile") {
+    navigate("screen.profile", transition: none())
+  }
+  on click("fav.tab.home") {
+    navigate("screen.home", transition: none())
+  }
+  on click("fav.tab.cart") {
+    navigate("screen.cart", transition: none())
+  }
+  on click("fav.tab.profile") {
+    navigate("screen.profile", transition: none())
+  }
+  on click("cart.tab.home") {
+    navigate("screen.home", transition: none())
+  }
+  on click("cart.tab.fav") {
+    navigate("screen.favorites", transition: none())
+  }
+  on click("cart.tab.profile") {
+    navigate("screen.profile", transition: none())
+  }
+  on click("prof.tab.home") {
+    navigate("screen.home", transition: none())
+  }
+  on click("prof.tab.fav") {
+    navigate("screen.favorites", transition: none())
+  }
+  on click("prof.tab.cart") {
+    navigate("screen.cart", transition: none())
+  }
+  on click("home.action.scan") {
+    navigate("screen.scan", transition: slide("left", 280))
+  }
+  on click("home.routine.cta") {
+    navigate("screen.scan", transition: slide("left", 280))
+  }
+  on click("home.action.inci") {
+    navigate("screen.inci", transition: slide("left", 280))
+  }
+  on click("home.routine.quiz") {
+    navigate("screen.quiz", transition: slide("left", 280))
+  }
+  on click("prof.scan") {
+    navigate("screen.scan", transition: slide("left", 280))
+  }
+  on click("fav.item.1") {
+    navigate("screen.product", transition: slide("left", 280))
+  }
+  on click("fav.item.2") {
+    navigate("screen.product", transition: slide("left", 280))
+  }
+  on click("cart.item.1") {
+    navigate("screen.product", transition: slide("left", 280))
+  }
+  on click("cart.item.2") {
+    navigate("screen.product", transition: slide("left", 280))
+  }
+  on click("scan.back") {
+    back(transition: none())
+  }
+  on click("inci.back") {
+    back(transition: none())
+  }
+  on click("quiz.back") {
+    back(transition: none())
+  }
+  on click("product.back") {
+    back(transition: none())
+  }
+  on click("scan.capture") {
+    navigate("screen.scanResult", transition: slide("left", 280))
+  }
+  on click("scanResult.close") {
+    navigate("screen.home", transition: none())
+  }
+  on click("scanResult.cta") {
+    navigate("screen.home", transition: none())
+  }
+  on click("quiz.next") {
+    navigate("screen.scan", transition: slide("left", 280))
+  }
+  on click("product.inci") {
+    navigate("screen.inci", transition: slide("left", 280))
+  }
+  on click("product.cta") {
+    navigate("screen.cart", transition: none())
+  }

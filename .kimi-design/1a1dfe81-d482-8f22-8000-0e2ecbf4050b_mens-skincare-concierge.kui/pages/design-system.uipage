@@ -1,0 +1,2102 @@
+name: Дизайн-система
+
+children:
+  - id: note.colors
+    type: text
+    position: [ 80, 82 ]
+    size: [ hug, hug ]
+    fontFamily: Manrope
+    fontSize: 34
+    fontWeight: 700
+    color: "#000000"
+    content: 01 — Цвет
+
+  - id: ds.colors
+    type: frame
+    position: [ 80, 150 ]
+    size: [ 760, hug ]
+    layout: { type: flex, direction: column, gap: 28, padding: 32 }
+    fill: $color.surface
+    cornerRadius: 24
+    children:
+      - id: ds.colors.title
+        type: text
+        size: [ hug, hug ]
+        style: $text.title
+        content: Цвет
+      - id: ds.colors.base
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, direction: column, gap: 12 }
+        children:
+          - {
+              id: ds.colors.base.label,
+              type: text,
+              size: [ hug, hug ],
+              style: $text.overline,
+              content: ОСНОВА
+            }
+          - id: ds.colors.base.row
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, gap: 16 }
+            children:
+              - id: sw.canvas
+                type: frame
+                size: [ hug, hug ]
+                layout: { type: flex, direction: column, gap: 8 }
+                children:
+                  - {
+                      id: sw.canvas.chip,
+                      type: rect,
+                      size: [ 120, 64 ],
+                      cornerRadius: 12,
+                      fill: $color.canvas,
+                      stroke: { color: $color.line, width: 1, alignment: inside }
+                    }
+                  - {
+                      id: sw.canvas.name,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 12,
+                      fontWeight: 600,
+                      color: $color.ink,
+                      content: Canvas
+                    }
+                  - {
+                      id: sw.canvas.hex,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 11,
+                      color: $color.inkTertiary,
+                      content: "#F4F0E8"
+                    }
+              - id: sw.surface
+                type: frame
+                size: [ hug, hug ]
+                layout: { type: flex, direction: column, gap: 8 }
+                children:
+                  - {
+                      id: sw.surface.chip,
+                      type: rect,
+                      size: [ 120, 64 ],
+                      cornerRadius: 12,
+                      fill: $color.surface,
+                      stroke: { color: $color.line, width: 1, alignment: inside }
+                    }
+                  - {
+                      id: sw.surface.name,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 12,
+                      fontWeight: 600,
+                      color: $color.ink,
+                      content: Surface
+                    }
+                  - {
+                      id: sw.surface.hex,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 11,
+                      color: $color.inkTertiary,
+                      content: "#FCFAF4"
+                    }
+              - id: sw.sunken
+                type: frame
+                size: [ hug, hug ]
+                layout: { type: flex, direction: column, gap: 8 }
+                children:
+                  - {
+                      id: sw.sunken.chip,
+                      type: rect,
+                      size: [ 120, 64 ],
+                      cornerRadius: 12,
+                      fill: $color.sunken
+                    }
+                  - {
+                      id: sw.sunken.name,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 12,
+                      fontWeight: 600,
+                      color: $color.ink,
+                      content: Sunken
+                    }
+                  - {
+                      id: sw.sunken.hex,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 11,
+                      color: $color.inkTertiary,
+                      content: "#ECE5D7"
+                    }
+              - id: sw.dark
+                type: frame
+                size: [ hug, hug ]
+                layout: { type: flex, direction: column, gap: 8 }
+                children:
+                  - {
+                      id: sw.dark.chip,
+                      type: rect,
+                      size: [ 120, 64 ],
+                      cornerRadius: 12,
+                      fill: $color.dark
+                    }
+                  - {
+                      id: sw.dark.name,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 12,
+                      fontWeight: 600,
+                      color: $color.ink,
+                      content: Dark
+                    }
+                  - {
+                      id: sw.dark.hex,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 11,
+                      color: $color.inkTertiary,
+                      content: "#1C1813"
+                    }
+              - id: sw.darksoft
+                type: frame
+                size: [ hug, hug ]
+                layout: { type: flex, direction: column, gap: 8 }
+                children:
+                  - {
+                      id: sw.darksoft.chip,
+                      type: rect,
+                      size: [ 120, 64 ],
+                      cornerRadius: 12,
+                      fill: $color.darkSoft
+                    }
+                  - {
+                      id: sw.darksoft.name,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 12,
+                      fontWeight: 600,
+                      color: $color.ink,
+                      content: Dark Soft
+                    }
+                  - {
+                      id: sw.darksoft.hex,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 11,
+                      color: $color.inkTertiary,
+                      content: "#322B22"
+                    }
+      - id: ds.colors.text
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, direction: column, gap: 12 }
+        children:
+          - {
+              id: ds.colors.text.label,
+              type: text,
+              size: [ hug, hug ],
+              style: $text.overline,
+              content: ТЕКСТ
+            }
+          - id: ds.colors.text.row
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, gap: 16 }
+            children:
+              - id: sw.ink
+                type: frame
+                size: [ hug, hug ]
+                layout: { type: flex, direction: column, gap: 8 }
+                children:
+                  - {
+                      id: sw.ink.chip,
+                      type: rect,
+                      size: [ 120, 64 ],
+                      cornerRadius: 12,
+                      fill: $color.ink
+                    }
+                  - {
+                      id: sw.ink.name,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 12,
+                      fontWeight: 600,
+                      color: $color.ink,
+                      content: Ink
+                    }
+                  - {
+                      id: sw.ink.hex,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 11,
+                      color: $color.inkTertiary,
+                      content: "#1C1813"
+                    }
+              - id: sw.inksec
+                type: frame
+                size: [ hug, hug ]
+                layout: { type: flex, direction: column, gap: 8 }
+                children:
+                  - {
+                      id: sw.inksec.chip,
+                      type: rect,
+                      size: [ 120, 64 ],
+                      cornerRadius: 12,
+                      fill: $color.inkSecondary
+                    }
+                  - {
+                      id: sw.inksec.name,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 12,
+                      fontWeight: 600,
+                      color: $color.ink,
+                      content: Ink Secondary
+                    }
+                  - {
+                      id: sw.inksec.hex,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 11,
+                      color: $color.inkTertiary,
+                      content: "#756C5D"
+                    }
+              - id: sw.inkter
+                type: frame
+                size: [ hug, hug ]
+                layout: { type: flex, direction: column, gap: 8 }
+                children:
+                  - {
+                      id: sw.inkter.chip,
+                      type: rect,
+                      size: [ 120, 64 ],
+                      cornerRadius: 12,
+                      fill: $color.inkTertiary
+                    }
+                  - {
+                      id: sw.inkter.name,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 12,
+                      fontWeight: 600,
+                      color: $color.ink,
+                      content: Ink Tertiary
+                    }
+                  - {
+                      id: sw.inkter.hex,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 11,
+                      color: $color.inkTertiary,
+                      content: "#A79C8A"
+                    }
+              - id: sw.ivory
+                type: frame
+                size: [ hug, hug ]
+                layout: { type: flex, direction: column, gap: 8 }
+                children:
+                  - {
+                      id: sw.ivory.chip,
+                      type: rect,
+                      size: [ 120, 64 ],
+                      cornerRadius: 12,
+                      fill: $color.ivory,
+                      stroke: { color: $color.line, width: 1, alignment: inside }
+                    }
+                  - {
+                      id: sw.ivory.name,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 12,
+                      fontWeight: 600,
+                      color: $color.ink,
+                      content: Ivory
+                    }
+                  - {
+                      id: sw.ivory.hex,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 11,
+                      color: $color.inkTertiary,
+                      content: "#F5F0E5"
+                    }
+              - id: sw.ivorydim
+                type: frame
+                size: [ hug, hug ]
+                layout: { type: flex, direction: column, gap: 8 }
+                children:
+                  - {
+                      id: sw.ivorydim.chip,
+                      type: rect,
+                      size: [ 120, 64 ],
+                      cornerRadius: 12,
+                      fill: $color.ivoryDim
+                    }
+                  - {
+                      id: sw.ivorydim.name,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 12,
+                      fontWeight: 600,
+                      color: $color.ink,
+                      content: Ivory Dim
+                    }
+                  - {
+                      id: sw.ivorydim.hex,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 11,
+                      color: $color.inkTertiary,
+                      content: "#B4A993"
+                    }
+      - id: ds.colors.accent
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, direction: column, gap: 12 }
+        children:
+          - {
+              id: ds.colors.accent.label,
+              type: text,
+              size: [ hug, hug ],
+              style: $text.overline,
+              content: АКЦЕНТЫ
+            }
+          - id: ds.colors.accent.row
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, gap: 16 }
+            children:
+              - id: sw.brass
+                type: frame
+                size: [ hug, hug ]
+                layout: { type: flex, direction: column, gap: 8 }
+                children:
+                  - {
+                      id: sw.brass.chip,
+                      type: rect,
+                      size: [ 120, 64 ],
+                      cornerRadius: 12,
+                      fill: $color.brass
+                    }
+                  - {
+                      id: sw.brass.name,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 12,
+                      fontWeight: 600,
+                      color: $color.ink,
+                      content: Brass
+                    }
+                  - {
+                      id: sw.brass.hex,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 11,
+                      color: $color.inkTertiary,
+                      content: "#A87C44"
+                    }
+              - id: sw.brassdeep
+                type: frame
+                size: [ hug, hug ]
+                layout: { type: flex, direction: column, gap: 8 }
+                children:
+                  - {
+                      id: sw.brassdeep.chip,
+                      type: rect,
+                      size: [ 120, 64 ],
+                      cornerRadius: 12,
+                      fill: $color.brassDeep
+                    }
+                  - {
+                      id: sw.brassdeep.name,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 12,
+                      fontWeight: 600,
+                      color: $color.ink,
+                      content: Brass Deep
+                    }
+                  - {
+                      id: sw.brassdeep.hex,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 11,
+                      color: $color.inkTertiary,
+                      content: "#84622F"
+                    }
+              - id: sw.brasssoft
+                type: frame
+                size: [ hug, hug ]
+                layout: { type: flex, direction: column, gap: 8 }
+                children:
+                  - {
+                      id: sw.brasssoft.chip,
+                      type: rect,
+                      size: [ 120, 64 ],
+                      cornerRadius: 12,
+                      fill: $color.brassSoft
+                    }
+                  - {
+                      id: sw.brasssoft.name,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 12,
+                      fontWeight: 600,
+                      color: $color.ink,
+                      content: Brass Soft
+                    }
+                  - {
+                      id: sw.brasssoft.hex,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 11,
+                      color: $color.inkTertiary,
+                      content: "#F0E6D1"
+                    }
+              - id: sw.sage
+                type: frame
+                size: [ hug, hug ]
+                layout: { type: flex, direction: column, gap: 8 }
+                children:
+                  - {
+                      id: sw.sage.chip,
+                      type: rect,
+                      size: [ 120, 64 ],
+                      cornerRadius: 12,
+                      fill: $color.sage
+                    }
+                  - {
+                      id: sw.sage.name,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 12,
+                      fontWeight: 600,
+                      color: $color.ink,
+                      content: Sage
+                    }
+                  - {
+                      id: sw.sage.hex,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 11,
+                      color: $color.inkTertiary,
+                      content: "#5F7A60"
+                    }
+              - id: sw.terra
+                type: frame
+                size: [ hug, hug ]
+                layout: { type: flex, direction: column, gap: 8 }
+                children:
+                  - {
+                      id: sw.terra.chip,
+                      type: rect,
+                      size: [ 120, 64 ],
+                      cornerRadius: 12,
+                      fill: $color.terracotta
+                    }
+                  - {
+                      id: sw.terra.name,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 12,
+                      fontWeight: 600,
+                      color: $color.ink,
+                      content: Terracotta
+                    }
+                  - {
+                      id: sw.terra.hex,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 11,
+                      color: $color.inkTertiary,
+                      content: "#C05F3C"
+                    }
+
+  - id: note.typography
+    type: text
+    position: [ 920, 82 ]
+    size: [ hug, hug ]
+    fontFamily: Manrope
+    fontSize: 34
+    fontWeight: 700
+    color: "#000000"
+    content: 02 — Типографика
+
+  - id: ds.typography
+    type: frame
+    position: [ 920, 150 ]
+    size: [ 600, hug ]
+    layout: { type: flex, direction: column, gap: 24, padding: 32 }
+    fill: $color.surface
+    cornerRadius: 24
+    children:
+      - id: ds.typo.title
+        type: text
+        size: [ hug, hug ]
+        style: $text.title
+        content: Типографика
+      - id: ds.typo.pair
+        type: text
+        size: [ fill, hug ]
+        style: $text.body
+        color: $color.inkSecondary
+        content: Cormorant — акцидентная антиква для заголовков и цифр. Manrope —
+          гротеск для интерфейсного текста. Оба шрифта поддерживают кириллицу.
+      - id: ds.typo.display
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, direction: column, gap: 6 }
+        children:
+          - {
+              id: ds.typo.display.spec,
+              type: text,
+              size: [ hug, hug ],
+              style: $text.caption,
+              content: Display — Cormorant 34/38
+            }
+          - {
+              id: ds.typo.display.sample,
+              type: text,
+              size: [ fill, hug ],
+              style: $text.display,
+              content: Лаконичный уход
+            }
+      - id: ds.typo.title2
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, direction: column, gap: 6 }
+        children:
+          - {
+              id: ds.typo.title2.spec,
+              type: text,
+              size: [ hug, hug ],
+              style: $text.caption,
+              content: Title — Cormorant 26/30
+            }
+          - {
+              id: ds.typo.title2.sample,
+              type: text,
+              size: [ fill, hug ],
+              style: $text.title,
+              content: Индекс кожи
+            }
+      - id: ds.typo.headline
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, direction: column, gap: 6 }
+        children:
+          - {
+              id: ds.typo.headline.spec,
+              type: text,
+              size: [ hug, hug ],
+              style: $text.caption,
+              content: "Headline — Manrope 16/22, semibold"
+            }
+          - {
+              id: ds.typo.headline.sample,
+              type: text,
+              size: [ fill, hug ],
+              style: $text.headline,
+              content: AI-диагностика кожи лица
+            }
+      - id: ds.typo.body
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, direction: column, gap: 6 }
+        children:
+          - {
+              id: ds.typo.body.spec,
+              type: text,
+              size: [ hug, hug ],
+              style: $text.caption,
+              content: Body — Manrope 14/21
+            }
+          - {
+              id: ds.typo.body.sample,
+              type: text,
+              size: [ fill, hug ],
+              style: $text.body,
+              content: Селфи-анализ и персональный подбор средств под твою кожу и бюджет.
+            }
+      - id: ds.typo.caption
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, direction: column, gap: 6 }
+        children:
+          - {
+              id: ds.typo.caption.spec,
+              type: text,
+              size: [ hug, hug ],
+              style: $text.caption,
+              content: Caption — Manrope 12.5/17
+            }
+          - {
+              id: ds.typo.caption.sample,
+              type: text,
+              size: [ fill, hug ],
+              style: $text.caption,
+              content: INCI-сканер комедогенности и конфликта активов
+            }
+      - id: ds.typo.overline
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, direction: column, gap: 6 }
+        children:
+          - {
+              id: ds.typo.overline.spec,
+              type: text,
+              size: [ hug, hug ],
+              style: $text.caption,
+              content: "Overline — Manrope 11/14, bold, tracking 1.8"
+            }
+          - {
+              id: ds.typo.overline.sample,
+              type: text,
+              size: [ fill, hug ],
+              style: $text.overline,
+              content: МУЖСКОЙ КОНСЬЕРЖ
+            }
+
+  - id: note.components
+    type: text
+    position: [ 80, 900 ]
+    size: [ hug, hug ]
+    fontFamily: Manrope
+    fontSize: 34
+    fontWeight: 700
+    color: "#000000"
+    content: 03 — Компоненты
+
+  - id: ds.components
+    type: frame
+    position: [ 80, 968 ]
+    size: [ 760, hug ]
+    layout: { type: flex, direction: column, gap: 28, padding: 32 }
+    fill: $color.surface
+    cornerRadius: 24
+    children:
+      - id: ds.comp.title
+        type: text
+        size: [ hug, hug ]
+        style: $text.title
+        content: Компоненты
+      - id: ds.comp.buttons
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, direction: column, gap: 12 }
+        children:
+          - {
+              id: ds.comp.buttons.label,
+              type: text,
+              size: [ hug, hug ],
+              style: $text.overline,
+              content: КНОПКИ
+            }
+          - id: ds.comp.buttons.row
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, gap: 12, alignItems: center }
+            children:
+              - id: ds.comp.btn.primary
+                type: instance
+                source: button
+                values:
+                  label: Провести AI-скан
+                  icon:
+                    - {
+                        id: ds.comp.btn.primary.icon,
+                        type: svg,
+                        size: [ 15, 15 ],
+                        icon: "fas:face-smile",
+                        fill: $color.ivory
+                      }
+              - id: ds.comp.btn.brass
+                type: instance
+                source: button
+                values: { kind: brass, label: В корзину }
+              - id: ds.comp.btn.outline
+                type: instance
+                source: button
+                values: { kind: outline, label: Подробнее }
+      - id: ds.comp.chips
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, direction: column, gap: 12 }
+        children:
+          - {
+              id: ds.comp.chips.label,
+              type: text,
+              size: [ hug, hug ],
+              style: $text.overline,
+              content: ЧИПСЫ
+            }
+          - id: ds.comp.chips.row
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, gap: 10, alignItems: center }
+            children:
+              - id: ds.comp.chip.active
+                type: frame
+                size: [ hug, 36 ]
+                layout: { type: flex, gap: 8, padding: [ 0, 16 ], alignItems: center }
+                fill: $color.dark
+                cornerRadius: 999
+                children:
+                  - {
+                      id: ds.comp.chip.active.dot,
+                      type: ellipse,
+                      size: [ 6, 6 ],
+                      fill: $color.brassLight
+                    }
+                  - {
+                      id: ds.comp.chip.active.text,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 13,
+                      fontWeight: 600,
+                      color: $color.ivory,
+                      content: Золотое Яблоко
+                    }
+              - id: ds.comp.chip.default
+                type: frame
+                size: [ hug, 36 ]
+                layout: { type: flex, padding: [ 0, 16 ], alignItems: center }
+                cornerRadius: 999
+                stroke: { color: $color.line, width: 1, alignment: inside }
+                children:
+                  - {
+                      id: ds.comp.chip.default.text,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 13,
+                      fontWeight: 500,
+                      color: $color.inkSecondary,
+                      content: Лэтуаль
+                    }
+              - id: ds.comp.chip.soft
+                type: frame
+                size: [ hug, 36 ]
+                layout: { type: flex, gap: 8, padding: [ 0, 16 ], alignItems: center }
+                fill: $color.brassSoft
+                cornerRadius: 999
+                children:
+                  - {
+                      id: ds.comp.chip.soft.icon,
+                      type: svg,
+                      size: [ 13, 13 ],
+                      icon: "fas:medal",
+                      fill: $color.brassDeep
+                    }
+                  - {
+                      id: ds.comp.chip.soft.text,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 13,
+                      fontWeight: 600,
+                      color: $color.brassDeep,
+                      content: "Мужской уход, 18–24"
+                    }
+      - id: ds.comp.rows
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, direction: column, gap: 12 }
+        children:
+          - {
+              id: ds.comp.rows.label,
+              type: text,
+              size: [ hug, hug ],
+              style: $text.overline,
+              content: СТРОКА ДЕЙСТВИЯ
+            }
+          - id: ds.comp.row.demo
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, gap: 14, padding: [ 16, 18 ], alignItems: center }
+            fill: $color.canvas
+            cornerRadius: 16
+            children:
+              - id: ds.comp.row.tile
+                type: frame
+                size: [ 42, 42 ]
+                layout: { type: flex, alignItems: center, justifyContent: center }
+                fill: $color.brassSoft
+                cornerRadius: 12
+                children:
+                  - {
+                      id: ds.comp.row.tile.icon,
+                      type: svg,
+                      size: [ 17, 17 ],
+                      icon: "fas:flask",
+                      fill: $color.brassDeep
+                    }
+              - id: ds.comp.row.texts
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, direction: column, gap: 3 }
+                children:
+                  - {
+                      id: ds.comp.row.title,
+                      type: text,
+                      size: [ fill, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 15,
+                      fontWeight: 600,
+                      color: $color.ink,
+                      content: Проверить банку по фото
+                    }
+                  - {
+                      id: ds.comp.row.caption,
+                      type: text,
+                      size: [ fill, hug ],
+                      style: $text.caption,
+                      content: Разбор состава по INCI
+                    }
+              - {
+                  id: ds.comp.row.chevron,
+                  type: svg,
+                  size: [ 14, 14 ],
+                  icon: "fas:chevron-right",
+                  fill: $color.brass
+                }
+      - id: ds.comp.product
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, direction: column, gap: 12 }
+        children:
+          - {
+              id: ds.comp.product.label,
+              type: text,
+              size: [ hug, hug ],
+              style: $text.overline,
+              content: КАРТОЧКА ТОВАРА
+            }
+          - id: ds.comp.product.card
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, gap: 14, padding: 14, alignItems: center }
+            fill: $color.canvas
+            cornerRadius: 16
+            children:
+              - id: ds.comp.product.media
+                type: frame
+                size: [ 72, 72 ]
+                layout: { type: flex, alignItems: center, justifyContent: center }
+                fill: $color.sunken
+                cornerRadius: 12
+                children:
+                  - {
+                      id: ds.comp.product.img,
+                      type: rect,
+                      size: [ 56, 56 ],
+                      fill: { type: image, src: assets/product-tube.png, fit: contain }
+                    }
+              - id: ds.comp.product.texts
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, direction: column, gap: 3 }
+                children:
+                  - {
+                      id: ds.comp.product.name,
+                      type: text,
+                      size: [ fill, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 15,
+                      fontWeight: 600,
+                      color: $color.ink,
+                      content: Увлажняющий крем
+                    }
+                  - {
+                      id: ds.comp.product.brand,
+                      type: text,
+                      size: [ fill, hug ],
+                      style: $text.caption,
+                      content: La Roche-Posay
+                    }
+                  - {
+                      id: ds.comp.product.price,
+                      type: text,
+                      size: [ fill, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 14,
+                      fontWeight: 700,
+                      color: $color.ink,
+                      content: 1 290 ₽
+                    }
+              - {
+                  id: ds.comp.product.heart,
+                  type: svg,
+                  size: [ 18, 18 ],
+                  icon: "fas:heart",
+                  fill: $color.brass
+                }
+      - id: ds.comp.tabbar
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, direction: column, gap: 12 }
+        children:
+          - {
+              id: ds.comp.tabbar.label,
+              type: text,
+              size: [ hug, hug ],
+              style: $text.overline,
+              content: ТАБ-БАР
+            }
+          - id: ds.comp.tabbar.demo
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, direction: column }
+            fill: $color.canvas
+            cornerRadius: 16
+            children:
+              - { id: ds.comp.tabbar.line, type: rect, size: [ fill, 1 ], fill: $color.line }
+              - id: ds.comp.tabbar.items
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, padding: [ 14, 24, 18, 24 ], justifyContent: spaceBetween }
+                children:
+                  - id: ds.comp.tab.home
+                    type: frame
+                    size: [ 56, hug ]
+                    layout: { type: flex, direction: column, gap: 6, alignItems: center }
+                    children:
+                      - {
+                          id: ds.comp.tab.home.icon,
+                          type: svg,
+                          size: [ 21, 21 ],
+                          icon: "fas:house",
+                          fill: $color.ink
+                        }
+                      - {
+                          id: ds.comp.tab.home.dot,
+                          type: ellipse,
+                          size: [ 4, 4 ],
+                          fill: $color.brass
+                        }
+                  - id: ds.comp.tab.fav
+                    type: frame
+                    size: [ 56, hug ]
+                    layout: { type: flex, direction: column, gap: 6, alignItems: center }
+                    children:
+                      - {
+                          id: ds.comp.tab.fav.icon,
+                          type: svg,
+                          size: [ 21, 21 ],
+                          icon: "far:heart",
+                          fill: $color.inkTertiary
+                        }
+                      - { id: ds.comp.tab.fav.dot, type: ellipse, size: [ 4, 4 ], fill: "#FFFFFF00" }
+                  - id: ds.comp.tab.cart
+                    type: frame
+                    size: [ 56, hug ]
+                    layout: { type: flex, direction: column, gap: 6, alignItems: center }
+                    children:
+                      - {
+                          id: ds.comp.tab.cart.icon,
+                          type: svg,
+                          size: [ 21, 21 ],
+                          icon: "fas:bag-shopping",
+                          fill: $color.inkTertiary
+                        }
+                      - {
+                          id: ds.comp.tab.cart.dot,
+                          type: ellipse,
+                          size: [ 4, 4 ],
+                          fill: "#FFFFFF00"
+                        }
+                  - id: ds.comp.tab.profile
+                    type: frame
+                    size: [ 56, hug ]
+                    layout: { type: flex, direction: column, gap: 6, alignItems: center }
+                    children:
+                      - {
+                          id: ds.comp.tab.profile.icon,
+                          type: svg,
+                          size: [ 21, 21 ],
+                          icon: "far:user",
+                          fill: $color.inkTertiary
+                        }
+                      - {
+                          id: ds.comp.tab.profile.dot,
+                          type: ellipse,
+                          size: [ 4, 4 ],
+                          fill: "#FFFFFF00"
+                        }
+      - id: ds.comp.rules
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, direction: column, gap: 12 }
+        children:
+          - {
+              id: ds.comp.rules.label,
+              type: text,
+              size: [ hug, hug ],
+              style: $text.overline,
+              content: РАДИУСЫ И ТЕНИ
+            }
+          - id: ds.comp.rules.row
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, gap: 16 }
+            children:
+              - id: ds.comp.radius.card
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, direction: column, gap: 8 }
+                children:
+                  - {
+                      id: ds.comp.radius.card.chip,
+                      type: rect,
+                      size: [ fill, 64 ],
+                      cornerRadius: 20,
+                      fill: $color.surface,
+                      stroke: { color: $color.line, width: 1, alignment: inside },
+                      effects: $shadow.card
+                    }
+                  - {
+                      id: ds.comp.radius.card.name,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 12,
+                      fontWeight: 600,
+                      color: $color.ink,
+                      content: Карточки — 20
+                    }
+              - id: ds.comp.radius.control
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, direction: column, gap: 8 }
+                children:
+                  - {
+                      id: ds.comp.radius.control.chip,
+                      type: rect,
+                      size: [ fill, 64 ],
+                      cornerRadius: 14,
+                      fill: $color.surface,
+                      stroke: { color: $color.line, width: 1, alignment: inside },
+                      effects: $shadow.lift
+                    }
+                  - {
+                      id: ds.comp.radius.control.name,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 12,
+                      fontWeight: 600,
+                      color: $color.ink,
+                      content: Контролы — 14
+                    }
+              - id: ds.comp.radius.tile
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, direction: column, gap: 8 }
+                children:
+                  - {
+                      id: ds.comp.radius.tile.chip,
+                      type: rect,
+                      size: [ fill, 64 ],
+                      cornerRadius: 12,
+                      fill: $color.brassSoft
+                    }
+                  - {
+                      id: ds.comp.radius.tile.name,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 12,
+                      fontWeight: 600,
+                      color: $color.ink,
+                      content: Плашки — 12
+                    }
+
+  - id: note.dark
+    type: text
+    position: [ 920, 942 ]
+    size: [ hug, hug ]
+    fontFamily: Manrope
+    fontSize: 34
+    fontWeight: 700
+    color: "#000000"
+    content: 04 — Тёмная тема
+
+  - id: ds.dark
+    type: frame
+    position: [ 920, 1010 ]
+    size: [ 600, hug ]
+    layout: { type: flex, direction: column, gap: 24, padding: 32 }
+    fill: $color.surface
+    cornerRadius: 24
+    children:
+      - {
+          id: ds.dark.title,
+          type: text,
+          size: [ hug, hug ],
+          style: $text.title,
+          content: Тёмная тема
+        }
+      - {
+          id: ds.dark.hint,
+          type: text,
+          size: [ 520, hug ],
+          style: $text.caption,
+          content: "Тема переключается режимом холста: у каждого токена задано
+            dark-значение, экраны пересобираются автоматически"
+        }
+      - id: ds.dark.preview
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, direction: column, gap: 12, padding: 16 }
+        fill: "#14110D"
+        cornerRadius: 16
+        children:
+          - id: ds.dark.preview.card
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, gap: 12, padding: 12, alignItems: center }
+            fill: "#1E1A15"
+            cornerRadius: 12
+            children:
+              - id: ds.dark.preview.tile
+                type: frame
+                size: [ 40, 40 ]
+                layout: { type: flex, alignItems: center, justifyContent: center }
+                fill: "#3A2E1D"
+                cornerRadius: 10
+                children:
+                  - {
+                      id: ds.dark.preview.icon,
+                      type: svg,
+                      size: [ 16, 16 ],
+                      icon: "fas:wand-magic-sparkles",
+                      fill: "#CDA872"
+                    }
+              - id: ds.dark.preview.texts
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, direction: column, gap: 3 }
+                children:
+                  - {
+                      id: ds.dark.preview.name,
+                      type: text,
+                      size: [ fill, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 14,
+                      fontWeight: 600,
+                      color: "#F0EAE0",
+                      content: AI-скан кожи
+                    }
+                  - {
+                      id: ds.dark.preview.cap,
+                      type: text,
+                      size: [ fill, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 12,
+                      color: "#A79C8A",
+                      content: Обновлён сегодня
+                    }
+          - id: ds.dark.preview.btn
+            type: frame
+            size: [ fill, 40 ]
+            layout: { type: flex, alignItems: center, justifyContent: center }
+            fill: "#C09A5E"
+            cornerRadius: 12
+            children:
+              - {
+                  id: ds.dark.preview.btn.label,
+                  type: text,
+                  size: [ hug, hug ],
+                  fontFamily: Manrope,
+                  fontSize: 13,
+                  fontWeight: 700,
+                  color: "#1C1813",
+                  content: Основное действие
+                }
+      - id: ds.dark.row1
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, gap: 12 }
+        children:
+          - id: dsw.canvas
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, direction: column, gap: 6 }
+            children:
+              - {
+                  id: dsw.canvas.chip,
+                  type: rect,
+                  size: [ fill, 48 ],
+                  cornerRadius: 10,
+                  fill: "#14110D",
+                  stroke: { color: $color.line, width: 1, alignment: inside }
+                }
+              - {
+                  id: dsw.canvas.name,
+                  type: text,
+                  size: [ hug, hug ],
+                  fontFamily: Manrope,
+                  fontSize: 11,
+                  fontWeight: 600,
+                  color: $color.ink,
+                  content: Canvas
+                }
+              - {
+                  id: dsw.canvas.hex,
+                  type: text,
+                  size: [ hug, hug ],
+                  fontFamily: Manrope,
+                  fontSize: 10,
+                  color: $color.inkTertiary,
+                  content: "#14110D"
+                }
+          - id: dsw.surface
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, direction: column, gap: 6 }
+            children:
+              - {
+                  id: dsw.surface.chip,
+                  type: rect,
+                  size: [ fill, 48 ],
+                  cornerRadius: 10,
+                  fill: "#1E1A15",
+                  stroke: { color: $color.line, width: 1, alignment: inside }
+                }
+              - {
+                  id: dsw.surface.name,
+                  type: text,
+                  size: [ hug, hug ],
+                  fontFamily: Manrope,
+                  fontSize: 11,
+                  fontWeight: 600,
+                  color: $color.ink,
+                  content: Surface
+                }
+              - {
+                  id: dsw.surface.hex,
+                  type: text,
+                  size: [ hug, hug ],
+                  fontFamily: Manrope,
+                  fontSize: 10,
+                  color: $color.inkTertiary,
+                  content: "#1E1A15"
+                }
+          - id: dsw.ink
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, direction: column, gap: 6 }
+            children:
+              - {
+                  id: dsw.ink.chip,
+                  type: rect,
+                  size: [ fill, 48 ],
+                  cornerRadius: 10,
+                  fill: "#F0EAE0"
+                }
+              - {
+                  id: dsw.ink.name,
+                  type: text,
+                  size: [ hug, hug ],
+                  fontFamily: Manrope,
+                  fontSize: 11,
+                  fontWeight: 600,
+                  color: $color.ink,
+                  content: Ink
+                }
+              - {
+                  id: dsw.ink.hex,
+                  type: text,
+                  size: [ hug, hug ],
+                  fontFamily: Manrope,
+                  fontSize: 10,
+                  color: $color.inkTertiary,
+                  content: "#F0EAE0"
+                }
+          - id: dsw.brass
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, direction: column, gap: 6 }
+            children:
+              - {
+                  id: dsw.brass.chip,
+                  type: rect,
+                  size: [ fill, 48 ],
+                  cornerRadius: 10,
+                  fill: "#C09A5E"
+                }
+              - {
+                  id: dsw.brass.name,
+                  type: text,
+                  size: [ hug, hug ],
+                  fontFamily: Manrope,
+                  fontSize: 11,
+                  fontWeight: 600,
+                  color: $color.ink,
+                  content: Brass
+                }
+              - {
+                  id: dsw.brass.hex,
+                  type: text,
+                  size: [ hug, hug ],
+                  fontFamily: Manrope,
+                  fontSize: 10,
+                  color: $color.inkTertiary,
+                  content: "#C09A5E"
+                }
+      - id: ds.dark.row2
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, gap: 12 }
+        children:
+          - id: dsw.sage
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, direction: column, gap: 6 }
+            children:
+              - {
+                  id: dsw.sage.chip,
+                  type: rect,
+                  size: [ fill, 48 ],
+                  cornerRadius: 10,
+                  fill: "#8CA98B"
+                }
+              - {
+                  id: dsw.sage.name,
+                  type: text,
+                  size: [ hug, hug ],
+                  fontFamily: Manrope,
+                  fontSize: 11,
+                  fontWeight: 600,
+                  color: $color.ink,
+                  content: Sage
+                }
+              - {
+                  id: dsw.sage.hex,
+                  type: text,
+                  size: [ hug, hug ],
+                  fontFamily: Manrope,
+                  fontSize: 10,
+                  color: $color.inkTertiary,
+                  content: "#8CA98B"
+                }
+          - id: dsw.terra
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, direction: column, gap: 6 }
+            children:
+              - {
+                  id: dsw.terra.chip,
+                  type: rect,
+                  size: [ fill, 48 ],
+                  cornerRadius: 10,
+                  fill: "#D07A56"
+                }
+              - {
+                  id: dsw.terra.name,
+                  type: text,
+                  size: [ hug, hug ],
+                  fontFamily: Manrope,
+                  fontSize: 11,
+                  fontWeight: 600,
+                  color: $color.ink,
+                  content: Terracotta
+                }
+              - {
+                  id: dsw.terra.hex,
+                  type: text,
+                  size: [ hug, hug ],
+                  fontFamily: Manrope,
+                  fontSize: 10,
+                  color: $color.inkTertiary,
+                  content: "#D07A56"
+                }
+          - id: dsw.line
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, direction: column, gap: 6 }
+            children:
+              - {
+                  id: dsw.line.chip,
+                  type: rect,
+                  size: [ fill, 48 ],
+                  cornerRadius: 10,
+                  fill: "#322C23"
+                }
+              - {
+                  id: dsw.line.name,
+                  type: text,
+                  size: [ hug, hug ],
+                  fontFamily: Manrope,
+                  fontSize: 11,
+                  fontWeight: 600,
+                  color: $color.ink,
+                  content: Line
+                }
+              - {
+                  id: dsw.line.hex,
+                  type: text,
+                  size: [ hug, hug ],
+                  fontFamily: Manrope,
+                  fontSize: 10,
+                  color: $color.inkTertiary,
+                  content: "#322C23"
+                }
+          - id: dsw.sunken
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, direction: column, gap: 6 }
+            children:
+              - {
+                  id: dsw.sunken.chip,
+                  type: rect,
+                  size: [ fill, 48 ],
+                  cornerRadius: 10,
+                  fill: "#292319"
+                }
+              - {
+                  id: dsw.sunken.name,
+                  type: text,
+                  size: [ hug, hug ],
+                  fontFamily: Manrope,
+                  fontSize: 11,
+                  fontWeight: 600,
+                  color: $color.ink,
+                  content: Sunken
+                }
+              - {
+                  id: dsw.sunken.hex,
+                  type: text,
+                  size: [ hug, hug ],
+                  fontFamily: Manrope,
+                  fontSize: 10,
+                  color: $color.inkTertiary,
+                  content: "#292319"
+                }
+
+  - id: note.spacing
+    type: text
+    position: [ 80, 2142 ]
+    size: [ hug, hug ]
+    fontFamily: Manrope
+    fontSize: 34
+    fontWeight: 700
+    color: "#000000"
+    content: 05 — Сетка и отступы
+
+  - id: ds.spacing
+    type: frame
+    position: [ 80, 2210 ]
+    size: [ 760, hug ]
+    layout: { type: flex, direction: column, gap: 28, padding: 32 }
+    fill: $color.surface
+    cornerRadius: 24
+    children:
+      - {
+          id: ds.spacing.title,
+          type: text,
+          size: [ hug, hug ],
+          style: $text.title,
+          content: Сетка и отступы
+        }
+      - id: ds.spacing.scale
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, direction: column, gap: 12 }
+        children:
+          - {
+              id: ds.spacing.scale.label,
+              type: text,
+              size: [ hug, hug ],
+              style: $text.overline,
+              content: "ШКАЛА, ШАГ 4"
+            }
+          - id: ds.spacing.scale.row
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, gap: 20, alignItems: end }
+            children:
+              - id: sp.4
+                type: frame
+                size: [ hug, hug ]
+                layout: { type: flex, direction: column, gap: 6, alignItems: center }
+                children:
+                  - {
+                      id: sp.4.bar,
+                      type: rect,
+                      size: [ 4, 40 ],
+                      cornerRadius: 2,
+                      fill: $color.brass
+                    }
+                  - {
+                      id: sp.4.label,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 11,
+                      color: $color.inkSecondary,
+                      content: "4"
+                    }
+              - id: sp.8
+                type: frame
+                size: [ hug, hug ]
+                layout: { type: flex, direction: column, gap: 6, alignItems: center }
+                children:
+                  - {
+                      id: sp.8.bar,
+                      type: rect,
+                      size: [ 8, 40 ],
+                      cornerRadius: 3,
+                      fill: $color.brass
+                    }
+                  - {
+                      id: sp.8.label,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 11,
+                      color: $color.inkSecondary,
+                      content: "8"
+                    }
+              - id: sp.12
+                type: frame
+                size: [ hug, hug ]
+                layout: { type: flex, direction: column, gap: 6, alignItems: center }
+                children:
+                  - {
+                      id: sp.12.bar,
+                      type: rect,
+                      size: [ 12, 40 ],
+                      cornerRadius: 4,
+                      fill: $color.brass
+                    }
+                  - {
+                      id: sp.12.label,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 11,
+                      color: $color.inkSecondary,
+                      content: "12"
+                    }
+              - id: sp.16
+                type: frame
+                size: [ hug, hug ]
+                layout: { type: flex, direction: column, gap: 6, alignItems: center }
+                children:
+                  - {
+                      id: sp.16.bar,
+                      type: rect,
+                      size: [ 16, 40 ],
+                      cornerRadius: 5,
+                      fill: $color.brass
+                    }
+                  - {
+                      id: sp.16.label,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 11,
+                      color: $color.inkSecondary,
+                      content: "16"
+                    }
+              - id: sp.20
+                type: frame
+                size: [ hug, hug ]
+                layout: { type: flex, direction: column, gap: 6, alignItems: center }
+                children:
+                  - {
+                      id: sp.20.bar,
+                      type: rect,
+                      size: [ 20, 40 ],
+                      cornerRadius: 6,
+                      fill: $color.brass
+                    }
+                  - {
+                      id: sp.20.label,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 11,
+                      color: $color.inkSecondary,
+                      content: "20"
+                    }
+              - id: sp.24
+                type: frame
+                size: [ hug, hug ]
+                layout: { type: flex, direction: column, gap: 6, alignItems: center }
+                children:
+                  - {
+                      id: sp.24.bar,
+                      type: rect,
+                      size: [ 24, 40 ],
+                      cornerRadius: 7,
+                      fill: $color.brass
+                    }
+                  - {
+                      id: sp.24.label,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 11,
+                      color: $color.inkSecondary,
+                      content: "24"
+                    }
+              - id: sp.28
+                type: frame
+                size: [ hug, hug ]
+                layout: { type: flex, direction: column, gap: 6, alignItems: center }
+                children:
+                  - {
+                      id: sp.28.bar,
+                      type: rect,
+                      size: [ 28, 40 ],
+                      cornerRadius: 8,
+                      fill: $color.brass
+                    }
+                  - {
+                      id: sp.28.label,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Manrope,
+                      fontSize: 11,
+                      color: $color.inkSecondary,
+                      content: "28"
+                    }
+      - id: ds.spacing.rules
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, direction: column, gap: 12 }
+        children:
+          - {
+              id: ds.spacing.rules.label,
+              type: text,
+              size: [ hug, hug ],
+              style: $text.overline,
+              content: ПРАВИЛА
+            }
+          - id: ds.spacing.rules.grid
+            type: frame
+            size: [ fill, hug ]
+            layout: { type: flex, gap: 16 }
+            children:
+              - id: ds.spacing.rule.screen
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, direction: column, gap: 6, padding: 16 }
+                fill: $color.canvas
+                cornerRadius: 14
+                children:
+                  - {
+                      id: ds.spacing.rule.screen.v,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Cormorant,
+                      fontSize: 26,
+                      fontWeight: 600,
+                      color: $color.ink,
+                      content: "20"
+                    }
+                  - {
+                      id: ds.spacing.rule.screen.t,
+                      type: text,
+                      size: [ 200, hug ],
+                      style: $text.caption,
+                      content: Боковой паддинг экрана
+                    }
+              - id: ds.spacing.rule.card
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, direction: column, gap: 6, padding: 16 }
+                fill: $color.canvas
+                cornerRadius: 14
+                children:
+                  - {
+                      id: ds.spacing.rule.card.v,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Cormorant,
+                      fontSize: 26,
+                      fontWeight: 600,
+                      color: $color.ink,
+                      content: "18–20"
+                    }
+                  - {
+                      id: ds.spacing.rule.card.t,
+                      type: text,
+                      size: [ 200, hug ],
+                      style: $text.caption,
+                      content: Внутренний паддинг карточек
+                    }
+              - id: ds.spacing.rule.gap
+                type: frame
+                size: [ fill, hug ]
+                layout: { type: flex, direction: column, gap: 6, padding: 16 }
+                fill: $color.canvas
+                cornerRadius: 14
+                children:
+                  - {
+                      id: ds.spacing.rule.gap.v,
+                      type: text,
+                      size: [ hug, hug ],
+                      fontFamily: Cormorant,
+                      fontSize: 26,
+                      fontWeight: 600,
+                      color: $color.ink,
+                      content: "12–16"
+                    }
+                  - {
+                      id: ds.spacing.rule.gap.t,
+                      type: text,
+                      size: [ 200, hug ],
+                      style: $text.caption,
+                      content: Отступы между блоками и в списках
+                    }
+
+  - id: note.icons
+    type: text
+    position: [ 920, 2142 ]
+    size: [ hug, hug ]
+    fontFamily: Manrope
+    fontSize: 34
+    fontWeight: 700
+    color: "#000000"
+    content: 06 — Иконки
+
+  - id: ds.icons
+    type: frame
+    position: [ 920, 2210 ]
+    size: [ 600, hug ]
+    layout: { type: flex, direction: column, gap: 24, padding: 32 }
+    fill: $color.surface
+    cornerRadius: 24
+    children:
+      - {
+          id: ds.icons.title,
+          type: text,
+          size: [ hug, hug ],
+          style: $text.title,
+          content: Иконки
+        }
+      - {
+          id: ds.icons.hint,
+          type: text,
+          size: [ 520, hug ],
+          style: $text.caption,
+          content: "Font Awesome Free, цвет всегда из токена: ink, brass или inkTertiary"
+        }
+      - id: ds.icons.grid
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, gap: 12 }
+        children:
+          - id: ic.house
+            type: frame
+            size: [ fill, hug ]
+            layout:
+              {
+                type: flex,
+                direction: column,
+                gap: 8,
+                alignItems: center,
+                padding: [ 14, 0 ]
+              }
+            fill: $color.canvas
+            cornerRadius: 12
+            children:
+              - {
+                  id: ic.house.i,
+                  type: svg,
+                  size: [ 18, 18 ],
+                  icon: "fas:house",
+                  fill: $color.ink
+                }
+              - {
+                  id: ic.house.t,
+                  type: text,
+                  size: [ hug, hug ],
+                  fontFamily: Manrope,
+                  fontSize: 10,
+                  color: $color.inkTertiary,
+                  content: house
+                }
+          - id: ic.heart
+            type: frame
+            size: [ fill, hug ]
+            layout:
+              {
+                type: flex,
+                direction: column,
+                gap: 8,
+                alignItems: center,
+                padding: [ 14, 0 ]
+              }
+            fill: $color.canvas
+            cornerRadius: 12
+            children:
+              - {
+                  id: ic.heart.i,
+                  type: svg,
+                  size: [ 18, 18 ],
+                  icon: "fas:heart",
+                  fill: $color.brass
+                }
+              - {
+                  id: ic.heart.t,
+                  type: text,
+                  size: [ hug, hug ],
+                  fontFamily: Manrope,
+                  fontSize: 10,
+                  color: $color.inkTertiary,
+                  content: heart
+                }
+          - id: ic.bag
+            type: frame
+            size: [ fill, hug ]
+            layout:
+              {
+                type: flex,
+                direction: column,
+                gap: 8,
+                alignItems: center,
+                padding: [ 14, 0 ]
+              }
+            fill: $color.canvas
+            cornerRadius: 12
+            children:
+              - {
+                  id: ic.bag.i,
+                  type: svg,
+                  size: [ 18, 18 ],
+                  icon: "fas:bag-shopping",
+                  fill: $color.ink
+                }
+              - {
+                  id: ic.bag.t,
+                  type: text,
+                  size: [ hug, hug ],
+                  fontFamily: Manrope,
+                  fontSize: 10,
+                  color: $color.inkTertiary,
+                  content: bag
+                }
+          - id: ic.user
+            type: frame
+            size: [ fill, hug ]
+            layout:
+              {
+                type: flex,
+                direction: column,
+                gap: 8,
+                alignItems: center,
+                padding: [ 14, 0 ]
+              }
+            fill: $color.canvas
+            cornerRadius: 12
+            children:
+              - {
+                  id: ic.user.i,
+                  type: svg,
+                  size: [ 18, 18 ],
+                  icon: "far:user",
+                  fill: $color.ink
+                }
+              - {
+                  id: ic.user.t,
+                  type: text,
+                  size: [ hug, hug ],
+                  fontFamily: Manrope,
+                  fontSize: 10,
+                  color: $color.inkTertiary,
+                  content: user
+                }
+      - id: ds.icons.grid2
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, gap: 12 }
+        children:
+          - id: ic.wand
+            type: frame
+            size: [ fill, hug ]
+            layout:
+              {
+                type: flex,
+                direction: column,
+                gap: 8,
+                alignItems: center,
+                padding: [ 14, 0 ]
+              }
+            fill: $color.canvas
+            cornerRadius: 12
+            children:
+              - {
+                  id: ic.wand.i,
+                  type: svg,
+                  size: [ 18, 18 ],
+                  icon: "fas:wand-magic-sparkles",
+                  fill: $color.brass
+                }
+              - {
+                  id: ic.wand.t,
+                  type: text,
+                  size: [ hug, hug ],
+                  fontFamily: Manrope,
+                  fontSize: 10,
+                  color: $color.inkTertiary,
+                  content: wand
+                }
+          - id: ic.camera
+            type: frame
+            size: [ fill, hug ]
+            layout:
+              {
+                type: flex,
+                direction: column,
+                gap: 8,
+                alignItems: center,
+                padding: [ 14, 0 ]
+              }
+            fill: $color.canvas
+            cornerRadius: 12
+            children:
+              - {
+                  id: ic.camera.i,
+                  type: svg,
+                  size: [ 18, 18 ],
+                  icon: "fas:camera",
+                  fill: $color.ink
+                }
+              - {
+                  id: ic.camera.t,
+                  type: text,
+                  size: [ hug, hug ],
+                  fontFamily: Manrope,
+                  fontSize: 10,
+                  color: $color.inkTertiary,
+                  content: camera
+                }
+          - id: ic.flask
+            type: frame
+            size: [ fill, hug ]
+            layout:
+              {
+                type: flex,
+                direction: column,
+                gap: 8,
+                alignItems: center,
+                padding: [ 14, 0 ]
+              }
+            fill: $color.canvas
+            cornerRadius: 12
+            children:
+              - {
+                  id: ic.flask.i,
+                  type: svg,
+                  size: [ 18, 18 ],
+                  icon: "fas:flask",
+                  fill: $color.ink
+                }
+              - {
+                  id: ic.flask.t,
+                  type: text,
+                  size: [ hug, hug ],
+                  fontFamily: Manrope,
+                  fontSize: 10,
+                  color: $color.inkTertiary,
+                  content: flask
+                }
+          - id: ic.shield
+            type: frame
+            size: [ fill, hug ]
+            layout:
+              {
+                type: flex,
+                direction: column,
+                gap: 8,
+                alignItems: center,
+                padding: [ 14, 0 ]
+              }
+            fill: $color.canvas
+            cornerRadius: 12
+            children:
+              - {
+                  id: ic.shield.i,
+                  type: svg,
+                  size: [ 18, 18 ],
+                  icon: "fas:shield-halved",
+                  fill: $color.sage
+                }
+              - {
+                  id: ic.shield.t,
+                  type: text,
+                  size: [ hug, hug ],
+                  fontFamily: Manrope,
+                  fontSize: 10,
+                  color: $color.inkTertiary,
+                  content: shield
+                }
+      - id: ds.icons.rules
+        type: frame
+        size: [ fill, hug ]
+        layout: { type: flex, gap: 16 }
+        children:
+          - {
+              id: ds.icons.rule.tab,
+              type: text,
+              size: [ fill, hug ],
+              fontFamily: Manrope,
+              fontSize: 12,
+              color: $color.inkSecondary,
+              content: "Таб-бар — 21"
+            }
+          - {
+              id: ds.icons.rule.tile,
+              type: text,
+              size: [ fill, hug ],
+              fontFamily: Manrope,
+              fontSize: 12,
+              color: $color.inkSecondary,
+              content: "Плашки — 17"
+            }
+          - {
+              id: ds.icons.rule.inline,
+              type: text,
+              size: [ fill, hug ],
+              fontFamily: Manrope,
+              fontSize: 12,
+              color: $color.inkSecondary,
+              content: "Инлайн — 13–14"
+            }

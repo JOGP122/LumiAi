@@ -39,12 +39,12 @@ export const MobileFrame: React.FC<MobileFrameProps> = ({ children }) => {
   }, []);
 
   return (
-    <div className="w-full min-h-screen bg-[#F5F2EB] flex justify-center selection:bg-[#F8715E]/20">
+    <div className="w-full min-h-screen bg-[#F4F0E8] flex justify-center selection:bg-[#A87C44]/20">
       {/* 
         Native-feeling Telegram Mini App container:
         Full height, responsive width (max-w-md), zero fake status-bar artifacts
       */}
-      <div className="w-full max-w-md min-h-screen bg-[#FBF8F5] flex flex-col relative text-[#1E1B18] shadow-sm overflow-x-hidden">
+      <div className="w-full max-w-md min-h-screen bg-[#FBF8F5] flex flex-col relative text-[#1C1813] shadow-sm overflow-x-hidden">
         {children}
       </div>
     </div>
