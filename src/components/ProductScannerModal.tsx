@@ -30,6 +30,14 @@ const SAMPLE_PRODUCTS = [
   'Гельтек Сыворотка с ретинолом Retiderm 0.25'
 ];
 
+const ICON_BUTTON =
+  'w-9 h-9 rounded-full border border-[#E6DFCF] bg-[#FCFAF4] flex items-center justify-center active:scale-95 transition-transform shrink-0';
+
+const BTN_PRIMARY =
+  'w-full h-[52px] rounded-[14px] bg-[#1C1813] text-[#F5F0E5] text-[15px] font-semibold flex items-center justify-center gap-2.5 active:scale-[0.98] transition-transform disabled:opacity-40';
+const BTN_OUTLINE =
+  'w-full h-[52px] rounded-[14px] bg-transparent border border-[#E6DFCF] text-[#1C1813] text-[15px] font-semibold flex items-center justify-center gap-2 active:scale-[0.98] transition-all disabled:opacity-40';
+
 export const ProductScannerModal: React.FC<ProductScannerModalProps> = ({
   userProfile,
   currentRoutine,
@@ -62,7 +70,7 @@ export const ProductScannerModal: React.FC<ProductScannerModalProps> = ({
   const handleAnalyze = async (overrideQuery?: string) => {
     const queryToUse = overrideQuery !== undefined ? overrideQuery : productQuery;
     if (!queryToUse.trim() && !imagePreview) {
-      setErrorMsg('Введите название средства / состав INCI или загрузите фото банки');
+      setErrorMsg('Введи название средства / состав INCI или загрузи фото банки');
       return;
     }
 
@@ -123,9 +131,34 @@ export const ProductScannerModal: React.FC<ProductScannerModalProps> = ({
     }
   };
 
+  const verdictMeta = (score: number, hasConflict: boolean) => {
+    if (score >= 75 && !hasConflict)
+      return { title: 'Подходит твоей коже', chip: 'bg-[#E8EFE4] text-[#3E5A3F]', dot: '#5F7A60' };
+    if (score >= 50)
+      return { title: 'Подходит с оговорками', chip: 'bg-[#F0E6D1] text-[#84622F]', dot: '#C05F3C' };
+    return { title: 'Не рекомендуем для твоей кожи', chip: 'bg-[#F5E3DA] text-[#A8452B]', dot: '#A8452B' };
+  };
+
+  const allIngredients = scanResult
+    ? [
+        ...scanResult.goodIngredients.map((g) => ({
+          name: g.name,
+          note: g.effect,
+          kind: 'good' as const
+        })),
+        ...scanResult.badIngredients.map((b) => ({
+          name: b.name,
+          note: b.effect,
+          kind: (b.severity === 'danger' ? 'danger' : 'warn') as 'danger' | 'warn'
+        }))
+      ]
+    : [];
+
+  const dotColor = (kind: 'good' | 'warn' | 'danger') =>
+    kind === 'good' ? '#5F7A60' : kind === 'warn' ? '#C05F3C' : '#A8452B';
+
   return (
-    <div className="flex flex-col flex-1 min-h-screen bg-[#FBF8F5] pb-28 pt-4 px-4 sm:px-5 select-none">
-      {/* Hidden File Input */}
+    <div className="flex flex-col flex-1 min-h-screen bg-[#F4F0E8] pb-10 select-none">
       <input
         ref={fileInputRef}
         type="file"
@@ -135,86 +168,65 @@ export const ProductScannerModal: React.FC<ProductScannerModalProps> = ({
         aria-label="Загрузить фото банки или состава INCI"
       />
 
-      {/* Header */}
-      <header className="flex items-center justify-between mb-4">
-        <button
-          type="button"
-          onClick={onClose}
-          aria-label="Закрыть сканер состава"
-          className="w-9 h-9 rounded-full bg-white flex items-center justify-center text-[#1C1813] shadow-xs border border-[#ECE5D7] active:scale-90 transition-transform"
-        >
-          <ChevronLeft size={20} strokeWidth={2.2} />
-        </button>
-
-        <div className="text-center">
-          <h1 className="text-[17px] font-bold text-[#1C1813] tracking-tight">
-            Сканер состава и банок
-          </h1>
-          <p className="text-[11px] text-[#756C5D]">
-            INCI-анализ комедогенности и конфликтов
-          </p>
-        </div>
-
-        <div className="w-9 h-9 rounded-full bg-[#F0E6D1]/60 flex items-center justify-center text-[#A87C44]">
-          <FlaskConical size={18} />
-        </div>
-      </header>
-
-      {/* Input Card: Photo OR Text */}
-      <div className="bg-white rounded-[26px] p-4 border border-[#ECE5D7] shadow-[0_6px_22px_rgba(30,27,24,0.03)] mb-4">
-        <label
-          htmlFor="inci-product-input"
-          className="block text-[11.5px] font-bold text-[#1C1813] mb-2"
-        >
-          Введи название банки / состав INCI или загрузи фото:
-        </label>
-
-        <div className="flex items-center gap-2 bg-[#FBF8F5] rounded-2xl px-3.5 py-2.5 border border-[#EBE4DD] mb-3">
-          <Search size={16} className="text-[#756C5D] shrink-0" />
-          <input
-            id="inci-product-input"
-            type="text"
-            value={productQuery}
-            onChange={(e) => setProductQuery(e.target.value)}
-            placeholder="Например: CeraVe крем или состав с упаковки..."
-            className="w-full bg-transparent text-[13px] font-medium text-[#1C1813] placeholder:text-[#756C5D] focus:outline-none"
-          />
-          {productQuery && (
-            <button
-              type="button"
-              onClick={() => setProductQuery('')}
-              aria-label="Очистить поле"
-              className="text-[#756C5D] hover:text-[#1C1813]"
-            >
-              <X size={15} />
-            </button>
-          )}
-        </div>
-
-        {/* Image Preview if uploaded */}
-        {imagePreview && (
-          <div className="relative w-24 h-24 rounded-2xl overflow-hidden border border-[#ECE5D7] mb-3">
-            <img
-              src={imagePreview}
-              alt="Фото банки"
-              className="w-full h-full object-cover"
-            />
-            <button
-              type="button"
-              onClick={() => setImagePreview(null)}
-              aria-label="Удалить фото"
-              className="absolute top-1 right-1 w-6 h-6 rounded-full bg-black/60 text-white flex items-center justify-center"
-            >
-              <X size={12} />
-            </button>
+      <div className="flex flex-col gap-5 px-5 pt-6 flex-1">
+        {/* Header: back + overline + Cormorant title */}
+        <header className="flex items-center gap-3.5">
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Закрыть сканер состава"
+            className={ICON_BUTTON}
+          >
+            <ChevronLeft size={14} className="text-[#1C1813]" />
+          </button>
+          <div className="flex flex-col gap-1">
+            <span className="text-[11px] font-bold tracking-[1.8px] uppercase text-[#A87C44]">
+              INCI-сканер
+            </span>
+            <h1 className="font-serif text-[26px] font-medium leading-[30px] text-[#1C1813]">
+              Разбор состава
+            </h1>
           </div>
-        )}
+        </header>
 
-        {/* Quick Sample Chips */}
-        <div className="mb-3.5">
-          <span className="text-[10.5px] font-semibold text-[#756C5D] block mb-1.5">
-            Быстрая проверка популярных средств:
-          </span>
+        {/* Input card */}
+        <section className="bg-[#FCFAF4] rounded-[20px] p-[18px] flex flex-col gap-3 shadow-[0_12px_32px_-16px_rgba(61,52,38,0.1)]">
+          <div className="flex items-center gap-2 bg-[#ECE5D7]/50 rounded-[12px] px-3.5 py-3 border border-[#E6DFCF]">
+            <Search size={15} className="text-[#756C5D] shrink-0" />
+            <input
+              id="inci-product-input"
+              type="text"
+              value={productQuery}
+              onChange={(e) => setProductQuery(e.target.value)}
+              placeholder="Название банки или состав INCI..."
+              className="w-full bg-transparent text-[13.5px] font-medium text-[#1C1813] placeholder:text-[#A79C8A] focus:outline-none"
+            />
+            {productQuery && (
+              <button
+                type="button"
+                onClick={() => setProductQuery('')}
+                aria-label="Очистить поле"
+                className="text-[#756C5D]"
+              >
+                <X size={14} />
+              </button>
+            )}
+          </div>
+
+          {imagePreview && (
+            <div className="relative w-20 h-20 rounded-[14px] overflow-hidden border border-[#E6DFCF]">
+              <img src={imagePreview} alt="Фото банки" className="w-full h-full object-cover" />
+              <button
+                type="button"
+                onClick={() => setImagePreview(null)}
+                aria-label="Удалить фото"
+                className="absolute top-1 right-1 w-5 h-5 rounded-full bg-[#1C1813]/70 text-[#F5F0E5] flex items-center justify-center"
+              >
+                <X size={11} />
+              </button>
+            </div>
+          )}
+
           <div className="flex flex-wrap gap-1.5">
             {SAMPLE_PRODUCTS.map((sample) => (
               <button
@@ -224,243 +236,242 @@ export const ProductScannerModal: React.FC<ProductScannerModalProps> = ({
                   setProductQuery(sample);
                   handleAnalyze(sample);
                 }}
-                className="text-[11px] font-medium px-2.5 py-1 rounded-full bg-[#FBF8F5] hover:bg-[#F0E6D1]/50 text-[#786F67] hover:text-[#1C1813] border border-[#EBE4DD] transition-colors"
+                className="text-[11px] font-medium px-2.5 py-1.5 rounded-full bg-[#F4F0E8] text-[#756C5D] border border-[#E6DFCF] active:bg-[#F0E6D1] transition-colors"
               >
                 {sample}
               </button>
             ))}
           </div>
-        </div>
 
-        {/* Action Buttons */}
-        <div className="flex items-center gap-2.5">
-          <button
-            type="button"
-            disabled={isLoading}
-            onClick={() => fileInputRef.current?.click()}
-            className="py-3 px-4 rounded-full bg-[#FBF8F5] border border-[#EBE4DD] text-[#1C1813] text-[12px] font-bold flex items-center justify-center gap-1.5 hover:bg-[#F3ECE4] active:scale-95 transition-all shrink-0"
-          >
-            <Camera size={15} className="text-[#A87C44]" />
-            <span>Фото / INCI</span>
-          </button>
-
-          <button
-            type="button"
-            disabled={isLoading}
-            onClick={() => handleAnalyze()}
-            className="flex-1 py-3 px-4 rounded-full bg-[#A87C44] text-white text-[13px] font-bold flex items-center justify-center gap-2 shadow-[0_8px_20px_rgba(168,124,68,0.3)] hover:bg-[#84622F] active:scale-95 transition-all disabled:opacity-60"
-          >
-            <Sparkles size={15} className={isLoading ? 'animate-spin' : ''} />
-            <span>{isLoading ? 'Разбираем состав...' : 'Проверить банку'}</span>
-          </button>
-        </div>
-
-        {errorMsg && (
-          <div className="mt-3 p-3 rounded-2xl bg-red-50 border border-red-200 text-red-700 text-[12px]">
-            {errorMsg}
-          </div>
-        )}
-      </div>
-
-      {/* Analysis Result Card */}
-      {scanResult && (
-        <div className="bg-white rounded-[28px] p-4 border border-[#ECE5D7] shadow-[0_10px_28px_rgba(30,27,24,0.05)] mb-5 flex flex-col gap-4 animate-fade-in">
-          {/* Product Header & Compatibility Score */}
-          <div className="flex items-start justify-between gap-3 border-b border-[#F8F4EE] pb-3.5">
-            <div>
-              <span className="text-[10.5px] font-bold uppercase tracking-wider text-[#756C5D]">
-                {scanResult.brand} • {scanResult.recommendedStepCategory}
-              </span>
-              <h2 className="text-[16px] font-bold text-[#1C1813] mt-0.5 leading-snug">
-                {scanResult.productName}
-              </h2>
-              <p className="text-[12px] text-[#786F67] mt-1 leading-relaxed">
-                {scanResult.verdictSummary}
-              </p>
-            </div>
-
-            <div
-              className={`w-16 h-16 rounded-2xl flex flex-col items-center justify-center shrink-0 border ${
-                scanResult.compatibilityScore >= 75
-                  ? 'bg-emerald-50 border-emerald-200 text-emerald-700'
-                  : scanResult.compatibilityScore >= 50
-                  ? 'bg-amber-50 border-amber-200 text-amber-700'
-                  : 'bg-red-50 border-red-200 text-red-700'
-              }`}
-            >
-              <span className="text-[18px] font-extrabold leading-none">
-                {scanResult.compatibilityScore}%
-              </span>
-              <span className="text-[9px] font-bold uppercase mt-1">
-                совмест.
-              </span>
-            </div>
-          </div>
-
-          {/* Green Badges: Good Active Ingredients */}
-          <div>
-            <h3 className="text-[12px] font-bold text-emerald-800 mb-2 flex items-center gap-1.5">
-              <CheckCircle2 size={14} className="text-emerald-600" />
-              <span>Ключевые полезные активы:</span>
-            </h3>
-            <div className="flex flex-wrap gap-1.5">
-              {scanResult.goodIngredients.map((ing, i) => (
-                <div
-                  key={i}
-                  className="px-3 py-1.5 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-900 text-[11.5px]"
-                >
-                  <span className="font-bold">{ing.name}:</span>{' '}
-                  <span className="text-emerald-700">{ing.effect}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Red/Yellow Badges: Comedogens & Irritants */}
-          <div>
-            <h3 className="text-[12px] font-bold text-amber-900 mb-2 flex items-center gap-1.5">
-              <AlertTriangle size={14} className="text-amber-600" />
-              <span>Комедогены и потенциальные раздражители:</span>
-            </h3>
-            {scanResult.badIngredients.length === 0 ? (
-              <div className="px-3 py-2 rounded-2xl bg-emerald-50/60 text-emerald-800 text-[11.5px] font-medium">
-                Агрессивных комедогенов и раздражителей не выявлено ✨
-              </div>
-            ) : (
-              <div className="flex flex-wrap gap-1.5">
-                {scanResult.badIngredients.map((bad, i) => {
-                  const isDanger = bad.severity === 'danger';
-                  return (
-                    <div
-                      key={i}
-                      className={`px-3 py-1.5 rounded-2xl text-[11.5px] border ${
-                        isDanger
-                          ? 'bg-red-50 border-red-200 text-red-900'
-                          : 'bg-amber-50 border-amber-200 text-amber-900'
-                      }`}
-                    >
-                      <span className="font-bold">{bad.name}:</span>{' '}
-                      <span>{bad.effect}</span>
-                    </div>
-                  );
-                })}
-              </div>
-            )}
-          </div>
-
-          {/* Routine Conflict Warning Box */}
-          <div
-            className={`p-3.5 rounded-2xl border flex items-start gap-2.5 ${
-              scanResult.routineConflict.hasConflict
-                ? 'bg-red-50/90 border-red-200 text-red-900'
-                : 'bg-emerald-50/70 border-emerald-200 text-emerald-900'
-            }`}
-          >
-            {scanResult.routineConflict.hasConflict ? (
-              <AlertTriangle size={18} className="text-red-600 shrink-0 mt-0.5" />
-            ) : (
-              <ShieldCheck size={18} className="text-emerald-600 shrink-0 mt-0.5" />
-            )}
-            <div className="text-[12px] leading-snug">
-              <span className="font-bold block mb-0.5">
-                {scanResult.routineConflict.hasConflict
-                  ? 'Внимание: обнаружен конфликт с вашей рутиной!'
-                  : 'Безопасно для вашей текущей рутины'}
-              </span>
-              <span>{scanResult.routineConflict.conflictWarning}</span>
-            </div>
-          </div>
-
-          {/* Safe Alternative Suggestion */}
-          {(showAlternativeCard || scanResult.compatibilityScore < 75 || scanResult.routineConflict.hasConflict) &&
-            scanResult.safeAlternative && (
-              <div className="p-3.5 rounded-2xl bg-[#FBF8F5] border border-[#EBE4DD] flex flex-col gap-2">
-                <div className="flex items-center justify-between">
-                  <span className="text-[10.5px] font-bold uppercase tracking-wider text-[#A87C44]">
-                    Безопасный аналог от дерматолога
-                  </span>
-                  <span className="text-[12px] font-bold text-[#1C1813]">
-                    ~{scanResult.safeAlternative.price.toLocaleString('ru-RU')} ₽
-                  </span>
-                </div>
-                <div className="text-[13.5px] font-bold text-[#1C1813]">
-                  {scanResult.safeAlternative.brand} — {scanResult.safeAlternative.name}
-                </div>
-                <p className="text-[11.5px] text-[#786F67]">
-                  {scanResult.safeAlternative.reason}
-                </p>
-                <button
-                  type="button"
-                  onClick={() => onAddScannedToRoutine(scanResult, true)}
-                  className="mt-1 py-2.5 px-4 rounded-full bg-[#1C1813] text-white text-[12px] font-bold flex items-center justify-center gap-1.5 active:scale-95 transition-transform"
-                >
-                  <Plus size={14} />
-                  <span>Добавить безопасный аналог в рутину</span>
-                </button>
-              </div>
-            )}
-
-          {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row items-center gap-2.5 pt-1">
+          <div className="flex gap-2.5">
             <button
               type="button"
-              onClick={() => onAddScannedToRoutine(scanResult, false)}
-              className="w-full py-3.5 px-4 rounded-full bg-[#A87C44] text-white text-[13px] font-bold flex items-center justify-center gap-2 shadow-[0_6px_18px_rgba(168,124,68,0.3)] hover:bg-[#84622F] active:scale-95 transition-all"
+              disabled={isLoading}
+              onClick={() => fileInputRef.current?.click()}
+              className="h-[48px] px-4 rounded-[14px] bg-transparent border border-[#E6DFCF] text-[#1C1813] text-[13px] font-semibold flex items-center justify-center gap-2 active:scale-[0.98] transition-all disabled:opacity-40 shrink-0"
             >
-              <Plus size={16} strokeWidth={2.5} />
-              <span>Добавить в мою рутину</span>
+              <Camera size={15} className="text-[#A87C44]" />
+              <span>Фото</span>
             </button>
-
-            {scanResult.safeAlternative && !showAlternativeCard && (
-              <button
-                type="button"
-                onClick={() => setShowAlternativeCard(true)}
-                className="w-full py-3 px-4 rounded-full bg-[#F4F0E8] text-[#1C1813] text-[12.5px] font-bold flex items-center justify-center gap-1.5 hover:bg-[#EAE3DA] active:scale-95 transition-all"
-              >
-                <RefreshCw size={14} />
-                <span>Найти безопасный аналог</span>
-              </button>
-            )}
+            <button
+              type="button"
+              disabled={isLoading}
+              onClick={() => handleAnalyze()}
+              className="flex-1 h-[48px] rounded-[14px] bg-[#1C1813] text-[#F5F0E5] text-[14px] font-semibold flex items-center justify-center gap-2 active:scale-[0.98] transition-transform disabled:opacity-40"
+            >
+              <Sparkles size={14} className={isLoading ? 'animate-spin' : ''} />
+              <span>{isLoading ? 'Разбираем состав...' : 'Проверить банку'}</span>
+            </button>
           </div>
-        </div>
-      )}
 
-      {/* History of Previously Scanned Jars */}
-      {scannedHistory.length > 0 && (
-        <section aria-label="Недавно проверенные банки">
-          <h3 className="text-[13.5px] font-bold text-[#1C1813] mb-2.5 px-1">
-            Проверенные ранее банки ({scannedHistory.length})
-          </h3>
-          <div className="flex flex-col gap-2">
-            {scannedHistory.map((item) => (
-              <button
-                key={item.id}
-                type="button"
-                onClick={() => setScanResult(item)}
-                className="w-full text-left bg-white rounded-[20px] p-3 border border-[#ECE5D7] flex items-center justify-between hover:border-[#A87C44]/40 transition-all"
-              >
-                <div className="min-w-0 pr-2">
-                  <div className="text-[12.5px] font-bold text-[#1C1813] truncate">
-                    {item.brand} — {item.productName}
-                  </div>
-                  <div className="text-[11px] text-[#756C5D] truncate mt-0.5">
-                    {item.verdictSummary}
-                  </div>
+          {errorMsg && (
+            <div className="p-3 rounded-[14px] bg-[#F5E3DA]/70 text-[#A8452B] text-[12px] flex items-center gap-2">
+              <AlertTriangle size={15} className="shrink-0" />
+              <span>{errorMsg}</span>
+            </div>
+          )}
+        </section>
+
+        {/* Result (screen.inci) */}
+        {scanResult && (
+          <div className="flex flex-col gap-4 animate-fade-in">
+            {/* Product card */}
+            <section className="bg-[#FCFAF4] rounded-[20px] p-[18px] flex flex-col gap-2 shadow-[0_12px_32px_-16px_rgba(61,52,38,0.1)]">
+              <div className="flex items-center justify-between gap-3">
+                <div className="flex flex-col gap-1 min-w-0">
+                  <span className="text-[11px] font-bold tracking-[1.8px] uppercase text-[#A87C44]">
+                    {scanResult.brand}
+                  </span>
+                  <h2 className="font-serif text-[22px] font-medium leading-[26px] text-[#1C1813]">
+                    {scanResult.productName}
+                  </h2>
+                  <span className="text-[13px] text-[#756C5D]">
+                    {scanResult.recommendedStepCategory} • ~
+                    {scanResult.estimatedPrice.toLocaleString('ru-RU')} ₽
+                  </span>
                 </div>
                 <span
-                  className={`px-2.5 py-1 rounded-full text-[11px] font-bold shrink-0 ${
-                    item.compatibilityScore >= 75
-                      ? 'bg-emerald-50 text-emerald-700'
-                      : 'bg-amber-50 text-amber-700'
+                  className={`px-3 py-1.5 rounded-full text-[12px] font-semibold shrink-0 ${
+                    verdictMeta(scanResult.compatibilityScore, scanResult.routineConflict.hasConflict).chip
                   }`}
                 >
-                  {item.compatibilityScore}%
+                  {scanResult.compatibilityScore}%
                 </span>
+              </div>
+              <p className="text-[13px] leading-[19px] text-[#756C5D]">
+                {scanResult.verdictSummary}
+              </p>
+            </section>
+
+            {/* Verdict action-row (dark) */}
+            <section className="bg-[#1C1813] rounded-[18px] p-4 flex items-center gap-3.5">
+              <div className="w-10 h-10 rounded-[12px] bg-[#322B22] flex items-center justify-center shrink-0">
+                <ShieldCheck size={16} className="text-[#CDA872]" />
+              </div>
+              <div className="flex flex-col gap-0.5 min-w-0">
+                <span className="text-[15px] font-semibold text-[#F5F0E5]">
+                  {
+                    verdictMeta(scanResult.compatibilityScore, scanResult.routineConflict.hasConflict)
+                      .title
+                  }
+                </span>
+                <span className="text-[13px] text-[#B4A993]">
+                  {scanResult.routineConflict.hasConflict
+                    ? 'Обнаружен конфликт с твоей рутиной'
+                    : `${scanResult.badIngredients.length === 0 ? '0' : scanResult.badIngredients.length} ${scanResult.badIngredients.length === 1 ? 'компонент требует внимания' : 'компонентов требуют внимания'}`}
+                </span>
+              </div>
+            </section>
+
+            {/* Ingredients list */}
+            {allIngredients.length > 0 && (
+              <section className="bg-[#FCFAF4] rounded-[20px] p-[18px] flex flex-col gap-3 shadow-[0_12px_32px_-16px_rgba(61,52,38,0.1)]">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-[15px] font-semibold text-[#1C1813]">Состав</h3>
+                  <span className="text-[12px] text-[#A79C8A]">
+                    {allIngredients.length}{' '}
+                    {allIngredients.length === 1
+                      ? 'компонент'
+                      : allIngredients.length < 5
+                      ? 'компонента'
+                      : 'компонентов'}
+                  </span>
+                </div>
+                {allIngredients.map((ing, i) => (
+                  <React.Fragment key={i}>
+                    <div className="flex gap-3 items-start">
+                      <span
+                        className="w-2 h-2 rounded-full mt-[5px] shrink-0"
+                        style={{ backgroundColor: dotColor(ing.kind) }}
+                      />
+                      <div className="flex flex-col gap-0.5 min-w-0">
+                        <span className="text-[13.5px] font-semibold text-[#1C1813]">
+                          {ing.name}
+                        </span>
+                        <span className="text-[12px] leading-[16px] text-[#756C5D]">
+                          {ing.note}
+                        </span>
+                      </div>
+                    </div>
+                    {i < allIngredients.length - 1 && (
+                      <div className="w-full h-px bg-[#E6DFCF]" />
+                    )}
+                  </React.Fragment>
+                ))}
+              </section>
+            )}
+
+            {/* Conflict note */}
+            <section
+              className={`rounded-[16px] p-4 flex items-start gap-3 ${
+                scanResult.routineConflict.hasConflict
+                  ? 'bg-[#F0E6D1]'
+                  : 'bg-[#E8EFE4]'
+              }`}
+            >
+              {scanResult.routineConflict.hasConflict ? (
+                <AlertTriangle size={15} className="text-[#84622F] mt-0.5 shrink-0" />
+              ) : (
+                <CheckCircle2 size={15} className="text-[#3E5A3F] mt-0.5 shrink-0" />
+              )}
+              <span className="text-[13px] leading-[19px] text-[#1C1813]">
+                {scanResult.routineConflict.conflictWarning}
+              </span>
+            </section>
+
+            {/* Safe alternative */}
+            {(showAlternativeCard ||
+              scanResult.compatibilityScore < 75 ||
+              scanResult.routineConflict.hasConflict) &&
+              scanResult.safeAlternative && (
+                <section className="bg-[#FCFAF4] rounded-[20px] p-[18px] flex flex-col gap-2 shadow-[0_12px_32px_-16px_rgba(61,52,38,0.1)]">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[11px] font-bold tracking-[1.8px] uppercase text-[#A87C44]">
+                      Безопасный аналог
+                    </span>
+                    <span className="text-[13px] font-semibold text-[#1C1813]">
+                      ~{scanResult.safeAlternative.price.toLocaleString('ru-RU')} ₽
+                    </span>
+                  </div>
+                  <div className="font-serif text-[20px] font-medium leading-[24px] text-[#1C1813]">
+                    {scanResult.safeAlternative.brand} — {scanResult.safeAlternative.name}
+                  </div>
+                  <p className="text-[12.5px] leading-[18px] text-[#756C5D]">
+                    {scanResult.safeAlternative.reason}
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => onAddScannedToRoutine(scanResult, true)}
+                    className={`${BTN_PRIMARY} mt-1`}
+                  >
+                    <Plus size={14} />
+                    <span>Добавить аналог в рутину</span>
+                  </button>
+                </section>
+              )}
+
+            {/* Actions */}
+            <div className="flex flex-col gap-2.5">
+              <button
+                type="button"
+                onClick={() => onAddScannedToRoutine(scanResult, false)}
+                className={BTN_PRIMARY}
+              >
+                <Plus size={15} />
+                <span>Добавить в мою рутину</span>
               </button>
-            ))}
+              {scanResult.safeAlternative && !showAlternativeCard && (
+                <button
+                  type="button"
+                  onClick={() => setShowAlternativeCard(true)}
+                  className={BTN_OUTLINE}
+                >
+                  <RefreshCw size={14} />
+                  <span>Найти безопасный аналог</span>
+                </button>
+              )}
+            </div>
           </div>
-        </section>
-      )}
+        )}
+
+        {/* History */}
+        {scannedHistory.length > 0 && (
+          <section aria-label="Недавно проверенные банки">
+            <div className="flex items-baseline justify-between mb-2.5 px-1">
+              <h3 className="font-serif text-[20px] font-medium text-[#1C1813]">
+                Проверенные ранее
+              </h3>
+              <span className="text-[12px] text-[#A79C8A]">{scannedHistory.length}</span>
+            </div>
+            <div className="flex flex-col gap-2">
+              {scannedHistory.map((item) => (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => setScanResult(item)}
+                  className="w-full text-left bg-[#FCFAF4] rounded-[18px] p-3.5 flex items-center justify-between gap-3 active:bg-[#F0E6D1]/40 transition-colors"
+                >
+                  <div className="min-w-0">
+                    <div className="text-[13px] font-semibold text-[#1C1813] truncate">
+                      {item.brand} — {item.productName}
+                    </div>
+                    <div className="text-[11.5px] text-[#756C5D] truncate mt-0.5">
+                      {item.verdictSummary}
+                    </div>
+                  </div>
+                  <span
+                    className={`px-2.5 py-1 rounded-full text-[11px] font-semibold shrink-0 ${
+                      verdictMeta(item.compatibilityScore, false).chip
+                    }`}
+                  >
+                    {item.compatibilityScore}%
+                  </span>
+                </button>
+              ))}
+            </div>
+          </section>
+        )}
+      </div>
     </div>
   );
 };
