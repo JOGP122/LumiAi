@@ -7,6 +7,8 @@ Telegram Mini App: селфи-анализ кожи, разбор состава
 ![Главная](docs/screenshots/home.jpg)
 ![AI-скан кожи](docs/screenshots/face-scan.jpg)
 ![INCI-разбор состава](docs/screenshots/inci.jpg)
+![Избранное](docs/screenshots/favorites.jpg)
+![Корзина](docs/screenshots/cart.jpg)
 ![Профиль](docs/screenshots/profile.jpg)
 
 ## Возможности
