@@ -4,8 +4,9 @@ Telegram Mini App: селфи-анализ кожи, разбор состава
 рутина ухода от AI-консьержа. Дизайн-система — «мужской консерж»
 (шрифтовая пара Cormorant + Manrope, латунно-чернильная палитра).
 
-![Home](docs/screenshots/home.jpg)
+![Главная](docs/screenshots/home.jpg)
 ![AI-скан кожи](docs/screenshots/face-scan.jpg)
+![INCI-разбор состава](docs/screenshots/inci.jpg)
 ![Профиль](docs/screenshots/profile.jpg)
 
 ## Возможности
