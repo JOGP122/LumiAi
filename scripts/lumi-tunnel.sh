@@ -31,7 +31,7 @@ while true; do
   URL=""
   for i in {1..45}; do
     sleep 2
-    URL=$(grep -oE 'https://[a-z0-9.-]+\.lhr\.life' "$TUN_LOG" | head -1)
+    URL=$(grep -oE 'https://[a-z0-9.-]+\.lhr\.life' "$TUN_LOG" | tail -1)
     [ -n "$URL" ] && break
     kill -0 $TPID 2>/dev/null || break
   done
@@ -39,6 +39,21 @@ while true; do
     echo "$(date '+%F %T') tunnel url: $URL" >> "$STACK_LOG"
     register "$URL"
     while kill -0 $TPID 2>/dev/null; do sleep 20; done
+    echo "$(date '+%F %T') tunnel died, restarting" >> "$STACK_LOG"
+  else
+    kill $TPID 2>/dev/null
+    echo "$(date '+%F %T') no tunnel url, retry in 10s" >> "$STACK_LOG"
+    sleep 10
+  fi
+done
+ свежим URL в логе
+      NOW=$(grep -oE 'https://[a-z0-9.-]+\.lhr\.life' "$TUN_LOG" | tail -1)
+      if [ -n "$NOW" ] && [ "$NOW" != "$LAST" ]; then
+        echo "$(date '+%F %T') mid-session rotation: $LAST -> $NOW" >> "$STACK_LOG"
+        register "$NOW"
+        LAST="$NOW"
+      fi
+    done
     echo "$(date '+%F %T') tunnel died, restarting" >> "$STACK_LOG"
   else
     kill $TPID 2>/dev/null
