@@ -17,7 +17,7 @@ import {
 export const STORAGE_KEY = 'lumi_concierge_clean_state_v3';
 export const ROUTINE_HISTORY_STORAGE_KEY = 'lumi_routine_history_by_date_v1';
 export const TELEGRAM_CONFIG_STORAGE_KEY = 'lumi_telegram_bot_config_v1';
-export const DEFAULT_BOT_USERNAME = 'LumiSkinConciergeBot';
+export const DEFAULT_BOT_USERNAME = 'lum_betai_ai_bot';
 
 export const AGE_GROUPS: AgeGroup[] = [
   'До 18',

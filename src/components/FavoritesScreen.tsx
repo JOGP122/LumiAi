@@ -72,7 +72,7 @@ export const FavoritesScreen: React.FC<FavoritesScreenProps> = ({
               Проверить банку по составу
             </span>
             <span className="text-[12px] leading-[16px] text-[#B4A993]">
-              Анализ INCI на комедогены и конфликт с уходом
+              Анализ состава на комедогены и конфликт с уходом
             </span>
           </div>
           <ChevronRight size={13} className="text-[#CDA872] shrink-0" />

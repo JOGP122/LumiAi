@@ -341,7 +341,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
               Проверить банку по фото
             </span>
             <span className="text-[12.5px] leading-[17px] text-[#756C5D]">
-              INCI-скан комедогенности и конфликта активов
+              Проверка состава: комедогены, конфликты с твоей рутиной
             </span>
           </div>
           <ChevronRight size={13} className="text-[#A87C44] shrink-0" />

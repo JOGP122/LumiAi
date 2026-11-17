@@ -120,7 +120,7 @@ export const TelegramGateScreen: React.FC<TelegramGateScreenProps> = ({
           @{cleanUsername}
         </span>
         <p className="text-[11px] text-[#756C5D] mt-1.5">
-          Синхронизация AI-рутины, INCI-сканера и уведомлений в чате
+          Синхронизация AI-рутины, сканера составов и уведомлений в чате
         </p>
       </div>
 

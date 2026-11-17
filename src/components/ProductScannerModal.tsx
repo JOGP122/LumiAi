@@ -104,7 +104,7 @@ export const ProductScannerModal: React.FC<ProductScannerModalProps> = ({
         brand: data.brand || 'Бренд',
         compatibilityScore:
           typeof data.compatibilityScore === 'number' ? data.compatibilityScore : 85,
-        verdictSummary: data.verdictSummary || 'Продукт проанализирован по базе INCI.',
+        verdictSummary: data.verdictSummary || 'Состав проанализирован по INCI-элементам.',
         recommendedSection: data.recommendedSection === 'morning' ? 'morning' : 'evening',
         recommendedStepCategory: data.recommendedStepCategory || 'Уход',
         estimatedPrice: data.estimatedPrice || 1800,
@@ -199,7 +199,7 @@ export const ProductScannerModal: React.FC<ProductScannerModalProps> = ({
               type="text"
               value={productQuery}
               onChange={(e) => setProductQuery(e.target.value)}
-              placeholder="Название банки или состав INCI..."
+              placeholder="Название средства или состав с этикетки..."
               className="w-full bg-transparent text-[13.5px] font-medium text-[#1C1813] placeholder:text-[#A79C8A] focus:outline-none"
             />
             {productQuery && (
