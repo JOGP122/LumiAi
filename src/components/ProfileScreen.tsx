@@ -1,3 +1,4 @@
+import { API_BASE } from '../config';
 import React, { useState, useRef } from 'react';
 import {
   Flame,
@@ -105,7 +106,7 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({
       const appUrl =
         typeof window !== 'undefined' ? window.location.origin : undefined;
 
-      const response = await fetch('/api/telegram/setup', {
+      const response = await fetch(`${API_BASE}/api/telegram/setup`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -161,7 +162,7 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({
       const targetChat =
         chatIdInput.trim() || (tgUserId ? String(tgUserId) : '');
 
-      const response = await fetch('/api/telegram/send-report', {
+      const response = await fetch(`${API_BASE}/api/telegram/send-report`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

@@ -1,3 +1,4 @@
+import { API_BASE } from '../config';
 import React, { useState, useRef } from 'react';
 import {
   ChevronLeft,
@@ -66,7 +67,7 @@ export const FaceScanScreen: React.FC<FaceScanScreenProps> = ({
     );
 
     try {
-      const response = await fetch('/api/analyze-face', {
+      const response = await fetch(`${API_BASE}/api/analyze-face`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

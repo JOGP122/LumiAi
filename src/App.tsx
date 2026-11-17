@@ -3,6 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import { API_BASE } from './config';
 import React, { useState, useEffect } from 'react';
 import {
   TabType,
@@ -255,7 +256,7 @@ export default function App() {
 
   // Sync bot status from backend on mount
   useEffect(() => {
-    fetch('/api/telegram/status')
+    fetch(`${API_BASE}/api/telegram/status`)
       .then((r) => (r.ok ? r.json() : null))
       .then((status) => {
         if (status && status.botUsername) {
@@ -336,7 +337,7 @@ export default function App() {
         (window as any).Telegram?.WebApp?.initDataUnsafe?.user?.id ||
         botConfig.testChatId;
 
-      const response = await fetch('/api/telegram/send-report', {
+      const response = await fetch(`${API_BASE}/api/telegram/send-report`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -473,7 +474,7 @@ export default function App() {
     showToast('AI-дерматолог подбирает средства по вашей анкете...');
 
     try {
-      const response = await fetch('/api/analyze-face', {
+      const response = await fetch(`${API_BASE}/api/analyze-face`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

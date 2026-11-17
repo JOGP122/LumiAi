@@ -161,6 +161,26 @@ async function startServer() {
   const app = express();
   const PORT = 3000;
 
+  // CORS: фронт живёт на lumiaibot.online, API — на туннеле этого мака
+  app.use((req, res, next) => {
+    const origin = req.headers.origin || '';
+    if (
+      origin === 'https://lumiaibot.online' ||
+      origin === 'https://www.lumiaibot.online' ||
+      origin.startsWith('http://localhost:') ||
+      origin.startsWith('http://127.0.0.1:')
+    ) {
+      res.setHeader('Access-Control-Allow-Origin', origin);
+      res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
+      res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    }
+    if (req.method === 'OPTIONS') {
+      res.sendStatus(204);
+      return;
+    }
+    next();
+  });
+
   app.use(express.json({ limit: '25mb' }));
 
 
@@ -390,13 +410,16 @@ ${skinContext}
           '✨ AI-консьерж по уходу за кожей: диагностика по фото, INCI-сканер составов и персональная рутина'
       });
 
-      // Step 5: Set Chat Menu Button to open Mini App (setChatMenuButton)
+      // Step 5: Set Chat Menu Button to open Mini App (setChatMenuButton).
+      // Меню всегда ведёт на публичный домен фронта (PUBLIC_APP_URL),
+      // вебхук живёт на appUrl (туннель до API).
+      const miniAppUrl = (process.env.PUBLIC_APP_URL || resolvedAppUrl).replace(/\/$/, '');
       const menuResp: any = await callTelegramApi(tokenToUse, 'setChatMenuButton', {
         menu_button: {
           type: 'web_app',
           text: '✨ Открыть Lumi',
           web_app: {
-            url: resolvedAppUrl
+            url: miniAppUrl
           }
         }
       });

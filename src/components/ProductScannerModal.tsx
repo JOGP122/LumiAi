@@ -1,3 +1,4 @@
+import { API_BASE } from '../config';
 import React, { useState, useRef } from 'react';
 import {
   ChevronLeft,
@@ -79,7 +80,7 @@ export const ProductScannerModal: React.FC<ProductScannerModalProps> = ({
     setShowAlternativeCard(false);
 
     try {
-      const response = await fetch('/api/analyze-product', {
+      const response = await fetch(`${API_BASE}/api/analyze-product`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
